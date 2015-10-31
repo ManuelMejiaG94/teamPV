@@ -56,12 +56,12 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu4">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Pedidos"/>
+            <Property name="text" type="java.lang.String" value="Solicitud"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="btnNewOrders">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Nuevo pedido"/>
+                <Property name="text" type="java.lang.String" value="Nueva solicitud"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNewOrdersActionPerformed"/>

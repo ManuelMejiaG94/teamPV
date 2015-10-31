@@ -8,7 +8,7 @@ package BDPuntoVentaManuel.Views;
 //import ManuelMejiaG.PuntoVenta2.Views.Product.Product_Start;
 //import java.awt.Container;
 //import java.awt.GridBagConstraints;
-import BDPuntoVentaManuel.Views.Orders.Orders_Start;
+import BDPuntoVentaManuel.Views.Request.Request_Start;
 import BDPuntoVentaManuel.Views.Product.Products_Start;
 import BDPuntoVentaManuel.Views.Sales.Sales_Start;
 import BDPuntoVentaManuel.Views.Supplier.Suppliers_Start;
@@ -140,9 +140,9 @@ public class View_Start extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu4.setText("Pedidos");
+        jMenu4.setText("Solicitud");
 
-        btnNewOrders.setText("Nuevo pedido");
+        btnNewOrders.setText("Nueva solicitud");
         btnNewOrders.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNewOrdersActionPerformed(evt);
@@ -199,13 +199,13 @@ public class View_Start extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProvedorActionPerformed
 
     private void btnNewOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewOrdersActionPerformed
-          if(!(view_Orders instanceof Orders_Start))
+          if(!(view_Orders instanceof Request_Start))
         {
-            view_Orders=new Orders_Start();
+            view_Orders=new Request_Start();
             Centrar(view_Orders);
         }else{
             view_Orders.dispose();
-            view_Orders=new Orders_Start();
+            view_Orders=new Request_Start();
             Centrar(view_Orders);
         }
     }//GEN-LAST:event_btnNewOrdersActionPerformed
@@ -286,6 +286,6 @@ public class View_Start extends javax.swing.JFrame {
     Products_Start view_Products;
     Sales_Start view_Sales;
     Suppliers_Start view_Suppliers;
-    Orders_Start view_Orders;
+    Request_Start view_Orders;
 
 }

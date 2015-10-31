@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package BDPuntoVentaManuel.Views.Orders;
+package BDPuntoVentaManuel.Views.Request;
 
 /**
  *
  * @author manuel
  */
-public class Orders_Select_Cancel extends javax.swing.JPanel {
+public class Request_Select_Cancel extends javax.swing.JPanel {
 
     /**
      * Creates new form Orders_Select_Cancel
      */
-    public Orders_Select_Cancel() {
+    public Request_Select_Cancel() {
         initComponents();
     }
 
@@ -86,7 +86,7 @@ public class Orders_Select_Cancel extends javax.swing.JPanel {
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnProcess)
                     .addComponent(btnCancel))
@@ -97,19 +97,19 @@ public class Orders_Select_Cancel extends javax.swing.JPanel {
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
         //        if(btnProcess.getText().equals("Siguiente"))
         //        {
-            Orders_Start.viewOrders.setVisible(false);
-            Orders_Start.viewSelect.setVisible(false);
-            Orders_Start.viewDefault.setVisible(false);
-            Orders_Start.viewProcess.setVisible(true);
+            Request_Start.viewRequest.setVisible(false);
+            Request_Start.viewSelect.setVisible(false);
+            Request_Start.viewDefault.setVisible(false);
+            Request_Start.viewProcess.setVisible(true);
             
             //        }
     }//GEN-LAST:event_btnProcessActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        Orders_Start.viewOrders.setVisible(false);
-        Orders_Start.viewSelect.setVisible(false);
-        Orders_Start.viewDefault.setVisible(true);
-        Orders_Start.viewProcess.setVisible(false);
+        Request_Start.viewRequest.setVisible(false);
+        Request_Start.viewSelect.setVisible(false);
+        Request_Start.viewDefault.setVisible(true);
+        Request_Start.viewProcess.setVisible(false);
     }//GEN-LAST:event_btnCancelActionPerformed
 
 

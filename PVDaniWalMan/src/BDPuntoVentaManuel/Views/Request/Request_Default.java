@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package BDPuntoVentaManuel.Views.Orders;
+package BDPuntoVentaManuel.Views.Request;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -11,12 +11,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author manuel
  */
-public class Orders_Default extends javax.swing.JPanel {
+public class Request_Default extends javax.swing.JPanel {
 
     /**
      * Creates new form Orders_Default
      */
-    public Orders_Default() {
+    public Request_Default() {
         initComponents();
         this.Start_Windows();
     }
@@ -28,7 +28,7 @@ public class Orders_Default extends javax.swing.JPanel {
     
     private void Charge_Data_Default()
     {
-//        this.cmbCategorias.setModel(Orders_Start.OrdersProcess.getModelCategorias());
+//        this.cmbCategorias.setModel(Orders_Start.RequestProcess.getModelCategorias());
     }
     
     private void SetModelTable()

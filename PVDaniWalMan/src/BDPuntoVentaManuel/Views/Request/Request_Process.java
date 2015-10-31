@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package BDPuntoVentaManuel.Views.Orders;
+package BDPuntoVentaManuel.Views.Request;
 
 /**
  *
  * @author manuel
  */
-public class Orders_Process extends javax.swing.JPanel {
+public class Request_Process extends javax.swing.JPanel {
 
     /**
      * Creates new form Orders_Process
      */
-    public Orders_Process() {
+    public Request_Process() {
         initComponents();
     }
 
@@ -209,17 +209,17 @@ public class Orders_Process extends javax.swing.JPanel {
     }//GEN-LAST:event_btnChargeActionPerformed
 
     private void btnAseptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAseptActionPerformed
-        Orders_Start.viewOrders.setVisible(false);
-        Orders_Start.viewSelect.setVisible(false);
-        Orders_Start.viewDefault.setVisible(true);
-        Orders_Start.viewProcess.setVisible(false);
+        Request_Start.viewRequest.setVisible(false);
+        Request_Start.viewSelect.setVisible(false);
+        Request_Start.viewDefault.setVisible(true);
+        Request_Start.viewProcess.setVisible(false);
     }//GEN-LAST:event_btnAseptActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        Orders_Start.viewOrders.setVisible(false);
-        Orders_Start.viewSelect.setVisible(false);
-        Orders_Start.viewDefault.setVisible(true);
-        Orders_Start.viewProcess.setVisible(false);
+        Request_Start.viewRequest.setVisible(false);
+        Request_Start.viewSelect.setVisible(false);
+        Request_Start.viewDefault.setVisible(true);
+        Request_Start.viewProcess.setVisible(false);
     }//GEN-LAST:event_btnCancelActionPerformed
 
 

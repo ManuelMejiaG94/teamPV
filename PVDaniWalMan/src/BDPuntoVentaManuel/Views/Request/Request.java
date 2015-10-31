@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package BDPuntoVentaManuel.Views.Orders;
+package BDPuntoVentaManuel.Views.Request;
 
 
 //import BDPuntoVentaManuel.ViewsProcess.Process_CatCategoria;
@@ -15,9 +15,9 @@ package BDPuntoVentaManuel.Views.Orders;
  *
  * @author manuel
  */
-public class Orders {
+public class Request {
     
-//    public Orders()
+//    public Request()
 //    {
 //        this.start_tools();
 //    }

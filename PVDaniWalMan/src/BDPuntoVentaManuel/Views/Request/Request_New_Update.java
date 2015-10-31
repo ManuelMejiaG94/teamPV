@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package BDPuntoVentaManuel.Views.Orders;
+package BDPuntoVentaManuel.Views.Request;
 
 /**
  *
  * @author manuel
  */
-public class Orders_New_Update extends javax.swing.JPanel {
+public class Request_New_Update extends javax.swing.JPanel {
 
     /**
      * Creates new form Orders_New_Update
      */
-    public Orders_New_Update() {
+    public Request_New_Update() {
         initComponents();
     }
 
@@ -65,7 +65,7 @@ public class Orders_New_Update extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tbData);
 
-        jLabel4.setText("Detalle de la venta");
+        jLabel4.setText("Productos de la solicitud");
 
         jLabel5.setText("Sub total");
 
@@ -114,11 +114,11 @@ public class Orders_New_Update extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbErrorMInTB)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnDelete)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtSubTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5)))
+                        .addComponent(jLabel5))
+                    .addComponent(btnDelete))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -235,7 +235,7 @@ public class Orders_New_Update extends javax.swing.JPanel {
             }
         });
 
-        btnCancel.setText("Cancelar solicitud");
+        btnCancel.setText("Cancelar");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelActionPerformed(evt);
@@ -355,10 +355,10 @@ public class Orders_New_Update extends javax.swing.JPanel {
     }//GEN-LAST:event_btnChargeActionPerformed
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
-Orders_Start.viewOrders.setVisible(false);
-        Orders_Start.viewSelect.setVisible(false);
-        Orders_Start.viewDefault.setVisible(true);
-        Orders_Start.viewProcess.setVisible(false);
+        Request_Start.viewRequest.setVisible(false);
+        Request_Start.viewSelect.setVisible(false);
+        Request_Start.viewDefault.setVisible(true);
+        Request_Start.viewProcess.setVisible(false);
         //        if(btnOk.getText().equals("Finalizar Venta"))
         //        {
             //            if(this.Validate_Sale()){
@@ -379,10 +379,10 @@ Orders_Start.viewOrders.setVisible(false);
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         //        this.process.btnCancel(this);
-        Orders_Start.viewOrders.setVisible(false);
-        Orders_Start.viewSelect.setVisible(false);
-        Orders_Start.viewDefault.setVisible(true);
-        Orders_Start.viewProcess.setVisible(false);
+        Request_Start.viewRequest.setVisible(false);
+        Request_Start.viewSelect.setVisible(false);
+        Request_Start.viewDefault.setVisible(true);
+        Request_Start.viewProcess.setVisible(false);
     }//GEN-LAST:event_btnCancelActionPerformed
 
 
