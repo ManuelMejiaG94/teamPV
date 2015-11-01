@@ -5,6 +5,8 @@
  */
 package BDPuntoVentaManuel.FACTORY;
 
+import BDPuntoVentaManuel.ABSTRACT.ISupplier;
+import BDPuntoVentaManuel.CONCREAT.SupplierJpaController;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -27,17 +29,17 @@ public class FactorySupplier {
     {   
         return factory;
     }
-//    
-//    public IPedido getInstanceAbstract()
-//    {
-//        try{
-//            PedidoJpaController ctrlPedido= new PedidoJpaController();
-//            return (IPedido) ctrlPedido;
-//        }catch(Exception ex)
-//        {
-//            System.out.println("Error\n"+ex.getMessage());
-//            return null;
-//        }
-//    }
+    
+    public ISupplier getInstanceAbstract()
+    {
+        try{
+            SupplierJpaController supplier= new SupplierJpaController();
+            return (ISupplier) supplier;
+        }catch(Exception ex)
+        {
+            Logger.getLogger(FactorySupplier.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
 
 }
