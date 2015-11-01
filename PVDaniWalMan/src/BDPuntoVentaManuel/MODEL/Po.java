@@ -11,7 +11,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -48,11 +47,11 @@ public class Po implements Serializable {
     private double dobTotal;
     @Basic(optional = false)
     @Column(name = "bitEstatus", nullable = false)
-    private boolean bitEstatus;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPo", fetch = FetchType.LAZY)
+    private int bitEstatus;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPo")
     private Collection<Podetail> podetailCollection;
     @JoinColumn(name = "idCurrency", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Currency idCurrency;
 
     public Po() {
@@ -62,7 +61,7 @@ public class Po implements Serializable {
         this.id = id;
     }
 
-    public Po(Integer id, double dobTotal, boolean bitEstatus) {
+    public Po(Integer id, double dobTotal, int bitEstatus) {
         this.id = id;
         this.dobTotal = dobTotal;
         this.bitEstatus = bitEstatus;
@@ -84,11 +83,11 @@ public class Po implements Serializable {
         this.dobTotal = dobTotal;
     }
 
-    public boolean getBitEstatus() {
+    public int getBitEstatus() {
         return bitEstatus;
     }
 
-    public void setBitEstatus(boolean bitEstatus) {
+    public void setBitEstatus(int bitEstatus) {
         this.bitEstatus = bitEstatus;
     }
 

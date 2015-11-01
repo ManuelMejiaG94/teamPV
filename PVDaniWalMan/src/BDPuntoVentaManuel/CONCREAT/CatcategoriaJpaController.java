@@ -5,9 +5,9 @@
  */
 package BDPuntoVentaManuel.CONCREAT;
 
-import BDPuntoVentaManuel.ABSTRACT.ICatCategoria;
-import BDPuntoVentaManuel.CONCREAT.exceptions.IllegalOrphanException;
-import BDPuntoVentaManuel.CONCREAT.exceptions.NonexistentEntityException;
+import BDPuntoVentaManuel.ABSTRACT.ICatCategori;
+import BDPuntoVentaManuel.ABSTRACT.exceptions.IllegalOrphanException;
+import BDPuntoVentaManuel.ABSTRACT.exceptions.NonexistentEntityException;
 import BDPuntoVentaManuel.MODEL.Catcategoria;
 import java.io.Serializable;
 import javax.persistence.Query;
@@ -27,22 +27,23 @@ import javax.persistence.Persistence;
  *
  * @author manuel
  */
-public class CatcategoriaJpaController implements Serializable, ICatCategoria {
+public class CatcategoriaJpaController implements Serializable, ICatCategori{
 
     public CatcategoriaJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     private EntityManagerFactory emf = null;
 
-    public CatcategoriaJpaController()
-    {
-        this.emf=Persistence.createEntityManagerFactory("PVDaniWalManPU");
-    }
-    
     @Override
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
+
+    public CatcategoriaJpaController() {
+        this.emf=Persistence.createEntityManagerFactory("PVDaniWalManPU");
+    }
+    
+    
 
     @Override
     public void create(Catcategoria catcategoria) {
@@ -180,6 +181,7 @@ public class CatcategoriaJpaController implements Serializable, ICatCategoria {
         }
     }
 
+  
     @Override
     public void destroy(Integer id) throws IllegalOrphanException, NonexistentEntityException {
         EntityManager em = null;

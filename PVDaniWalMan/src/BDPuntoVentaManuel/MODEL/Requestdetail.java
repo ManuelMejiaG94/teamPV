@@ -9,7 +9,6 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,8 +31,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Requestdetail.findById", query = "SELECT r FROM Requestdetail r WHERE r.id = :id"),
     @NamedQuery(name = "Requestdetail.findByDobPrice", query = "SELECT r FROM Requestdetail r WHERE r.dobPrice = :dobPrice"),
     @NamedQuery(name = "Requestdetail.findByDobQuantity", query = "SELECT r FROM Requestdetail r WHERE r.dobQuantity = :dobQuantity"),
-    @NamedQuery(name = "Requestdetail.findByDobTotal", query = "SELECT r FROM Requestdetail r WHERE r.dobTotal = :dobTotal"),
-    @NamedQuery(name = "Requestdetail.findByBitEstatus", query = "SELECT r FROM Requestdetail r WHERE r.bitEstatus = :bitEstatus")})
+    @NamedQuery(name = "Requestdetail.findByDobTotal", query = "SELECT r FROM Requestdetail r WHERE r.dobTotal = :dobTotal")})
 public class Requestdetail implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -50,14 +48,11 @@ public class Requestdetail implements Serializable {
     @Basic(optional = false)
     @Column(name = "dobTotal", nullable = false)
     private double dobTotal;
-    @Basic(optional = false)
-    @Column(name = "bitEstatus", nullable = false)
-    private boolean bitEstatus;
     @JoinColumn(name = "idRequest", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Request idRequest;
     @JoinColumn(name = "idProduct", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Product idProduct;
 
     public Requestdetail() {
@@ -67,12 +62,11 @@ public class Requestdetail implements Serializable {
         this.id = id;
     }
 
-    public Requestdetail(Integer id, double dobPrice, double dobQuantity, double dobTotal, boolean bitEstatus) {
+    public Requestdetail(Integer id, double dobPrice, double dobQuantity, double dobTotal) {
         this.id = id;
         this.dobPrice = dobPrice;
         this.dobQuantity = dobQuantity;
         this.dobTotal = dobTotal;
-        this.bitEstatus = bitEstatus;
     }
 
     public Integer getId() {
@@ -105,14 +99,6 @@ public class Requestdetail implements Serializable {
 
     public void setDobTotal(double dobTotal) {
         this.dobTotal = dobTotal;
-    }
-
-    public boolean getBitEstatus() {
-        return bitEstatus;
-    }
-
-    public void setBitEstatus(boolean bitEstatus) {
-        this.bitEstatus = bitEstatus;
     }
 
     public Request getIdRequest() {

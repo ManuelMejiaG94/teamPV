@@ -11,7 +11,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -70,13 +69,13 @@ public class Product implements Serializable {
     @Column(name = "strPresentation", nullable = false, length = 50)
     private String strPresentation;
     @JoinColumn(name = "idCategoria", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Catcategoria idCategoria;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProducto", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProducto")
     private Collection<Salesdetail> salesdetailCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProducto", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProducto")
     private Collection<Podetail> podetailCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProduct", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProduct")
     private Collection<Requestdetail> requestdetailCollection;
 
     public Product() {

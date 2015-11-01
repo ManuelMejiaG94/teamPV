@@ -12,7 +12,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -39,8 +38,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Request.findById", query = "SELECT r FROM Request r WHERE r.id = :id"),
     @NamedQuery(name = "Request.findByDoubTotal", query = "SELECT r FROM Request r WHERE r.doubTotal = :doubTotal"),
     @NamedQuery(name = "Request.findByDatFecha", query = "SELECT r FROM Request r WHERE r.datFecha = :datFecha"),
-    @NamedQuery(name = "Request.findByBitEstatus", query = "SELECT r FROM Request r WHERE r.bitEstatus = :bitEstatus"),
-    @NamedQuery(name = "Request.findByBoolEstatus", query = "SELECT r FROM Request r WHERE r.boolEstatus = :boolEstatus")})
+    @NamedQuery(name = "Request.findByBitEstatus", query = "SELECT r FROM Request r WHERE r.bitEstatus = :bitEstatus")})
 public class Request implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -57,17 +55,14 @@ public class Request implements Serializable {
     private Date datFecha;
     @Basic(optional = false)
     @Column(name = "bitEstatus", nullable = false)
-    private boolean bitEstatus;
-    @Basic(optional = false)
-    @Column(name = "boolEstatus", nullable = false)
-    private boolean boolEstatus;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idRequest", fetch = FetchType.LAZY)
+    private int bitEstatus;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idRequest")
     private Collection<Requestdetail> requestdetailCollection;
     @JoinColumn(name = "idCurrency", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Currency idCurrency;
     @JoinColumn(name = "idSuplier", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Supplier idSuplier;
 
     public Request() {
@@ -77,12 +72,11 @@ public class Request implements Serializable {
         this.id = id;
     }
 
-    public Request(Integer id, double doubTotal, Date datFecha, boolean bitEstatus, boolean boolEstatus) {
+    public Request(Integer id, double doubTotal, Date datFecha, int bitEstatus) {
         this.id = id;
         this.doubTotal = doubTotal;
         this.datFecha = datFecha;
         this.bitEstatus = bitEstatus;
-        this.boolEstatus = boolEstatus;
     }
 
     public Integer getId() {
@@ -109,20 +103,12 @@ public class Request implements Serializable {
         this.datFecha = datFecha;
     }
 
-    public boolean getBitEstatus() {
+    public int getBitEstatus() {
         return bitEstatus;
     }
 
-    public void setBitEstatus(boolean bitEstatus) {
+    public void setBitEstatus(int bitEstatus) {
         this.bitEstatus = bitEstatus;
-    }
-
-    public boolean getBoolEstatus() {
-        return boolEstatus;
-    }
-
-    public void setBoolEstatus(boolean boolEstatus) {
-        this.boolEstatus = boolEstatus;
     }
 
     @XmlTransient

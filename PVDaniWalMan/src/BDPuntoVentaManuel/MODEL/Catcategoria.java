@@ -11,7 +11,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -43,9 +42,9 @@ public class Catcategoria implements Serializable {
     @Basic(optional = false)
     @Column(name = "strValor", nullable = false, length = 50)
     private String strValor;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCategoria", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCategoria")
     private Collection<Product> productCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCategoria", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCategoria")
     private Collection<Supplier> supplierCollection;
 
     public Catcategoria() {

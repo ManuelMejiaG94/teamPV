@@ -7,18 +7,12 @@ package BDPuntoVentaManuel.ViewsProcess;
 
 //import BDPuntoVentaManuel.ABSTRACT.ICatCategoria;
 
-import BDPuntoVentaManuel.ABSTRACT.ICatCategoria;
+import BDPuntoVentaManuel.ABSTRACT.ICatCategori;
 import BDPuntoVentaManuel.FACTORY.FactoryCategoria;
 import BDPuntoVentaManuel.MODEL.Catcategoria;
 import java.util.List;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
-
-//import BDPuntoVentaManuel.FACTORY.FactoryCatCategoria;
-//import BDPuntoVentaManuel.MODEL.*;
-//import java.util.List;
-//import java.util.Vector;
-//import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -60,6 +54,6 @@ public class Process_CatCategoria {
     
     
     //Controladoras
-    ICatCategoria ctrlCategoriaDefault;
+    ICatCategori ctrlCategoriaDefault;
     
 }

@@ -5,6 +5,7 @@
  */
 package BDPuntoVentaManuel.Views.Request;
 
+import BDPuntoVentaManuel.MODEL.Catcategoria;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -28,7 +29,20 @@ public class Request_Default extends javax.swing.JPanel {
     
     private void Charge_Data_Default()
     {
-//        this.cmbCategorias.setModel(Orders_Start.RequestProcess.getModelCategorias());
+        System.out.println("Cargando data");
+        this.cmbCategorias.setModel(Request_Start.RequestProcess.getModelCategorias());
+        this.ChargeDataTable();
+    }
+    
+    private void ChargeDataTable()
+    {
+        if(categoria ==null)
+        {
+            this.SetModelTable();
+            Request_Start.RequestProcess.ChargeDataDefault(modelTab);
+        }else{
+            this.SetModelTable();
+        }
     }
     
     private void SetModelTable()
@@ -153,5 +167,6 @@ public class Request_Default extends javax.swing.JPanel {
  
     //Variables
     DefaultTableModel modelTab;
+    Catcategoria categoria=null;
     
 }

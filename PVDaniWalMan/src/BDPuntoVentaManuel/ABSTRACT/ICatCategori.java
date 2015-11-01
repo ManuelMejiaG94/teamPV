@@ -5,8 +5,8 @@
  */
 package BDPuntoVentaManuel.ABSTRACT;
 
-import BDPuntoVentaManuel.CONCREAT.exceptions.IllegalOrphanException;
-import BDPuntoVentaManuel.CONCREAT.exceptions.NonexistentEntityException;
+import BDPuntoVentaManuel.ABSTRACT.exceptions.IllegalOrphanException;
+import BDPuntoVentaManuel.ABSTRACT.exceptions.NonexistentEntityException;
 import BDPuntoVentaManuel.MODEL.Catcategoria;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -15,7 +15,7 @@ import javax.persistence.EntityManager;
  *
  * @author manuel
  */
-public interface ICatCategoria {
+public interface ICatCategori {
 
     void create(Catcategoria catcategoria);
 
