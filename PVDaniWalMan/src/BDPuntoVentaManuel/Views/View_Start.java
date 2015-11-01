@@ -10,6 +10,7 @@ package BDPuntoVentaManuel.Views;
 //import java.awt.GridBagConstraints;
 import BDPuntoVentaManuel.Views.Request.Request_Start;
 import BDPuntoVentaManuel.Views.Product.Products_Start;
+import BDPuntoVentaManuel.Views.PurchaseOrder.PO_Start;
 import BDPuntoVentaManuel.Views.Sales.Sales_Start;
 import BDPuntoVentaManuel.Views.Supplier.Suppliers_Start;
 import javax.swing.JInternalFrame;
@@ -84,6 +85,8 @@ public class View_Start extends javax.swing.JFrame {
         btnProvedor = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         btnNewOrders = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -142,7 +145,7 @@ public class View_Start extends javax.swing.JFrame {
 
         jMenu4.setText("Solicitud");
 
-        btnNewOrders.setText("Nueva solicitud");
+        btnNewOrders.setText("Gestionar solicitudes");
         btnNewOrders.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNewOrdersActionPerformed(evt);
@@ -151,6 +154,18 @@ public class View_Start extends javax.swing.JFrame {
         jMenu4.add(btnNewOrders);
 
         jMenuBar1.add(jMenu4);
+
+        jMenu1.setText("Ordenes de compra");
+
+        jMenuItem2.setText("Gestionar Orden de Compra");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
+
+        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -199,7 +214,7 @@ public class View_Start extends javax.swing.JFrame {
     }//GEN-LAST:event_btnProvedorActionPerformed
 
     private void btnNewOrdersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewOrdersActionPerformed
-          if(!(view_Orders instanceof Request_Start))
+        if(!(view_Orders instanceof Request_Start))
         {
             view_Orders=new Request_Start();
             Centrar(view_Orders);
@@ -209,6 +224,18 @@ public class View_Start extends javax.swing.JFrame {
             Centrar(view_Orders);
         }
     }//GEN-LAST:event_btnNewOrdersActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        if(!(view_PO instanceof PO_Start))
+        {
+            view_PO=new PO_Start();
+            Centrar(view_PO);
+        }else{
+            view_PO.dispose();
+            view_PO=new PO_Start();
+            Centrar(view_PO);
+        }
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     
     private void Centrar(JInternalFrame j)
@@ -274,11 +301,13 @@ public class View_Start extends javax.swing.JFrame {
     private javax.swing.JMenuItem btnNewOrders;
     private javax.swing.JMenuItem btnNewSale;
     private javax.swing.JMenuItem btnProvedor;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
@@ -287,5 +316,6 @@ public class View_Start extends javax.swing.JFrame {
     Sales_Start view_Sales;
     Suppliers_Start view_Suppliers;
     Request_Start view_Orders;
+    PO_Start view_PO;
 
 }

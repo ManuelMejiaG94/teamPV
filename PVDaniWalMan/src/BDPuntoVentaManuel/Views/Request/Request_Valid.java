@@ -53,7 +53,7 @@ public class Request_Valid extends javax.swing.JPanel {
 
         jLabel4.setText("Email");
 
-        jLabel5.setText("Total de la orden de compra");
+        jLabel5.setText("Total de la solicitud");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

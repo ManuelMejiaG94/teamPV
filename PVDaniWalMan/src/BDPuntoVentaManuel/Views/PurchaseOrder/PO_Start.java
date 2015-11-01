@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package BDPuntoVentaManuel.Views.Request;
+package BDPuntoVentaManuel.Views.PurchaseOrder;
+
 
 
 import java.awt.GridBagConstraints;
@@ -13,12 +14,12 @@ import java.awt.GridBagLayout;
  *
  * @author manuel
  */
-public class Request_Start extends javax.swing.JInternalFrame {
+public class PO_Start extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form Orders_Start
      */
-    public Request_Start() {
+    public PO_Start() {
         initComponents();
         this.Start_Windows();
     }
@@ -31,45 +32,31 @@ public class Request_Start extends javax.swing.JInternalFrame {
 
     private void Start_Connections()
     {
-        System.out.println("Inicializado");
-        RequestProcess=new Request();
+        PoProcess=new PO();
         
-        viewRequest=new Request_New_Update();
-        viewSelect=new Request_Select_Cancel();
-        viewDefault=new Request_Default();
-        viewProcess=new Request_Process();
-        viewPartial=new Request_Partial();
-        viewValid=new Request_Valid();
-        
+        viewDefault=new PO_Default();
+        viewProcess=new PO_Descipcion_Process();
+          
         pnContainer.setLayout(Layout);
         GridBagConstraints cons= new GridBagConstraints();
         
         cons.gridx=0;
         cons.gridy=0;
         
-        pnContainer.add(viewRequest,cons);
-        pnContainer.add(viewSelect,cons);
+        
         pnContainer.add(viewDefault,cons);
         pnContainer.add(viewProcess,cons);
-        pnContainer.add(viewPartial,cons);
-        pnContainer.add(viewValid,cons);
 
     }
     
     private void Open_COnfigVindowsDefault()
     {
-        viewRequest.setVisible(false);
-        viewSelect.setVisible(false);
         viewDefault.setVisible(true);
-        viewProcess.setVisible(false);
-        viewPartial.setVisible(false);
-        viewValid.setVisible(false);
+        viewProcess.setVisible(false);   
     }
     
     private void Close_Views()
     {
-        viewRequest.setVisible(false);
-        viewSelect.setVisible(true);
         this.viewDefault.setVisible(false);
         viewProcess.setVisible(false);
     }
@@ -86,12 +73,8 @@ public class Request_Start extends javax.swing.JInternalFrame {
         pnContainer = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         btnExit = new javax.swing.JButton();
-        btnValidar = new javax.swing.JButton();
-        btnDetalle = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        btnNew = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout pnContainerLayout = new javax.swing.GroupLayout(pnContainer);
         pnContainer.setLayout(pnContainerLayout);
@@ -111,64 +94,33 @@ public class Request_Start extends javax.swing.JInternalFrame {
             }
         });
 
-        btnValidar.setText("Validar solicitud");
-        btnValidar.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setText("Procesar orden de compra");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnValidarActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
-
-        btnDetalle.setText("Detalle de la solicitud");
-        btnDetalle.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDetalleActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel1.setText("jLabel1");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 423, Short.MAX_VALUE)
-                        .addComponent(btnDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
-                        .addComponent(btnValidar, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
-                        .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(535, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56)
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(19, 19, 19)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnExit)
-                    .addComponent(btnValidar)
-                    .addComponent(btnDetalle))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton2))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
-
-        jMenu1.setText("Solicitudes");
-
-        btnNew.setText("Generar nueva solicitud");
-        btnNew.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNewActionPerformed(evt);
-            }
-        });
-        jMenu1.add(btnNew);
-
-        jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
 
@@ -190,7 +142,7 @@ public class Request_Start extends javax.swing.JInternalFrame {
                 .addComponent(pnContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
@@ -200,58 +152,27 @@ public class Request_Start extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_btnExitActionPerformed
 
-    private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
-      viewRequest.setVisible(true);
-        //viewSelect.setVisible(true);
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         viewDefault.setVisible(false);
-        viewProcess.setVisible(false);
-        viewPartial.setVisible(false);
-        viewValid.setVisible(false);
-    }//GEN-LAST:event_btnNewActionPerformed
-
-    private void btnValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValidarActionPerformed
-        viewRequest.setVisible(false);
-        //viewSelect.setVisible(true);
-        viewDefault.setVisible(false);
-        viewProcess.setVisible(false);
-        viewPartial.setVisible(false);
-        viewValid.setVisible(true);
-        
-    }//GEN-LAST:event_btnValidarActionPerformed
-
-    private void btnDetalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetalleActionPerformed
-        viewRequest.setVisible(false);
-        //viewSelect.setVisible(true);
-        viewDefault.setVisible(false);
-        viewProcess.setVisible(false);
-        viewPartial.setVisible(false);
-        viewValid.setVisible(true);
-    }//GEN-LAST:event_btnDetalleActionPerformed
+        viewProcess.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDetalle;
     private javax.swing.JButton btnExit;
-    private javax.swing.JMenuItem btnNew;
-    private javax.swing.JButton btnValidar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel pnContainer;
     // End of variables declaration//GEN-END:variables
 
     //View orders
-    public static Request_New_Update viewRequest;
-    public static Request_Select_Cancel viewSelect;
-    public static Request_Default viewDefault;
-    public static Request_Process viewProcess;
-    public static Request_Partial viewPartial;
-    public static Request_Valid viewValid;
+      public static PO_Default viewDefault;
+      public static PO_Descipcion_Process viewProcess;
     
     //Variables
     GridBagLayout Layout=new GridBagLayout();
     
     //Variable de procesos
-    public static Request RequestProcess;
+    public static PO PoProcess;
 }

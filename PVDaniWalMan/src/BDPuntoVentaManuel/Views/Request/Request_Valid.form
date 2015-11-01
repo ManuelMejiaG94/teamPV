@@ -127,7 +127,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Total de la orden de compra"/>
+        <Property name="text" type="java.lang.String" value="Total de la solicitud"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
