@@ -5,7 +5,7 @@
  */
 package BDPuntoVentaManuel.CONCREAT;
 
-import BDPuntoVentaManuel.ABSTRACT.ICatCategira;
+import BDPuntoVentaManuel.ABSTRACT.ICatCategoria;
 import BDPuntoVentaManuel.CONCREAT.exceptions.IllegalOrphanException;
 import BDPuntoVentaManuel.CONCREAT.exceptions.NonexistentEntityException;
 import BDPuntoVentaManuel.MODEL.Catcategoria;
@@ -27,7 +27,7 @@ import javax.persistence.Persistence;
  *
  * @author manuel
  */
-public class CatcategoriaJpaController implements Serializable, ICatCategira {
+public class CatcategoriaJpaController implements Serializable, ICatCategoria {
 
     public CatcategoriaJpaController(EntityManagerFactory emf) {
         this.emf = emf;

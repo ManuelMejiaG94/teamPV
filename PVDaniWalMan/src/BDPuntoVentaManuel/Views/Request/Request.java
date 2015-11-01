@@ -5,6 +5,9 @@
  */
 package BDPuntoVentaManuel.Views.Request;
 
+import BDPuntoVentaManuel.ViewsProcess.Process_CatCategoria;
+import javax.swing.DefaultComboBoxModel;
+
 
 //import BDPuntoVentaManuel.ViewsProcess.Process_CatCategoria;
 //import java.util.List;
@@ -17,20 +20,20 @@ package BDPuntoVentaManuel.Views.Request;
  */
 public class Request {
     
-//    public Request()
-//    {
-//        this.start_tools();
-//    }
-//    private void start_tools()
-//    {
-//        CategoriasProcess=new Process_CatCategoria();
-//    }
-//    
-//    public DefaultComboBoxModel getModelCategorias()
-//    {
-//        return CategoriasProcess.GetComoBoxModelCategoria();
-//    }
-//    
+    public Request()
+    {
+        this.start_tools();
+    }
+    private void start_tools()
+    {
+        CategoriasProcess=new Process_CatCategoria();
+    }
+    
+    public DefaultComboBoxModel getModelCategorias()
+    {
+        return CategoriasProcess.GetComoBoxModelCategoria();
+    }
+    
 //    public void ChargeDataDefault(DefaultTableModel model) {
 ////        List<Producto> listProducts = ctrlProducto.findDatadefault();
 ////        Object[] data = new Object[5];
@@ -46,7 +49,7 @@ public class Request {
 ////        }
 //
 //    }
-//    
-//    //Variables
-//    Process_CatCategoria CategoriasProcess;
+    
+    //Variables
+    Process_CatCategoria CategoriasProcess;
 }

@@ -15,7 +15,7 @@ import javax.persistence.EntityManager;
  *
  * @author manuel
  */
-public interface ICatCategira {
+public interface ICatCategoria {
 
     void create(Catcategoria catcategoria);
 

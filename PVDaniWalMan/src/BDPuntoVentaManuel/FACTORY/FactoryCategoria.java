@@ -5,7 +5,7 @@
  */
 package BDPuntoVentaManuel.FACTORY;
 
-import BDPuntoVentaManuel.ABSTRACT.ICatCategira;
+import BDPuntoVentaManuel.ABSTRACT.ICatCategoria;
 import BDPuntoVentaManuel.CONCREAT.CatcategoriaJpaController;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,11 +30,11 @@ public class FactoryCategoria {
         return factory;
     }
     
-    public ICatCategira getInstanceAbstract()
+    public ICatCategoria getInstanceAbstract()
     {
         try{
             CatcategoriaJpaController categoria= new CatcategoriaJpaController();
-            return (ICatCategira) categoria;
+            return (ICatCategoria) categoria;
         }catch(Exception ex)
         {
             Logger.getLogger(FactoryCategoria.class.getName()).log(Level.SEVERE, null, ex);
