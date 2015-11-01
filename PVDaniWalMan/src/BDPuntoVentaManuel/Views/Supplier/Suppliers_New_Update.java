@@ -155,7 +155,7 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setText("Direccion");
+        jLabel1.setText("Direccion provedor");
 
         lbError8.setForeground(new java.awt.Color(255, 0, 51));
         lbError8.setText("*");
