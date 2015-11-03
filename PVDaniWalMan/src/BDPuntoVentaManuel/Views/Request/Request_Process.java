@@ -209,6 +209,7 @@ public class Request_Process extends javax.swing.JPanel {
     }//GEN-LAST:event_btnChargeActionPerformed
 
     private void btnAseptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAseptActionPerformed
+        Request_Start.pnOptions.setVisible(true);
         Request_Start.viewRequest.setVisible(false);
         Request_Start.viewSelect.setVisible(false);
         Request_Start.viewDefault.setVisible(true);
@@ -216,6 +217,7 @@ public class Request_Process extends javax.swing.JPanel {
     }//GEN-LAST:event_btnAseptActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        Request_Start.pnOptions.setVisible(true);
         Request_Start.viewRequest.setVisible(false);
         Request_Start.viewSelect.setVisible(false);
         Request_Start.viewDefault.setVisible(true);

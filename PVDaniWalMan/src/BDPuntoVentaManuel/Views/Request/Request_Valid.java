@@ -185,7 +185,7 @@ public class Request_Valid extends javax.swing.JPanel {
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
         Request_Start.viewRequest.setVisible(false);
-        //Request_Start.viewSelect.setVisible(false);
+        Request_Start.pnOptions.setVisible(true);
         Request_Start.viewDefault.setVisible(true);
         Request_Start.viewProcess.setVisible(false);
         Request_Start.viewPartial.setVisible(false);
@@ -194,7 +194,7 @@ public class Request_Valid extends javax.swing.JPanel {
 
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
         Request_Start.viewRequest.setVisible(false);
-        //Request_Start.viewSelect.setVisible(false);
+        Request_Start.pnOptions.setVisible(true);
         Request_Start.viewDefault.setVisible(true);
         Request_Start.viewProcess.setVisible(false);
         Request_Start.viewPartial.setVisible(false);
@@ -204,7 +204,7 @@ public class Request_Valid extends javax.swing.JPanel {
 
     private void btnGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerateActionPerformed
         Request_Start.viewRequest.setVisible(false);
-        //Request_Start.viewSelect.setVisible(false);
+        Request_Start.pnOptions.setVisible(true);
         Request_Start.viewDefault.setVisible(true);
         Request_Start.viewProcess.setVisible(false);
         Request_Start.viewPartial.setVisible(false);
@@ -213,7 +213,7 @@ public class Request_Valid extends javax.swing.JPanel {
 
     private void btnPoPartialsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoPartialsActionPerformed
         Request_Start.viewRequest.setVisible(false);
-        //Request_Start.viewSelect.setVisible(false);
+        Request_Start.pnOptions.setVisible(false);
         Request_Start.viewDefault.setVisible(false);
         Request_Start.viewProcess.setVisible(false);
         Request_Start.viewPartial.setVisible(true);

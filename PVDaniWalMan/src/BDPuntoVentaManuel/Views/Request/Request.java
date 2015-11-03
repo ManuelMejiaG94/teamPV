@@ -7,7 +7,10 @@ package BDPuntoVentaManuel.Views.Request;
 
 import BDPuntoVentaManuel.ABSTRACT.IRequest;
 import BDPuntoVentaManuel.CONCREAT.RequestJpaController;
-import BDPuntoVentaManuel.ViewsProcess.Process_CatCategoria;
+import BDPuntoVentaManuel.CONCREATE.Extends.RequestJpaControllerExtends;
+import BDPuntoVentaManuel.CONCREATE.ExtendsAbstracts.IRequestExtends;
+import BDPuntoVentaManuel.MODEL.Catcategoria;
+import BDPuntoVentaManuel.ViewsProcess.*;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
@@ -35,14 +38,37 @@ public class Request {
     private void start_tools()
     {
         CategoriasProcess=new Process_CatCategoria();
+        productProcess=new Process_Products();
+        prosesSuppliers=new Process_Suppliers();
+        
         ctrRequest=new RequestJpaController();
+        ctrRequestExtends=new RequestJpaControllerExtends();
+        
+        
     }
     
     public DefaultComboBoxModel getModelCategorias()
     {
-        System.out.println("Estas dentro");
         return CategoriasProcess.GetComoBoxModelCategoria();
     }
+    
+    public DefaultComboBoxModel getModelSuppliers(Catcategoria categori)
+    {
+        return prosesSuppliers.GetComoBoxModelSupplier(categori);
+    }
+    public DefaultComboBoxModel getModelProducts(Catcategoria categori)
+    {
+        return productProcess.GetComboBoxModelProducts(categori);
+    }
+     public DefaultComboBoxModel getModelSuppliersDefault(Catcategoria categori)
+    {
+        return prosesSuppliers.GetComoBoxModelSupplier(categori);
+    }
+    public DefaultComboBoxModel getModelProductsDefault(Catcategoria categori)
+    {
+        return productProcess.GetComboBoxModelProducts(categori);
+    }
+    
     
     public void ChargeDataDefault(DefaultTableModel model) {
         List<BDPuntoVentaManuel.MODEL.Request> listRequest = ctrRequest.findRequestEntities(100, 1);
@@ -81,10 +107,21 @@ public class Request {
         return status;
     }
     
+    public String GetFolio()
+    {
+        String folio="";
+        
+        folio=String.valueOf(ctrRequestExtends.lastId());
+        
+        return folio;
+    }
     
     //Variables
     Process_CatCategoria CategoriasProcess;
+    Process_Products productProcess;
+    Process_Suppliers prosesSuppliers;
     
     //Controladoras
     IRequest ctrRequest;
+    IRequestExtends ctrRequestExtends;
 }

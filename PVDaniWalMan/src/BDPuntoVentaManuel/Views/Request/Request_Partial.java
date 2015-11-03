@@ -179,7 +179,7 @@ public class Request_Partial extends javax.swing.JPanel {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         Request_Start.viewRequest.setVisible(false);
-        //Request_Start.viewSelect.setVisible(false);
+        Request_Start.pnOptions.setVisible(false);
         Request_Start.viewDefault.setVisible(false);
         Request_Start.viewProcess.setVisible(false);
         Request_Start.viewPartial.setVisible(false);
@@ -188,7 +188,7 @@ public class Request_Partial extends javax.swing.JPanel {
 
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
         Request_Start.viewRequest.setVisible(false);
-        //Request_Start.viewSelect.setVisible(false);
+        Request_Start.pnOptions.setVisible(false);
         Request_Start.viewDefault.setVisible(false);
         Request_Start.viewProcess.setVisible(false);
         Request_Start.viewPartial.setVisible(false);

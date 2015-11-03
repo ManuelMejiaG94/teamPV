@@ -272,4 +272,5 @@ public class CatcategoriaJpaController implements Serializable, ICatCategori{
         }
     }
     
+    
 }

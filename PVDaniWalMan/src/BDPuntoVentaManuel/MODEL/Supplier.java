@@ -193,7 +193,7 @@ public class Supplier implements Serializable {
 
     @Override
     public String toString() {
-        return "BDPuntoVentaManuel.MODEL.Supplier[ id=" + id + " ]";
+        return this.strBussinessName;
     }
     
 }

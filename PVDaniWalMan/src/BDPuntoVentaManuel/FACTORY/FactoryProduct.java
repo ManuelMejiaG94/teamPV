@@ -7,6 +7,8 @@ package BDPuntoVentaManuel.FACTORY;
 
 import BDPuntoVentaManuel.ABSTRACT.IProduct;
 import BDPuntoVentaManuel.CONCREAT.ProductJpaController;
+import BDPuntoVentaManuel.CONCREATE.Extends.ProductoJpaControllerExtends;
+import BDPuntoVentaManuel.CONCREATE.ExtendsAbstracts.IProductExtends;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -35,6 +37,18 @@ public class FactoryProduct {
         try{
             ProductJpaController product= new ProductJpaController();
             return (IProduct) product;
+        }catch(Exception ex)
+        {
+            Logger.getLogger(FactoryProduct.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+     public IProductExtends getInstanceExtends()
+    {
+        try{
+            ProductoJpaControllerExtends product= new ProductoJpaControllerExtends();
+            return (IProductExtends) product;
         }catch(Exception ex)
         {
             Logger.getLogger(FactoryProduct.class.getName()).log(Level.SEVERE, null, ex);

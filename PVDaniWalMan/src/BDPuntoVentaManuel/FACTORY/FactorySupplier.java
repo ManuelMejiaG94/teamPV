@@ -7,6 +7,8 @@ package BDPuntoVentaManuel.FACTORY;
 
 import BDPuntoVentaManuel.ABSTRACT.ISupplier;
 import BDPuntoVentaManuel.CONCREAT.SupplierJpaController;
+import BDPuntoVentaManuel.CONCREATE.Extends.SupplierJpasControllerExtends;
+import BDPuntoVentaManuel.CONCREATE.ExtendsAbstracts.ISupplierExtends;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -41,5 +43,15 @@ public class FactorySupplier {
             return null;
         }
     }
-
+    public ISupplierExtends getInstanceEstends()
+    {
+        try{
+            SupplierJpasControllerExtends supplier= new SupplierJpasControllerExtends();
+            return (ISupplierExtends) supplier;
+        }catch(Exception ex)
+        {
+            Logger.getLogger(FactorySupplier.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
 }
