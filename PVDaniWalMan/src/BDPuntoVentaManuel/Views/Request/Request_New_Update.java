@@ -527,14 +527,15 @@ public class Request_New_Update extends javax.swing.JPanel {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         if (this.tbData.getSelectedRow() >= 0) {
             int Registro = this.tbData.getSelectedRow();
+            double totalActual = Double.parseDouble(this.txtSubTotal.getText());
+            double totalProduct = Double.parseDouble(tbData.getValueAt(Registro, 5).toString());
+            double subtotalRequest = totalActual - totalProduct;
+            this.txtSubTotal.setText(String.valueOf(subtotalRequest));
+            double totalRequest = subtotalRequest+(IVA * subtotalRequest) / 100;
+            
             String clave = tbData.getValueAt(Registro, 0).toString();
             int stock = Integer.parseInt(tbData.getValueAt(Registro, 4).toString());
-            double totalProduct = Double.parseDouble(tbData.getValueAt(Registro, 5).toString());
-            double totalActual = Double.parseDouble(this.txtSubTotal.getText());
-            double subtotalRequest = totalActual - totalProduct;
-            double totalRequest = subtotalRequest-(IVA * totalActual) / 100;
 
-            this.txtSubTotal.setText(String.valueOf(subtotalRequest));
             this.txtTotalVenta.setText(String.valueOf(totalRequest));
 
             if (Request_Start.RequestProcess.Reset_Stock(clave, stock)) {
