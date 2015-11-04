@@ -7,6 +7,7 @@ package BDPuntoVentaManuel.FACTORY;
 
 import BDPuntoVentaManuel.ABSTRACT.IRequestDetail;
 import BDPuntoVentaManuel.CONCREAT.RequestJpaController;
+import BDPuntoVentaManuel.CONCREAT.RequestdetailJpaController;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -33,7 +34,7 @@ public class FactoryRequestDetail {
     public IRequestDetail getInstanceAbstract()
     {
         try{
-            RequestJpaController requestDetail= new RequestJpaController();
+            RequestdetailJpaController requestDetail= new RequestdetailJpaController();
             return (IRequestDetail) requestDetail;
         }catch(Exception ex)
         {

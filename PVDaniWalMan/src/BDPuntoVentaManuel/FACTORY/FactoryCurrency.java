@@ -5,7 +5,9 @@
  */
 package BDPuntoVentaManuel.FACTORY;
 
+import BDPuntoVentaManuel.ABSTRACT.ICurrency;
 import BDPuntoVentaManuel.ABSTRACT.IPersona;
+import BDPuntoVentaManuel.CONCREAT.CurrencyJpaController;
 import BDPuntoVentaManuel.CONCREAT.PersonaJpaController;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -30,11 +32,11 @@ public class FactoryCurrency {
         return factory;
     }
     
-    public IPersona getInstanceAbstract()
+    public ICurrency getInstanceAbstract()
     {
         try{
-            PersonaJpaController currency= new PersonaJpaController();
-            return (IPersona) currency;
+            CurrencyJpaController currency= new CurrencyJpaController();
+            return (ICurrency) currency;
         }catch(Exception ex)
         {
             Logger.getLogger(FactoryCurrency.class.getName()).log(Level.SEVERE, null, ex);

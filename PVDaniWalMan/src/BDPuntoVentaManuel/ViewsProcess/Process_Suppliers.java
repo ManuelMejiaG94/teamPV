@@ -42,7 +42,11 @@ public class Process_Suppliers {
         {
             List<Supplier> listSuppliers=this.ctrSupplier.FindDataByCategoriaId(categori);    
             for ( Supplier item : listSuppliers ) {
-            dataModel.add(item);
+                
+                if(item.getBoolEstatus())
+                {
+                    dataModel.add(item);
+                }
             }
         }
         

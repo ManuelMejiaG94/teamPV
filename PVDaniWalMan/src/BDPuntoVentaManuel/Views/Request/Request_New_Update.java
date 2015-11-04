@@ -10,6 +10,9 @@ import BDPuntoVentaManuel.MODEL.Product;
 import BDPuntoVentaManuel.MODEL.Supplier;
 import com.mysql.jdbc.StringUtils;
 import java.awt.event.ItemEvent;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -43,7 +46,9 @@ public class Request_New_Update extends javax.swing.JPanel {
         this.lbFolio.setText(Request_Start.RequestProcess.GetFolio());
         this.Process_cmb();
         this.btnCreateRequest.setText("Crear nueva solicitud");
-        
+        this.txtAmount.setText("1");
+        this.txtSubTotal.setEnabled(false);
+        this.txtTotalVenta.setEnabled(false);
     }
     
     private void PaintViewNewDefault()
@@ -58,6 +63,9 @@ public class Request_New_Update extends javax.swing.JPanel {
         
         this.CleanErrors();
         this.ChargeModelTable();
+        
+        this.cmbCategoria.setEnabled(true);
+        this.cmbSupplier.setEnabled(true);
         
         this.btnExit.setVisible(true);
         this.btnCharge.setVisible(false);
@@ -76,6 +84,9 @@ public class Request_New_Update extends javax.swing.JPanel {
         this.CleanErrors();
         this.ChargeModelTable();
         
+        this.cmbCategoria.setEnabled(false);
+        this.cmbSupplier.setEnabled(false);
+        
         this.btnExit.setVisible(false);
         this.btnCharge.setVisible(true);
     }
@@ -83,9 +94,10 @@ public class Request_New_Update extends javax.swing.JPanel {
     private void ChargeModelTable()
     {
         modelTab=new DefaultTableModel();
-        modelTab.addColumn("Folio");
-        modelTab.addColumn("Producto");
-        modelTab.addColumn("Precio");
+        modelTab.addColumn("Clave");
+        modelTab.addColumn("Nombre");
+        modelTab.addColumn("Precio de compra");
+        modelTab.addColumn("Precio de venta");
         modelTab.addColumn("Cantidad");
         modelTab.addColumn("Total");
         
@@ -112,14 +124,80 @@ public class Request_New_Update extends javax.swing.JPanel {
         this.validError=true;
     }
     
+    private void PaintErrorAmountNull()
+    {
+        this.lbErrorsMessage.setVisible(true);
+        this.lbError1.setVisible(true);
+        this.lbErrorsMessage.setText("Es necesario asignar una cantidad valida");
+        this.validError=true;
+    }
+    
+     private void PaintErrorSupplierNull()
+    {
+        this.lbErrorsMessage.setVisible(true);
+        this.lbError1.setVisible(true);
+        this.lbErrorsMessage.setText("Es necesario seleccionar un provedor");
+        this.validError=true;
+    }
+    
     private void CleanErrors()
     {
         this.lbError1.setVisible(false);
         this.lbError2.setVisible(false);
         this.lbErrorMInTB.setVisible(false);
         this.lbErrorsMessage.setVisible(false);
+        
+        this.validError=false;
     }
     
+    private void SetDataTable(int stock)
+    {
+        lbErrorsMessage.setText(null);
+        total=total+Request_Start.RequestProcess.SetDataTableNewUpdate(modelTab, product,stock,lbErrorsMessage);
+        if(StringUtils.isNullOrEmpty(this.lbErrorsMessage.getText()))
+        {
+            this.tbData.setModel(modelTab);
+            this.txtSubTotal.setText(String.valueOf(total));
+            double totalRequest=total+(IVA*total)/100;
+            this.txtTotalVenta.setText(String.valueOf(totalRequest));
+        }else
+        {
+            this.lbErrorsMessage.setVisible(true);
+            this.validError=true;
+        }
+    }
+    
+    private void CleanViewSelectProduct()
+    {
+        this.txtAmount.setText("1");
+        this.cmbProduct.setSelectedIndex(0);
+    }
+    
+    private List<String[]> GetProductClaveByTabData()
+    {
+        List<String[]> listData=new ArrayList<String[]>();
+        int rows=tbData.getRowCount();
+        for (int i = 0; i < rows; i++) {
+            String[] data=new String[4];
+            data[0]=tbData.getValueAt(i,0).toString();
+            data[1]=tbData.getValueAt(i,2).toString();
+            data[2]=tbData.getValueAt(i,4).toString();
+            data[3]=tbData.getValueAt(i,5).toString();
+            listData.add(data);
+        }
+        return listData;
+    }
+    
+    private BDPuntoVentaManuel.MODEL.Request GetRequest()
+    {
+        BDPuntoVentaManuel.MODEL.Request request=new BDPuntoVentaManuel.MODEL.Request();
+        request.setIdSuplier(supplier);
+        request.setBitEstatus(1);
+        request.setDatFecha(dateNow);
+        request.setDoubTotal(Double.parseDouble(this.txtTotalVenta.getText().trim()));
+
+        return request;
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -479,43 +557,27 @@ public class Request_New_Update extends javax.swing.JPanel {
     }//GEN-LAST:event_txtAmountKeyTyped
 
     private void btnChargeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChargeActionPerformed
-        //        if(this.Validate_Charge())
-        //        {
-            //            int cantidad=Integer.parseInt(this.txtCantidad.getText().trim());
-            //            if(this.process.SetDataTabla(this.modelo,
-                //                this.txtCodigo.getText().trim(),cantidad,this.lbErrorsMessage,this.lbError1))
-        //        {
-            //            this.Total=this.process.gettotal();
-            //            this.txtSubTotal.setText(String.valueOf(this.Total));
-            //            this.txtTotalVenta.setText(String.valueOf(this.Total));
-            //            this.CleanDataCharge();
-            //        }
-        //
-        //        }
+        if (this.cmbProduct.getSelectedIndex() > 0) {
+            if (!StringUtils.isNullOrEmpty(this.txtAmount.getText())){
+                int cantidad = Integer.parseInt(this.txtAmount.getText().trim());
+                SetDataTable(cantidad);
+                CleanViewSelectProduct();
+            }else{
+                this.PaintErrorAmountNull();
+            }
+            
+        } else {
+            this.PaintErrorProductNull();
+        }
     }//GEN-LAST:event_btnChargeActionPerformed
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
-        Request_Start.pnOptions.setVisible(true);
-        Request_Start.viewRequest.setVisible(false);
-        Request_Start.viewSelect.setVisible(false);
-        Request_Start.viewDefault.setVisible(true);
-        Request_Start.viewProcess.setVisible(false);
-        //        if(btnOk.getText().equals("Finalizar Venta"))
-        //        {
-            //            if(this.Validate_Sale()){
-                //                Object o=this.process.getSaleModel(this.txtFolio.getText().trim(),Double.parseDouble(this.txtTotalVenta.getText().trim()));
-                //                if(this.process.btnClose_NewSale(this.geProducts(),o))
-                //                {
-                    //                    this.btnOk.setText("Cerrar venta");
-                    //                    this.New_Windows();
-                    //                }
-                //            }
-            //        }else if(btnOk.getText().equals("Cerrar venta")){
-            //            this.btnOk.setText("Finalizar Venta");
-            //            double cambio=Double.parseDouble(this.txtEfectivo.getText())-Double.parseDouble(this.txtTotalVenta.getText());
-            //            System.out.println("El cambio es de "+cambio+"\n"+this.txtTotalVenta.getText()+"\n"+this.txtTotalVenta.getText());
-            //            this.txtCambio.setText(String.valueOf(cambio));
-            //        }
+        if(Request_Start.RequestProcess.SaveRequest(this.GetProductClaveByTabData(),
+                this.GetRequest(), total))
+        {
+            this.PaintViewNewDefault();
+            this.btnCreateRequest.setText("Crear nueva solicitud");
+        }
     }//GEN-LAST:event_btnOkActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
@@ -556,16 +618,15 @@ public class Request_New_Update extends javax.swing.JPanel {
             CleanErrors();
         }
         if (this.btnCreateRequest.getText().equals("Crear nueva solicitud")) {
-            if (this.cmbProduct.getSelectedIndex() > 0) {
-                ChargeModelTable();
+            if (this.cmbSupplier.getSelectedIndex() > 0) {
                 this.btnCreateRequest.setText("Cancelar proceso");
-                PaintViewNewRequest();
+                this.PaintViewNewRequest();
             } else {
-                PaintErrorProductNull();
+                PaintErrorSupplierNull();
             }
-        }
-        if (this.btnCreateRequest.getText().equals("Cancelar proceso")) {
+        }else if (this.btnCreateRequest.getText().equals("Cancelar proceso")) {
             this.PaintViewNewDefault();
+            this.btnCreateRequest.setText("Crear nueva solicitud");
         }
     }//GEN-LAST:event_btnCreateRequestActionPerformed
 
@@ -617,5 +678,9 @@ public class Request_New_Update extends javax.swing.JPanel {
     private Product product;
     private DefaultTableModel modelTab;
     private boolean validError=false;
+    private double total=0;
+    private double IVA=2;
+    
+    private Date dateNow = new Date(System.currentTimeMillis());
 
 }

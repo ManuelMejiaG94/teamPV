@@ -88,7 +88,7 @@ public class ProductoJpaControllerExtends implements IProductExtends {
          try {
             EntityManager enm = getEntityManager();
 
-            Product product = (Product) enm.createQuery("SELECT p FROM Producto p WHERE p.strClave = :strClave")
+            Product product = (Product) enm.createQuery("SELECT p FROM Product p WHERE p.strClave = :strClave")
                     .setParameter("strClave", strClave).getSingleResult();
             return product;
         } catch (Exception ex) {
