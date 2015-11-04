@@ -204,6 +204,21 @@ public class Request {
 
     }
     
+    public boolean Reset_Stock(String strClave, int stock) 
+    {
+        try{
+        Product product=ctrProductExtends.findProductByCode(strClave);
+        product.setIntStock(product.getIntStock()+stock);
+        
+        ctrProduct.edit(product);
+        return true;
+        }catch(Exception e)
+        {
+            Logger.getLogger(Request.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return false;
+    }
+    
     
     
     //Variables

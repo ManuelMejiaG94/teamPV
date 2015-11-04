@@ -8,6 +8,7 @@ package BDPuntoVentaManuel.Views.Request;
 import BDPuntoVentaManuel.MODEL.Catcategoria;
 import BDPuntoVentaManuel.MODEL.Product;
 import BDPuntoVentaManuel.MODEL.Supplier;
+import BDPuntoVentaManuel.Views.Product.Products_Start;
 import com.mysql.jdbc.StringUtils;
 import java.awt.event.ItemEvent;
 import java.util.ArrayList;
@@ -524,22 +525,31 @@ public class Request_New_Update extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        //        if(this.tbData.getSelectedRow()>=0)
-        //        {
-            //            int Registro=this.tbData.getSelectedRow();
-            //            this.Total=this.Total-Double.parseDouble(this.tbData.getValueAt(Registro, 5).toString());
-            //
-            //            this.txtSubTotal.setText(String.valueOf(this.Total));
-            //            this.txtTotalVenta.setText(String.valueOf(this.Total));
-            //
-            //            DefaultTableModel dtm = (DefaultTableModel) this.tbData.getModel();
-            //            dtm.removeRow(this.tbData.getSelectedRow());
-            //
-            //            this.lbErrorMInTB.setVisible(false);
-            //        }else{
-            //            this.lbErrorMInTB.setText("Es necesario seleccionar un registro");
-            //            this.lbErrorMInTB.setVisible(true);
-            //        }
+        if (this.tbData.getSelectedRow() >= 0) {
+            int Registro = this.tbData.getSelectedRow();
+            String clave = tbData.getValueAt(Registro, 0).toString();
+            int stock = Integer.parseInt(tbData.getValueAt(Registro, 4).toString());
+            double totalProduct = Double.parseDouble(tbData.getValueAt(Registro, 5).toString());
+            double totalActual = Double.parseDouble(this.txtSubTotal.getText());
+            double subtotalRequest = totalActual - totalProduct;
+            double totalRequest = subtotalRequest-(IVA * totalActual) / 100;
+
+            this.txtSubTotal.setText(String.valueOf(subtotalRequest));
+            this.txtTotalVenta.setText(String.valueOf(totalRequest));
+
+            if (Request_Start.RequestProcess.Reset_Stock(clave, stock)) {
+                DefaultTableModel dtm = (DefaultTableModel) this.tbData.getModel();
+                dtm.removeRow(this.tbData.getSelectedRow());
+
+                this.lbErrorMInTB.setVisible(false);
+            } else {
+                this.lbErrorMInTB.setText("No fue posible resetear el stock del producto");
+                this.lbErrorMInTB.setVisible(true);
+            }
+        } else {
+            this.lbErrorMInTB.setText("Es necesario seleccionar un registro");
+            this.lbErrorMInTB.setVisible(true);
+        }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void txtAmountKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAmountKeyTyped
