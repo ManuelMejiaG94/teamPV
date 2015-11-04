@@ -605,7 +605,6 @@ public class Request_New_Update extends javax.swing.JPanel {
         {
             this.categoria=(Catcategoria) this.cmbCategoria.getSelectedItem();
             Process_cmb();
-            
         }
     }//GEN-LAST:event_cmbCategoriaItemStateChanged
 

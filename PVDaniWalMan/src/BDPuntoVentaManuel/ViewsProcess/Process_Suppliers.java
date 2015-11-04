@@ -35,6 +35,7 @@ public class Process_Suppliers {
         Supplier defaultModel=new Supplier();
         defaultModel.setId(-1);
         defaultModel.setStrBussinessName("Seleccionar");
+        defaultModel.setIdCategoria(categori);
         
         dataModel.add(defaultModel);
         

@@ -14,4 +14,6 @@ import javax.persistence.EntityManager;
 public interface IRequestExtends {
     EntityManager getEntityManager();
     int lastId();
+    java.util.List<BDPuntoVentaManuel.MODEL.Request> RetriveRequestBySupplierAndStatus(BDPuntoVentaManuel.MODEL.Supplier supplier, int statusRequest);
+    java.util.List<BDPuntoVentaManuel.MODEL.Request> RetriveRequestByFolio(int folio);
 }

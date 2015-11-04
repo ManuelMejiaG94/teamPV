@@ -108,6 +108,39 @@ public class Request {
 
     }
     
+    public void ChargeDataByFolio(DefaultTableModel model, int folio) {
+        List<BDPuntoVentaManuel.MODEL.Request> listRequest = ctrRequestExtends.RetriveRequestByFolio(folio);
+        Object[] data = new Object[5];
+        String status="";
+
+        for (BDPuntoVentaManuel.MODEL.Request item : listRequest) {
+            data[0] = item.getId();
+            data[1] = item.getIdSuplier().getStrBussinessName();
+            data[2] = item.getDatFecha();
+            data[3] = item.getDoubTotal();
+            data[4] = this.StatusRequest(item);
+
+            model.addRow(data);
+        }
+    }
+    
+     public void ChargeDataByFilter(DefaultTableModel model,Supplier supplier,int statusId) {
+        List<BDPuntoVentaManuel.MODEL.Request> listRequest = ctrRequestExtends.RetriveRequestBySupplierAndStatus(supplier, statusId+1);
+        Object[] data = new Object[5];
+        String status="";
+
+        for (BDPuntoVentaManuel.MODEL.Request item : listRequest) {
+            data[0] = item.getId();
+            data[1] = item.getIdSuplier().getStrBussinessName();
+            data[2] = item.getDatFecha();
+            data[3] = item.getDoubTotal();
+            data[4] = this.StatusRequest(item);
+
+            model.addRow(data);
+        }
+
+    }
+    
     private String StatusRequest(BDPuntoVentaManuel.MODEL.Request request)
     {
         String status="";
