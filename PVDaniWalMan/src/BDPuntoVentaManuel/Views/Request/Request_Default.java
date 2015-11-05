@@ -37,7 +37,7 @@ public class Request_Default extends javax.swing.JPanel {
         Process_cmb();
         this.ChargeDataTable();
         
-        this.lb1.setVisible(false);
+        this.jLabel3.setVisible(false);
         this.lbErrorMessage.setVisible(false);
     }
     
@@ -61,12 +61,12 @@ public class Request_Default extends javax.swing.JPanel {
             Request_Start.RequestProcess.ChargeDataByFolio(modelTab,Integer.parseInt(this.txtFolio.getText().trim()));
             this.tbData.setModel(modelTab);
             
-            this.lb1.setVisible(false);
+            this.jLabel3.setVisible(false);
             this.lbErrorMessage.setVisible(false);
         }else
         {
             this.lbErrorMessage.setText("Es requerido el numero de folio de la solicitud");
-            this.lb1.setVisible(true);
+            this.jLabel3.setVisible(true);
             this.lbErrorMessage.setVisible(true);
         }
         
@@ -106,7 +106,7 @@ public class Request_Default extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         txtFolio = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
-        lb1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbData = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
@@ -114,6 +114,9 @@ public class Request_Default extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         cmbSuppliers = new javax.swing.JComboBox();
         lbErrorMessage = new javax.swing.JLabel();
+        btnValidar = new javax.swing.JButton();
+        btnDetalle = new javax.swing.JButton();
+        lbErrorMessage2 = new javax.swing.JLabel();
 
         setForeground(new java.awt.Color(255, 0, 51));
 
@@ -127,12 +130,6 @@ public class Request_Default extends javax.swing.JPanel {
 
         jLabel2.setText("Numero de folio");
 
-        txtFolio.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtFolioKeyTyped(evt);
-            }
-        });
-
         btnSearch.setText("Buscar");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,8 +137,8 @@ public class Request_Default extends javax.swing.JPanel {
             }
         });
 
-        lb1.setForeground(new java.awt.Color(255, 0, 0));
-        lb1.setText("*");
+        jLabel3.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel3.setText("*");
 
         tbData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -173,51 +170,74 @@ public class Request_Default extends javax.swing.JPanel {
         lbErrorMessage.setForeground(new java.awt.Color(255, 0, 0));
         lbErrorMessage.setText("Error message");
 
+        btnValidar.setText("Validar solicitud");
+        btnValidar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnValidarActionPerformed(evt);
+            }
+        });
+
+        btnDetalle.setText("Detalle de la solicitud");
+        btnDetalle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDetalleActionPerformed(evt);
+            }
+        });
+
+        lbErrorMessage2.setForeground(new java.awt.Color(255, 0, 0));
+        lbErrorMessage2.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cmbCategorias, 0, 211, Short.MAX_VALUE)
-                            .addComponent(cmbSuppliers, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(24, 24, 24)
-                                        .addComponent(lb1))
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(cmbStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtFolio, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE))
-                                .addGap(18, 18, 18)
-                                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lbErrorMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(btnDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
+                        .addComponent(btnValidar, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane1)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(cmbCategorias, 0, 211, Short.MAX_VALUE)
+                                .addComponent(cmbSuppliers, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(24, 24, 24)
+                                            .addComponent(jLabel3))
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(cmbStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtFolio, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE))
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(lbErrorMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lbErrorMessage2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(cmbCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtFolio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(btnSearch)
-                    .addComponent(lb1))
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -228,6 +248,12 @@ public class Request_Default extends javax.swing.JPanel {
                 .addComponent(lbErrorMessage)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(11, 11, 11)
+                .addComponent(lbErrorMessage2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnValidar)
+                    .addComponent(btnDetalle))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -264,36 +290,49 @@ public class Request_Default extends javax.swing.JPanel {
         SearchRequestByFolio();
     }//GEN-LAST:event_btnSearchActionPerformed
 
-    private void txtFolioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFolioKeyTyped
-          char caracter = evt.getKeyChar();
+    private void btnValidarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValidarActionPerformed
+if(tbData.getSelectedRow()>0)
+{
+        Request_Start.viewRequest.setVisible(false);
+        Request_Start.pnOptions.setVisible(false);
+        Request_Start.viewDefault.setVisible(false);
+        Request_Start.viewProcess.setVisible(false);
+        Request_Start.viewPartial.setVisible(false);
+        Request_Start.viewValid.setVisible(true);
+}
+    }//GEN-LAST:event_btnValidarActionPerformed
 
-        // Verificar si la tecla pulsada no es un digito
-        if (((caracter < '0') || (caracter > '9')) && (caracter != '\b' /*corresponde a BACK_SPACE*/)) {
-            evt.consume();  // ignorar el evento de teclado
-        }
-        if (txtFolio.getText().length()== 10)
-        {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtFolioKeyTyped
+    private void btnDetalleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetalleActionPerformed
+if(tbData.getSelectedRow()>0)
+{
+        Request_Start.viewRequest.setVisible(false);
+        Request_Start.pnOptions.setVisible(false);
+        Request_Start.viewDefault.setVisible(false);
+        Request_Start.viewProcess.setVisible(false);
+        Request_Start.viewPartial.setVisible(false);
+        Request_Start.viewValid.setVisible(true);
+}
+    }//GEN-LAST:event_btnDetalleActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDetalle;
     private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnValidar;
     private javax.swing.JComboBox cmbCategorias;
     private javax.swing.JComboBox cmbStatus;
     private javax.swing.JComboBox cmbSuppliers;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lb1;
     private javax.swing.JLabel lbErrorMessage;
-    private javax.swing.JTable tbData;
+    private javax.swing.JLabel lbErrorMessage2;
+    public static javax.swing.JTable tbData;
     private javax.swing.JTextField txtFolio;
     // End of variables declaration//GEN-END:variables
-
  
     //Variables
     DefaultTableModel modelTab;
