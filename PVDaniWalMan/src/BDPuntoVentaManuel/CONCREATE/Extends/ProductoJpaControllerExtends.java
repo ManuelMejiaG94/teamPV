@@ -44,7 +44,7 @@ public class ProductoJpaControllerExtends implements IProductExtends {
                     .getResultList();
             return listAlumno;
         } catch (Exception ex) {
-            System.out.println("Error "+ex.getMessage());
+            System.out.println("Error es "+ex.getMessage());
             return null;
             }
     }
@@ -61,7 +61,7 @@ public class ProductoJpaControllerExtends implements IProductExtends {
                     .getResultList();
             return listAlumno;
         } catch (Exception ex) {
-            System.out.println("Error "+ex.getMessage());
+            System.out.println("Error es "+ex.getMessage());
             return null;
             }
     }
