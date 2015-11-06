@@ -6,7 +6,7 @@
 package BDPuntoVentaManuel.Views.Product;
 
 
-//import BDPuntoVentaManuel.MODEL.Catcategoria;
+import BDPuntoVentaManuel.MODEL.Catcategoria;
 import com.mysql.jdbc.StringUtils;
 import java.awt.event.ItemEvent;
 import javax.swing.table.DefaultTableModel;
@@ -26,7 +26,6 @@ public class Products_Default extends javax.swing.JPanel {
         this.Windows_Start();
     }
     
-    
     private void Windows_Start()
     {
         this.Data_Default();
@@ -35,7 +34,7 @@ public class Products_Default extends javax.swing.JPanel {
     private void Data_Default()
     {
         Products_Start.ProductsProcess=new Products();
-        //this.cmbCategoria.setModel(Products_Start.ProductsProcess.getModelCategorias());
+        this.cmbCategoria.setModel(Products_Start.ProductsProcess.getModelCategorias());
         this.lbErrorMEssage.setVisible(false);
         
         this.ResetDataTable();
@@ -44,36 +43,38 @@ public class Products_Default extends javax.swing.JPanel {
     
     private void SetModelTable()
     {
-//        modelTab=new DefaultTableModel();
-//        modelTab.addColumn("Codigo");
-//        modelTab.addColumn("Nombre");
-//        modelTab.addColumn("Precio de compra");
-//        modelTab.addColumn("Precio de venta");
-//        modelTab.addColumn("Stock");
+        modelTab=new DefaultTableModel();
+        modelTab.addColumn("Codigo");
+        modelTab.addColumn("Nombre");
+        modelTab.addColumn("Precio de compra");
+        modelTab.addColumn("Precio de venta");
+        modelTab.addColumn("Stock");
+        modelTab.addColumn("Descripcion");
+        modelTab.addColumn("Presentcion");
     }
 
     public void ResetDataTable()
     {
-//        if(categoria !=null && categoria.getId()>0)
-//        {
-//            this.SetModelTable();
-//            Products_Start.ProductsProcess.ChargeDataByCategoriaId(modelTab, categoria);
-//            this.tbData.setModel(modelTab);
-//        }
-//        if(categoria==null || categoria.getId()<=0)
-//        {
+        if(categoria !=null && categoria.getId()>0)
+        {
             this.SetModelTable();
-//            Products_Start.ProductsProcess.ChargeDataDefault(modelTab);
-//            this.tbData.setModel(modelTab);
-//        }
+            Products_Start.ProductsProcess.ChargeDataByCategoriaId(modelTab, categoria);
+            this.tbData.setModel(modelTab);
+        }
+        if(categoria==null || categoria.getId()<=0)
+        {
+            this.SetModelTable();
+            Products_Start.ProductsProcess.ChargeDataDefault(modelTab);
+            this.tbData.setModel(modelTab);
+        }
     }
     
     private void ResetDataTableBySearch()
     {
             this.SetModelTable();
-//            Products_Start.ProductsProcess.SearchProductByLette(this.txtNombre.getText().trim(),
-//                    modelTab);
-//            this.tbData.setModel(modelTab);
+            Products_Start.ProductsProcess.SearchProductByLette(this.txtNombre.getText().trim(),
+                    modelTab);
+            this.tbData.setModel(modelTab);
     }
     
     private void PainErrorMessage()
@@ -85,7 +86,6 @@ public class Products_Default extends javax.swing.JPanel {
     {
         this.lbErrorMEssage.setVisible(false);
     }
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -176,25 +176,24 @@ public class Products_Default extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
     private void cmbCategoriaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbCategoriaItemStateChanged
-        if(evt.getStateChange()==ItemEvent.SELECTED)
+       if(evt.getStateChange()==ItemEvent.SELECTED)
         {
-//            categoria =(Catcategoria) this.cmbCategoria.getSelectedItem();
+            categoria =(Catcategoria) this.cmbCategoria.getSelectedItem();
             this.ResetDataTable();
         }
     }//GEN-LAST:event_cmbCategoriaItemStateChanged
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
 //        String result;
-//        if(!StringUtils.isNullOrEmpty(this.txtNombre.getText()))
-//        {
-//            CleanErrorMessage();
-//            ResetDataTableBySearch();
-//        }else
-//        {
-//            PainErrorMessage();
-//        }
+        if(!StringUtils.isNullOrEmpty(this.txtNombre.getText()))
+        {
+            CleanErrorMessage();
+            ResetDataTableBySearch();
+        }else
+        {
+            PainErrorMessage();
+        }
     }//GEN-LAST:event_btnSearchActionPerformed
 
 
@@ -210,6 +209,6 @@ public class Products_Default extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
     
 //    //Variables
-//    private DefaultTableModel modelTab;
-//    private Catcategoria categoria=null;
+    private DefaultTableModel modelTab;
+    private Catcategoria categoria=null;
 }

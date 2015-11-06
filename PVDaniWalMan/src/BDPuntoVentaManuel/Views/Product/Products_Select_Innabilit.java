@@ -6,7 +6,7 @@
 package BDPuntoVentaManuel.Views.Product;
 
 
-//import BDPuntoVentaManuel.MODEL.Producto;
+import BDPuntoVentaManuel.MODEL.Product;
 import com.mysql.jdbc.StringUtils;
 import javax.swing.JOptionPane;
 
@@ -23,7 +23,7 @@ public class Products_Select_Innabilit extends javax.swing.JPanel {
         initComponents();
     }
 
-    public void Open_Update() {
+     public void Open_Update() {
         this.btnProcess.setText("Siguiente");
 
         this.Clean_Windows();
@@ -126,24 +126,23 @@ public class Products_Select_Innabilit extends javax.swing.JPanel {
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
 //        if (btnProcess.getText().equals("Siguiente")) {
-//            if (!StringUtils.isNullOrEmpty(this.txtCodigo.getText())) {
-//                String Codigo = txtCodigo.getText().trim();
-//                Producto item = Products_Start.ProductsProcess.GetProductByCode(Codigo);
-//
-//                if (item != null) {
-                    Products_Start.viewProduct.Open_Windows_Update();//item);
+            if (!StringUtils.isNullOrEmpty(this.txtCodigo.getText())) {
+                String Codigo = txtCodigo.getText().trim();
+                Product item = Products_Start.ProductsProcess.GetProductByCode(Codigo);
+
+                if (item != null) {
+                    Products_Start.viewProduct.Open_Windows_Update(item);
                     Products_Start.viewSelect.setVisible(false);
                     Products_Start.viewDefault.setVisible(false);
 
-//                } else {
-//                    this.Paint_ErrorMessage("No existe en tu repletorio un producto con el codigo ingresado");
-//                }
-//
-//            } else {
-//                this.Paint_ErrorMessage("Es necesario ingresar el codigo del producto");
-//            }
-//
-//        }
+                } else {
+                    this.Paint_ErrorMessage("No existe en tu repletorio un producto con el codigo ingresado");
+                }
+
+            } else {
+                this.Paint_ErrorMessage("Es necesario ingresar el codigo del producto");
+            }
+
     }//GEN-LAST:event_btnProcessActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

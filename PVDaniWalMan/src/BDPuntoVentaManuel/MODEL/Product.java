@@ -128,7 +128,7 @@ public class Product implements Serializable {
         this.strDescription = strDescription;
     }
 
-    public double getDobPV() {
+    public Double getDobPV() {
         return dobPV;
     }
 
@@ -136,7 +136,7 @@ public class Product implements Serializable {
         this.dobPV = dobPV;
     }
 
-    public double getDonPC() {
+    public Double getDonPC() {
         return donPC;
     }
 
@@ -144,7 +144,7 @@ public class Product implements Serializable {
         this.donPC = donPC;
     }
 
-    public int getIntStock() {
+    public Integer getIntStock() {
         return intStock;
     }
 

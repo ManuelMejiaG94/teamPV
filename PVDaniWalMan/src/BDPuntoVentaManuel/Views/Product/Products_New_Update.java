@@ -5,8 +5,8 @@
  */
 package BDPuntoVentaManuel.Views.Product;
 
-//import BDPuntoVentaManuel.MODEL.Catcategoria;
-//import BDPuntoVentaManuel.MODEL.Producto;
+import BDPuntoVentaManuel.MODEL.Catcategoria;
+import BDPuntoVentaManuel.MODEL.Product;
 import com.mysql.jdbc.StringUtils;
 import java.awt.event.ItemEvent;
 import java.util.Vector;
@@ -23,8 +23,7 @@ public class Products_New_Update extends javax.swing.JPanel {
     public Products_New_Update() {
         initComponents();
     }
-
-    public void Open_Windows_New(boolean open) {
+public void Open_Windows_New(boolean open) {
         this.btnProcess.setText("Registrar");
         this.Clean_Windows();
         this.Charge_Default_Data();
@@ -32,35 +31,35 @@ public class Products_New_Update extends javax.swing.JPanel {
         this.setVisible(open);
     }
 
-    public void Open_Windows_Update(){//Producto _product) {
+    public void Open_Windows_Update(Product _product) {
         this.btnProcess.setText("Modificar");
         this.Clean_Windows();
         this.Charge_Default_Data();
 
-//        this.Charge_Product_Modific(_product);
+        this.Charge_Product_Modific(_product);
 
         this.setVisible(true);
     }
 
-    private void Charge_Product_Modific(){//Producto _product) {
-//        product = _product;
-//
-//        this.txtCodigo.setText(product.getStrClave());
-//        this.txtCodigo.setEnabled(false);
-//
-//        this.txtName.setText(product.getStrNombre());
-//        this.txtStock.setText(product.getDobCantidad().toString());
-//        this.txtPrecent.setText(product.getStrPresentacion());
-//        this.txtPC.setText(product.getDobPrecioCompra().toString());
-//        this.txtPV.setText(product.getDobPrecioVenta().toString());
-//        this.cmbCategories.setModel(Products_Start.ProductsProcess.getModelCategorias());
-//
-//        this.cmbCategories.setSelectedItem(product.getIdCategoria());
-//        this.cmbCategories.setEnabled(false);
+    private void Charge_Product_Modific(Product _product) {
+        product = _product;
+
+        this.txtCodigo.setText(product.getStrClave());
+        this.txtCodigo.setEnabled(false);
+
+        this.txtName.setText(product.getStrName());
+        this.txtStock.setText(product.getIntStock().toString());
+        this.txtPrecent.setText(product.getStrPresentation());
+        this.txtPC.setText(product.getDonPC().toString());
+        this.txtPV.setText(product.getDobPV().toString());
+        this.cmbCategories.setModel(Products_Start.ProductsProcess.getModelCategorias());
+
+        this.cmbCategories.setSelectedItem(product.getIdCategoria());
+        this.cmbCategories.setEnabled(false);
     }
 
     public void Charge_Default_Data() {
-//        this.cmbCategories.setModel(Products_Start.ProductsProcess.getModelCategorias());
+        this.cmbCategories.setModel(Products_Start.ProductsProcess.getModelCategorias());
     }
 
     private void Clean_Windows() {
@@ -154,33 +153,34 @@ public class Products_New_Update extends javax.swing.JPanel {
         this.ErrorsPaint();
     }
 
-//    private Producto GetProductoNew() {
-//        product = new Producto();
-//        product.setStrClave(this.txtCodigo.getText().trim());
-//        product.setStrNombre(this.txtName.getText().trim());
-//        product.setStrPresentacion(this.txtPrecent.getText().trim());
-//        product.setDobCantidad(Double.parseDouble(this.txtStock.getText().trim()));
-//        product.setDobPrecioCompra(Double.parseDouble(this.txtPC.getText().trim()));
-//        product.setDobPrecioVenta(Double.parseDouble(this.txtPV.getText().trim()));
-//        product.setIdCategoria(this.categoriaProduct);
-//        product.setBitEstatus(true);
-//
-//        return product;
-//    }
-//
-//    private Producto GetProductoForUpdate() {
-//
-//        product.setStrClave(this.txtCodigo.getText().trim());
-//        product.setStrNombre(this.txtName.getText().trim());
-//        product.setStrPresentacion(this.txtPrecent.getText().trim());
-//        product.setDobCantidad(Double.parseDouble(this.txtStock.getText().trim()));
-//        product.setDobPrecioCompra(Double.parseDouble(this.txtPC.getText().trim()));
-//        product.setDobPrecioVenta(Double.parseDouble(this.txtPV.getText().trim()));
-//        product.setIdCategoria(this.categoriaProduct);
-//        product.setBitEstatus(true);
-//
-//        return product;
-//    }
+    private Product GetProductoNew() {
+        product = new Product();
+        product.setStrClave(this.txtCodigo.getText().trim());
+        product.setStrName(this.txtName.getText().trim());
+        product.setStrPresentation(this.txtPrecent.getText().trim());
+        product.setIntStock(Integer.parseInt(this.txtStock.getText().trim()));
+        product.setDonPC(Double.parseDouble(this.txtPC.getText().trim()));
+        product.setDobPV(Double.parseDouble(this.txtPV.getText().trim()));
+        product.setIdCategoria(this.categoriaProduct);
+//        product.setStrDescription(this.getText().trim());
+        
+
+        return product;
+    }
+
+    private Product GetProductoForUpdate() {
+
+        product.setStrClave(this.txtCodigo.getText().trim());
+        product.setStrName(this.txtName.getText().trim());
+        product.setStrPresentation(this.txtPrecent.getText().trim());
+        product.setIntStock(Integer.parseInt(this.txtStock.getText().trim()));
+        product.setDonPC(Double.parseDouble(this.txtPC.getText().trim()));
+        product.setDobPV(Double.parseDouble(this.txtPV.getText().trim()));
+        product.setIdCategoria(this.categoriaProduct);
+//        product.setStrDescription(this.txtdesc.getText().trim());
+
+        return product;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -412,44 +412,44 @@ public class Products_New_Update extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
-//        if (this.VisitErrors) {
-//            this.Clear_Erros();
-//        }
-//        if (btnProcess.getText().equals("Registrar")) {
-//            if (this.Validate_Data()) {
-//                String Codigo = txtCodigo.getText().trim();
-//                Producto item = Products_Start.ProductsProcess.GetProductByCode(Codigo);
-//                if (item == null) {
-//                    Products_Start.ProductsProcess.SaveProduct(this.GetProductoNew());
-//                    this.Clean_Windows();
+       if (this.VisitErrors) {
+            this.Clear_Erros();
+        }
+        if (btnProcess.getText().equals("Registrar")) {
+            if (this.Validate_Data()) {
+                String Codigo = txtCodigo.getText().trim();
+                Product item = Products_Start.ProductsProcess.GetProductByCode(Codigo);
+                if (item == null) {
+                    Products_Start.ProductsProcess.SaveProduct(this.GetProductoNew());
+                    this.Clean_Windows();
                     this.setVisible(false);
 
                     Products_Start.viewDefault.ResetDataTable();
                     Products_Start.viewDefault.setVisible(true);
-//                } else {
-//                    this.PaintErrorExistenProduct();
-//                }
-//            } else {
-//
-//                this.ErrorsPaint();
-//            }
-//        }
-//        if (btnProcess.getText().equals("Modificar")) {
-//            String result;
-//            if (this.Validate_Data()) {
-//                result = Products_Start.ProductsProcess.EditProduct(GetProductoForUpdate());
-//                if (result == null) {
-//                    this.setVisible(false);
-//                    Products_Start.viewDefault.ResetDataTable();
-//                    Products_Start.viewDefault.setVisible(true);
-//                } else {
-//                    this.ListErros.add(result);
-//                }
-//
-//            } else {
-//                this.ErrorsPaint();
-//            }
-//        }
+                } else {
+                    this.PaintErrorExistenProduct();
+                }
+            } else {
+
+                this.ErrorsPaint();
+            }
+        }
+        if (btnProcess.getText().equals("Modificar")) {
+            String result;
+            if (this.Validate_Data()) {
+                result = Products_Start.ProductsProcess.EditProduct(GetProductoForUpdate());
+                if (result == null) {
+                    this.setVisible(false);
+                    Products_Start.viewDefault.ResetDataTable();
+                    Products_Start.viewDefault.setVisible(true);
+                } else {
+                    this.ListErros.add(result);
+                }
+
+            } else {
+                this.ErrorsPaint();
+            }
+        }
     }//GEN-LAST:event_btnProcessActionPerformed
 
     private void txtCodigoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoKeyTyped
@@ -460,7 +460,7 @@ public class Products_New_Update extends javax.swing.JPanel {
     }//GEN-LAST:event_txtCodigoKeyTyped
 
     private void txtStockKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtStockKeyTyped
-           char caracter = evt.getKeyChar();
+         char caracter = evt.getKeyChar();
 
         // Verificar si la tecla pulsada no es un digito
         if (((caracter < '0') || (caracter > '9')) && (caracter != '\b' /*corresponde a BACK_SPACE*/)) {
@@ -511,7 +511,7 @@ public class Products_New_Update extends javax.swing.JPanel {
     private void cmbCategoriesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbCategoriesItemStateChanged
          if(evt.getStateChange()==ItemEvent.SELECTED)
         {
-//            this.categoriaProduct=(Catcategoria) this.cmbCategories.getSelectedItem();
+           this.categoriaProduct=(Catcategoria) this.cmbCategories.getSelectedItem();
         }
     }//GEN-LAST:event_cmbCategoriesItemStateChanged
 
@@ -555,8 +555,8 @@ public class Products_New_Update extends javax.swing.JPanel {
     //Variables
     Vector ListErros;
     private boolean VisitErrors=false;
-//    private Catcategoria categoriaProduct;
+    private Catcategoria categoriaProduct;
     private int idProduct;
-//    private Producto product;
+    private Product product;
     
 }

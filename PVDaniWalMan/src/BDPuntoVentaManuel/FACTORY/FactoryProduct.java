@@ -17,13 +17,14 @@ import java.util.logging.Logger;
  * @author manuel
  */
 public class FactoryProduct {
-    private static FactoryProduct factory;
+     private static FactoryProduct factory;
+     
     
     static {
         try {
             factory=FactoryProduct.class.newInstance();
         } catch (InstantiationException | IllegalAccessException ex) {
-            Logger.getLogger(FactoryProduct.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FactoryCategoria.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
@@ -35,16 +36,28 @@ public class FactoryProduct {
     public IProduct getInstanceAbstract()
     {
         try{
-            ProductJpaController product= new ProductJpaController();
-            return (IProduct) product;
+            ProductJpaController ctrlProducto= new ProductJpaController();
+            return (IProduct) ctrlProducto;
         }catch(Exception ex)
         {
-            Logger.getLogger(FactoryProduct.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error\n"+ex.getMessage());
             return null;
         }
     }
     
-     public IProductExtends getInstanceExtends()
+     public IProductExtends getInstanceAbstractExtends()
+    {
+        try{
+            ProductoJpaControllerExtends ctrlProducto= new ProductoJpaControllerExtends();
+            return (IProductExtends) ctrlProducto;
+        }catch(Exception ex)
+        {
+            System.out.println("Error\n"+ex.getMessage());
+            return null;
+        }
+    }
+     
+      public IProductExtends getInstanceExtends()
     {
         try{
             ProductoJpaControllerExtends product= new ProductoJpaControllerExtends();
@@ -54,5 +67,5 @@ public class FactoryProduct {
             Logger.getLogger(FactoryProduct.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
-    }
+}
 }
