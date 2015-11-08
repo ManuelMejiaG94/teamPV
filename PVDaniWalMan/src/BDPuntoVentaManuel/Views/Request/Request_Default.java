@@ -167,7 +167,7 @@ public class Request_Default extends javax.swing.JPanel {
 
         jLabel4.setText("Estatus");
 
-        cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Activas", "Cerradas", "canceladas" }));
+        cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Activas", "Cerradas", "canceladas", "Procesadas" }));
         cmbStatus.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbStatusItemStateChanged(evt);

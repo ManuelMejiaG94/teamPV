@@ -172,6 +172,9 @@ public class Request {
             case 3:
                 status="Cancelada";
                 break;
+            case 4:
+                status="odc generada";
+                break;
         }
         
         return status;
@@ -326,7 +329,10 @@ public class Request {
         List<BDPuntoVentaManuel.MODEL.Requestdetail> listRequestDetails=(List<BDPuntoVentaManuel.MODEL.Requestdetail>) request.getRequestdetailCollection();
         
          for ( BDPuntoVentaManuel.MODEL.Requestdetail item : listRequestDetails ) {
-            lm.addElement(item.getIdProduct());
+             if(!item.getBolAssigned())
+             {
+            lm.addElement(item);
+             }
        }
          return lm;
     }
@@ -336,16 +342,68 @@ public class Request {
        
          return lm;
     }
-//    public List<Requestdetail> getRequestDetailsByRequestId()
-//    {
-//        List<Requestdetail> listdetail=ctrRequest
-//    }
+    
+    public boolean CreatePartialPO(List<Requestdetail> _listRequestdetails, int folio) {
+        try {
+            BDPuntoVentaManuel.MODEL.Request request = ctrRequest.findRequest(folio);
+
+            BDPuntoVentaManuel.MODEL.Po po = new Po();
+
+            po.setBitEstatus(pocreate);
+            po.setDobTotal(request.getDoubTotal());
+            po.setIdCurrency(request.getIdCurrency());
+            po.setIdSupplier(request.getIdSuplier());
+            ctrPo.create(po);
+
+            List<Requestdetail> listRequestDetails = (List<Requestdetail>) request.getRequestdetailCollection();
+
+            for (Requestdetail requestdetail : listRequestDetails) {
+                int a=0;
+                for (int i = a; i < _listRequestdetails.size(); i++) {
+                    Requestdetail requestDetails = (Requestdetail) _listRequestdetails.get(i);
+                    if (requestdetail.getId() == requestDetails.getId()) {
+                        Podetail poDetail = new Podetail();
+
+                        poDetail.setDobPc(requestdetail.getDobPrice());
+                        poDetail.setDobQuantity(requestdetail.getDobQuantity());
+                        poDetail.setDobTotal(requestdetail.getDobTotal());
+                        poDetail.setIdPo(po);
+                        poDetail.setIdProducto(requestdetail.getIdProduct());
+
+                        requestdetail.setBolAssigned(true);
+
+                        ctrRequestDetail.edit(requestdetail);
+                        ctrPoDetail.create(poDetail);
+                    }
+                }
+                a++;
+            }
+
+            request.setBitEstatus(this.ValidateStatusForPartialPo(listRequestDetails, _listRequestdetails));
+            ctrRequest.edit(request);
+            return true;
+        } catch (Exception e) {
+            Logger.getLogger(Request.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return false;
+    }
+
+    private int ValidateStatusForPartialPo(List<BDPuntoVentaManuel.MODEL.Requestdetail> listRequestDetails,
+            List<BDPuntoVentaManuel.MODEL.Requestdetail> _listRequestdetails)
+    {
+        if(listRequestDetails.size()>_listRequestdetails.size())
+        {
+            return Processed;
+        }
+        return Asepted;
+    }
     
     
-    //Variables Status
+    //Variables Status de las solicitudes
     private int create=1;
     private int Asepted=2;
     private int Cancel=3;
+    private int Processed=4;
     
     //Estatus de las ordenes de compra
     private int pocreate=1;

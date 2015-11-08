@@ -45,9 +45,9 @@ public class Request_Valid extends javax.swing.JPanel {
     {
         this.btnCancel.setVisible(true);
         this.btnCancel.setText("Cancelar");
-        this.btnGenerate.setVisible(true);
         this.btnPoPartials.setVisible(true);
         this.btnReject.setVisible(true);
+        this.btnGenerate.setVisible(true);
     }
     
     private void Button_Detail()
@@ -73,6 +73,11 @@ public class Request_Valid extends javax.swing.JPanel {
         
         this.lbTotal.setText("$"+String.valueOf(request.getDoubTotal()));
      
+        if(request.getBitEstatus()==4)
+        {
+            this.btnGenerate.setVisible(false);
+        }
+        
         PaintDataTable((List<Requestdetail>) request.getRequestdetailCollection());
     }
     
@@ -95,13 +100,16 @@ public class Request_Valid extends javax.swing.JPanel {
         
         for(BDPuntoVentaManuel.MODEL.Requestdetail item : listDetails)
         {
-            data[0]=item.getIdProduct().getStrClave();
+           if(!item.getBolAssigned())
+           {
+                data[0]=item.getIdProduct().getStrClave();
             data[1]=item.getIdProduct().getStrName();
             data[2]=item.getDobPrice();
             data[3]=item.getDobQuantity();
             data[4]=item.getDobTotal();
             
             modelTable.addRow(data);
+           }
         }
         this.tbDatadetails.setModel(modelTable);
         
