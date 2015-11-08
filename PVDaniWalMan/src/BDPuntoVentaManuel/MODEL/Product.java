@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -45,37 +46,36 @@ public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "strClave", nullable = false, length = 30)
+    @Column(name = "strClave")
     private String strClave;
     @Basic(optional = false)
-    @Column(name = "strName", nullable = false, length = 50)
+    @Column(name = "strName")
     private String strName;
-    @Basic(optional = false)
-    @Column(name = "strDescription", nullable = false, length = 50)
+    @Column(name = "strDescription")
     private String strDescription;
     @Basic(optional = false)
-    @Column(name = "dobPV", nullable = false)
+    @Column(name = "dobPV")
     private double dobPV;
     @Basic(optional = false)
-    @Column(name = "donPC", nullable = false)
+    @Column(name = "donPC")
     private double donPC;
     @Basic(optional = false)
-    @Column(name = "intStock", nullable = false)
+    @Column(name = "intStock")
     private int intStock;
     @Basic(optional = false)
-    @Column(name = "strPresentation", nullable = false, length = 50)
+    @Column(name = "strPresentation")
     private String strPresentation;
-    @JoinColumn(name = "idCategoria", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false)
+    @JoinColumn(name = "idCategoria", referencedColumnName = "id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Catcategoria idCategoria;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProducto")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProducto", fetch = FetchType.LAZY)
     private Collection<Salesdetail> salesdetailCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProducto")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProducto", fetch = FetchType.LAZY)
     private Collection<Podetail> podetailCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProduct")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProduct", fetch = FetchType.LAZY)
     private Collection<Requestdetail> requestdetailCollection;
 
     public Product() {
@@ -85,11 +85,10 @@ public class Product implements Serializable {
         this.id = id;
     }
 
-    public Product(Integer id, String strClave, String strName, String strDescription, double dobPV, double donPC, int intStock, String strPresentation) {
+    public Product(Integer id, String strClave, String strName, double dobPV, double donPC, int intStock, String strPresentation) {
         this.id = id;
         this.strClave = strClave;
         this.strName = strName;
-        this.strDescription = strDescription;
         this.dobPV = dobPV;
         this.donPC = donPC;
         this.intStock = intStock;
@@ -128,7 +127,7 @@ public class Product implements Serializable {
         this.strDescription = strDescription;
     }
 
-    public Double getDobPV() {
+    public double getDobPV() {
         return dobPV;
     }
 
@@ -136,7 +135,7 @@ public class Product implements Serializable {
         this.dobPV = dobPV;
     }
 
-    public Double getDonPC() {
+    public double getDonPC() {
         return donPC;
     }
 
@@ -144,7 +143,7 @@ public class Product implements Serializable {
         this.donPC = donPC;
     }
 
-    public Integer getIntStock() {
+    public int getIntStock() {
         return intStock;
     }
 
@@ -217,7 +216,7 @@ public class Product implements Serializable {
 
     @Override
     public String toString() {
-        return this.strName;
+        return "BDPuntoVentaManuel.MODEL.Product[ id=" + id + " ]";
     }
     
 }

@@ -35,7 +35,7 @@ public class Request_Default extends javax.swing.JPanel {
         bitStatus=this.cmbStatus.getSelectedIndex();
         this.cmbCategorias.setModel(Request_Start.RequestProcess.getModelCategorias());
         Process_cmb();
-        this.ChargeDataTable();
+        ChargeDataTable();
         
         this.jLabel3.setVisible(false);
         this.lbErrorMessage.setVisible(false);
@@ -44,7 +44,7 @@ public class Request_Default extends javax.swing.JPanel {
         visitError=false;
     }
     
-    private void ChargeDataTable()
+    public void ChargeDataTable()
     {
         if(supplier == null)
         {

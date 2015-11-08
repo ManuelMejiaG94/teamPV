@@ -6,6 +6,8 @@
 package BDPuntoVentaManuel.Views.Request;
 
 import BDPuntoVentaManuel.ABSTRACT.ICurrency;
+import BDPuntoVentaManuel.ABSTRACT.IPO;
+import BDPuntoVentaManuel.ABSTRACT.IPoDetail;
 import BDPuntoVentaManuel.ABSTRACT.IProduct;
 import BDPuntoVentaManuel.ABSTRACT.IRequest;
 import BDPuntoVentaManuel.ABSTRACT.IRequestDetail;
@@ -17,15 +19,20 @@ import BDPuntoVentaManuel.CONCREATE.Extends.RequestJpaControllerExtends;
 import BDPuntoVentaManuel.CONCREATE.ExtendsAbstracts.IProductExtends;
 import BDPuntoVentaManuel.CONCREATE.ExtendsAbstracts.IRequestExtends;
 import BDPuntoVentaManuel.FACTORY.FactoryCurrency;
+import BDPuntoVentaManuel.FACTORY.FactoryPo;
+import BDPuntoVentaManuel.FACTORY.FactoryPoDetail;
 import BDPuntoVentaManuel.FACTORY.FactoryProduct;
 import BDPuntoVentaManuel.FACTORY.FactoryRequest;
 import BDPuntoVentaManuel.FACTORY.FactoryRequestDetail;
 import BDPuntoVentaManuel.MODEL.Catcategoria;
 import BDPuntoVentaManuel.MODEL.Currency;
+import BDPuntoVentaManuel.MODEL.Po;
+import BDPuntoVentaManuel.MODEL.Podetail;
 import BDPuntoVentaManuel.MODEL.Product;
 import BDPuntoVentaManuel.MODEL.Requestdetail;
 import BDPuntoVentaManuel.MODEL.Supplier;
 import BDPuntoVentaManuel.ViewsProcess.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -64,7 +71,8 @@ public class Request {
         ctrProduct=new FactoryProduct().getInstanceAbstract();
         ctrRequestDetail=new FactoryRequestDetail().getInstanceAbstract();
         ctrProductExtends=new FactoryProduct().getInstanceExtends();
-        
+        ctrPo=new FactoryPo().getInstanceAbstract();
+        ctrPoDetail=new FactoryPoDetail().getInstanceAbstract();
         ctrCurrency=new FactoryCurrency().getInstanceAbstract();
         
     }
@@ -272,6 +280,42 @@ public class Request {
         }
     }
     
+    public boolean CreateOdc(int folio) {
+        try {
+            BDPuntoVentaManuel.MODEL.Request request = ctrRequest.findRequest(folio);
+
+            BDPuntoVentaManuel.MODEL.Po po = new Po();
+
+            po.setBitEstatus(pocreate);
+            po.setDobTotal(request.getDoubTotal());
+            po.setIdCurrency(request.getIdCurrency());
+            po.setIdSupplier(request.getIdSuplier());
+            ctrPo.create(po);
+
+            List<Requestdetail> listRequestDetails = (List<Requestdetail>) request.getRequestdetailCollection();
+
+            for (Requestdetail requestdetail : listRequestDetails) {
+                Podetail poDetail = new Podetail();
+
+                poDetail.setDobPc(requestdetail.getDobPrice());
+                poDetail.setDobQuantity(requestdetail.getDobQuantity());
+                poDetail.setDobTotal(requestdetail.getDobTotal());
+                poDetail.setIdPo(po);
+                poDetail.setIdProducto(requestdetail.getIdProduct());
+
+                ctrPoDetail.create(poDetail);
+            }
+
+            request.setBitEstatus(Asepted);
+            ctrRequest.edit(request);
+
+            return true;
+        } catch (Exception e) {
+            Logger.getLogger(Request.class.getName()).log(Level.SEVERE, null, e);
+            return false;
+        }
+
+    }
     
 //    public List<Requestdetail> getRequestDetailsByRequestId()
 //    {
@@ -283,6 +327,10 @@ public class Request {
     private int create=1;
     private int Asepted=2;
     private int Cancel=3;
+    
+    //Estatus de las ordenes de compra
+    private int pocreate=1;
+    private int poClosed=2;
     
     
     //Variables de proceso
@@ -297,6 +345,8 @@ public class Request {
     IRequestDetail ctrRequestDetail;
     IProductExtends ctrProductExtends;
     ICurrency ctrCurrency;
+    IPO ctrPo;
+    IPoDetail ctrPoDetail;
     
     
     

@@ -23,6 +23,7 @@ public class Request_Valid extends javax.swing.JPanel {
      */
     public Request_Valid() {
         initComponents();
+        this.lbErrorMessage2.setVisible(false);
     }
     
     public void Open_View_Detail(int folio)
@@ -127,21 +128,18 @@ public class Request_Valid extends javax.swing.JPanel {
             Request_Start.viewValid.setVisible(true);
     }
     
-    private void CleanErrorItemselect()
+    private void CleanErrorCantCreatePo()
      {
          lbErrorMessage2.setVisible(false);
          visitError=false;   
      }
-     
-    private BDPuntoVentaManuel.MODEL.Po getPO()
-    {
-        BDPuntoVentaManuel.MODEL.Po po=new Po();
-         
-         
-         
-        return po;
-    }
     
+    private void PaintErrorCantCreatePo()
+    {
+        this.lbErrorMessage2.setText("No ha sido posible crear una orden de compra "
+                + "para la solicitud");
+        this.lbErrorMessage2.setVisible(true);
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -322,33 +320,45 @@ public class Request_Valid extends javax.swing.JPanel {
     private void btnRejectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRejectActionPerformed
         
         if (visitError) {
-            CleanErrorItemselect();
+            CleanErrorCantCreatePo();
         }
-        
-            int folio=Integer.parseInt(this.lbFolio.getText());
-            if (Request_Start.RequestProcess.Cancel_Request(folio)) {
-                
-                Request_Start.viewRequest.setVisible(false);
-                Request_Start.pnOptions.setVisible(true);
-                Request_Start.viewDefault.setVisible(true);
-                Request_Start.viewProcess.setVisible(false);
-                Request_Start.viewPartial.setVisible(false);
-                Request_Start.viewValid.setVisible(false);
-            }
-        
+
+        int folio = Integer.parseInt(this.lbFolio.getText());
+        if (Request_Start.RequestProcess.Cancel_Request(folio)) {
+
+            Request_Start.viewRequest.setVisible(false);
+            Request_Start.pnOptions.setVisible(true);
+            Request_Start.viewDefault.setVisible(true);
+            Request_Start.viewDefault.ChargeDataTable();
+            Request_Start.viewProcess.setVisible(false);
+            Request_Start.viewPartial.setVisible(false);
+            Request_Start.viewValid.setVisible(false);
+        }
+
     }//GEN-LAST:event_btnRejectActionPerformed
 
     private void btnGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerateActionPerformed
 
+        if(visitError)
+        {
+            CleanErrorCantCreatePo();
+        }
         
+        int folio = Integer.parseInt(this.lbFolio.getText());
+        if (Request_Start.RequestProcess.CreateOdc(folio)) {
+            
+            Request_Start.viewRequest.setVisible(false);
+            Request_Start.pnOptions.setVisible(true);
+            Request_Start.viewDefault.setVisible(true);
+            Request_Start.viewDefault.ChargeDataTable();
+            Request_Start.viewProcess.setVisible(false);
+            Request_Start.viewPartial.setVisible(false);
+            Request_Start.viewValid.setVisible(false);
+            
+        } else {
+            PaintErrorCantCreatePo();
+        }
         
-        
-        Request_Start.viewRequest.setVisible(false);
-        Request_Start.pnOptions.setVisible(true);
-        Request_Start.viewDefault.setVisible(true);
-        Request_Start.viewProcess.setVisible(false);
-        Request_Start.viewPartial.setVisible(false);
-        Request_Start.viewValid.setVisible(false);
     }//GEN-LAST:event_btnGenerateActionPerformed
 
     private void btnPoPartialsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoPartialsActionPerformed

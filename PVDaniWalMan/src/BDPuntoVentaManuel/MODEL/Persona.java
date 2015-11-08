@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -39,18 +40,18 @@ public class Persona implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "strNombre", nullable = false, length = 50)
+    @Column(name = "strNombre")
     private String strNombre;
     @Basic(optional = false)
-    @Column(name = "strAPaterno", nullable = false, length = 50)
+    @Column(name = "strAPaterno")
     private String strAPaterno;
     @Basic(optional = false)
-    @Column(name = "strAMaterno", nullable = false, length = 50)
+    @Column(name = "strAMaterno")
     private String strAMaterno;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPersona")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPersona", fetch = FetchType.LAZY)
     private Collection<Contacto> contactoCollection;
 
     public Persona() {

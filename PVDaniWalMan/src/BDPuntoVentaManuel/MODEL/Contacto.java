@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -41,21 +42,21 @@ public class Contacto implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "strEmail", nullable = false, length = 25)
+    @Column(name = "strEmail")
     private String strEmail;
     @Basic(optional = false)
-    @Column(name = "strCellphone", nullable = false, length = 25)
+    @Column(name = "strCellphone")
     private String strCellphone;
     @Basic(optional = false)
-    @Column(name = "strReference", nullable = false, length = 40)
+    @Column(name = "strReference")
     private String strReference;
-    @JoinColumn(name = "idPersona", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false)
+    @JoinColumn(name = "idPersona", referencedColumnName = "id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Persona idPersona;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idContacto")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idContacto", fetch = FetchType.LAZY)
     private Collection<Supplier> supplierCollection;
 
     public Contacto() {

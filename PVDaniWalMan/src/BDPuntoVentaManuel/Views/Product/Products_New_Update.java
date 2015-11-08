@@ -48,10 +48,10 @@ public void Open_Windows_New(boolean open) {
         this.txtCodigo.setEnabled(false);
 
         this.txtName.setText(product.getStrName());
-        this.txtStock.setText(product.getIntStock().toString());
+        this.txtStock.setText(String.valueOf(product.getIntStock()));
         this.txtPrecent.setText(product.getStrPresentation());
-        this.txtPC.setText(product.getDonPC().toString());
-        this.txtPV.setText(product.getDobPV().toString());
+        this.txtPC.setText(String.valueOf(product.getDonPC()));
+        this.txtPV.setText(String.valueOf(product.getDobPV()));
         this.cmbCategories.setModel(Products_Start.ProductsProcess.getModelCategorias());
 
         this.cmbCategories.setSelectedItem(product.getIdCategoria());

@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -44,33 +45,35 @@ public class Supplier implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "strClave", nullable = false, length = 50)
+    @Column(name = "strClave")
     private String strClave;
     @Basic(optional = false)
-    @Column(name = "strBussinessName", nullable = false, length = 50)
+    @Column(name = "strBussinessName")
     private String strBussinessName;
     @Basic(optional = false)
-    @Column(name = "strNumber", nullable = false, length = 50)
+    @Column(name = "strNumber")
     private String strNumber;
     @Basic(optional = false)
-    @Column(name = "strDescripcion", nullable = false, length = 50)
+    @Column(name = "strDescripcion")
     private String strDescripcion;
     @Basic(optional = false)
-    @Column(name = "strAddress", nullable = false, length = 25)
+    @Column(name = "strAddress")
     private String strAddress;
     @Basic(optional = false)
-    @Column(name = "boolEstatus", nullable = false)
+    @Column(name = "boolEstatus")
     private boolean boolEstatus;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSuplier")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSuplier", fetch = FetchType.LAZY)
     private Collection<Request> requestCollection;
-    @JoinColumn(name = "idContacto", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false)
+    @OneToMany(mappedBy = "idSupplier", fetch = FetchType.LAZY)
+    private Collection<Po> poCollection;
+    @JoinColumn(name = "idContacto", referencedColumnName = "id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Contacto idContacto;
-    @JoinColumn(name = "idCategoria", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false)
+    @JoinColumn(name = "idCategoria", referencedColumnName = "id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Catcategoria idCategoria;
 
     public Supplier() {
@@ -155,6 +158,15 @@ public class Supplier implements Serializable {
         this.requestCollection = requestCollection;
     }
 
+    @XmlTransient
+    public Collection<Po> getPoCollection() {
+        return poCollection;
+    }
+
+    public void setPoCollection(Collection<Po> poCollection) {
+        this.poCollection = poCollection;
+    }
+
     public Contacto getIdContacto() {
         return idContacto;
     }
@@ -193,7 +205,7 @@ public class Supplier implements Serializable {
 
     @Override
     public String toString() {
-        return this.strBussinessName;
+        return "BDPuntoVentaManuel.MODEL.Supplier[ id=" + id + " ]";
     }
     
 }

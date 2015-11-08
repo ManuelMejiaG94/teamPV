@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -40,19 +41,22 @@ public class Po implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "dobTotal", nullable = false)
+    @Column(name = "dobTotal")
     private double dobTotal;
     @Basic(optional = false)
-    @Column(name = "bitEstatus", nullable = false)
+    @Column(name = "bitEstatus")
     private int bitEstatus;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPo")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPo", fetch = FetchType.LAZY)
     private Collection<Podetail> podetailCollection;
-    @JoinColumn(name = "idCurrency", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false)
+    @JoinColumn(name = "idCurrency", referencedColumnName = "id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Currency idCurrency;
+    @JoinColumn(name = "idSupplier", referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Supplier idSupplier;
 
     public Po() {
     }
@@ -106,6 +110,14 @@ public class Po implements Serializable {
 
     public void setIdCurrency(Currency idCurrency) {
         this.idCurrency = idCurrency;
+    }
+
+    public Supplier getIdSupplier() {
+        return idSupplier;
+    }
+
+    public void setIdSupplier(Supplier idSupplier) {
+        this.idSupplier = idSupplier;
     }
 
     @Override

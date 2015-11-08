@@ -12,6 +12,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -44,25 +45,25 @@ public class Request implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "doubTotal", nullable = false)
+    @Column(name = "doubTotal")
     private double doubTotal;
     @Basic(optional = false)
-    @Column(name = "datFecha", nullable = false)
+    @Column(name = "datFecha")
     @Temporal(TemporalType.TIMESTAMP)
     private Date datFecha;
     @Basic(optional = false)
-    @Column(name = "bitEstatus", nullable = false)
+    @Column(name = "bitEstatus")
     private int bitEstatus;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idRequest")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idRequest", fetch = FetchType.LAZY)
     private Collection<Requestdetail> requestdetailCollection;
-    @JoinColumn(name = "idCurrency", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false)
+    @JoinColumn(name = "idCurrency", referencedColumnName = "id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Currency idCurrency;
-    @JoinColumn(name = "idSuplier", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false)
+    @JoinColumn(name = "idSuplier", referencedColumnName = "id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Supplier idSuplier;
 
     public Request() {

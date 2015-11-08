@@ -9,6 +9,7 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -37,22 +38,22 @@ public class Podetail implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "dobQuantity", nullable = false)
+    @Column(name = "dobQuantity")
     private double dobQuantity;
     @Basic(optional = false)
-    @Column(name = "dobTotal", nullable = false)
+    @Column(name = "dobTotal")
     private double dobTotal;
     @Basic(optional = false)
-    @Column(name = "dobPc", nullable = false)
+    @Column(name = "dobPc")
     private double dobPc;
-    @JoinColumn(name = "idPo", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false)
+    @JoinColumn(name = "idPo", referencedColumnName = "id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Po idPo;
-    @JoinColumn(name = "idProducto", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false)
+    @JoinColumn(name = "idProducto", referencedColumnName = "id")
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Product idProducto;
 
     public Podetail() {

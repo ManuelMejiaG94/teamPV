@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,15 +39,15 @@ public class Sales implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "intFolio", nullable = false)
+    @Column(name = "intFolio")
     private int intFolio;
     @Basic(optional = false)
-    @Column(name = "dobTotal", nullable = false)
+    @Column(name = "dobTotal")
     private double dobTotal;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSales")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSales", fetch = FetchType.LAZY)
     private Collection<Salesdetail> salesdetailCollection;
 
     public Sales() {
