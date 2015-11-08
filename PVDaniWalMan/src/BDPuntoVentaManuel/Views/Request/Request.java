@@ -108,10 +108,16 @@ public class Request {
 
     }
     
+    public BDPuntoVentaManuel.MODEL.Request GetRequestByFolio(int folio)
+    {
+        List<BDPuntoVentaManuel.MODEL.Request> listRequest = ctrRequestExtends.RetriveRequestByFolio(folio);
+        
+        return listRequest.get(0);
+    }
+    
     public void ChargeDataByFolio(DefaultTableModel model, int folio) {
         List<BDPuntoVentaManuel.MODEL.Request> listRequest = ctrRequestExtends.RetriveRequestByFolio(folio);
         Object[] data = new Object[5];
-        String status="";
 
         for (BDPuntoVentaManuel.MODEL.Request item : listRequest) {
             data[0] = item.getId();
@@ -252,9 +258,34 @@ public class Request {
         return false;
     }
     
+    public boolean Cancel_Request(int folio)
+    {
+        try{
+            BDPuntoVentaManuel.MODEL.Request request= GetRequestByFolio(folio);
+            request.setBitEstatus(Cancel);
+            this.ctrRequest.edit(request);
+            return true;
+        }catch(Exception e)
+        {
+            Logger.getLogger(Request.class.getName()).log(Level.SEVERE, null, e);
+            return false;
+        }
+    }
     
     
-    //Variables
+//    public List<Requestdetail> getRequestDetailsByRequestId()
+//    {
+//        List<Requestdetail> listdetail=ctrRequest
+//    }
+    
+    
+    //Variables Status
+    private int create=1;
+    private int Asepted=2;
+    private int Cancel=3;
+    
+    
+    //Variables de proceso
     Process_CatCategoria CategoriasProcess;
     Process_Products productProcess;
     Process_Suppliers prosesSuppliers;
@@ -266,6 +297,8 @@ public class Request {
     IRequestDetail ctrRequestDetail;
     IProductExtends ctrProductExtends;
     ICurrency ctrCurrency;
+    
+    
     
     private void startTransaccion()
     {
@@ -282,4 +315,7 @@ public class Request {
         //Cancelamos la transaccion
         ctrProduct.getEntityManager().getTransaction().rollback();
     }
+    
+    
+    
 }
