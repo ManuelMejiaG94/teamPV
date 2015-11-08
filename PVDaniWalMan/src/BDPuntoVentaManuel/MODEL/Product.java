@@ -216,7 +216,7 @@ public class Product implements Serializable {
 
     @Override
     public String toString() {
-        return "BDPuntoVentaManuel.MODEL.Product[ id=" + id + " ]";
+        return this.strName;
     }
     
 }

@@ -116,7 +116,7 @@ public class Catcategoria implements Serializable {
 
     @Override
     public String toString() {
-        return "BDPuntoVentaManuel.MODEL.Catcategoria[ id=" + id + " ]";
+        return this.strValor;
     }
     
 }
