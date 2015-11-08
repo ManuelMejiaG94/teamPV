@@ -9,7 +9,6 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,7 +31,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Requestdetail.findById", query = "SELECT r FROM Requestdetail r WHERE r.id = :id"),
     @NamedQuery(name = "Requestdetail.findByDobPrice", query = "SELECT r FROM Requestdetail r WHERE r.dobPrice = :dobPrice"),
     @NamedQuery(name = "Requestdetail.findByDobQuantity", query = "SELECT r FROM Requestdetail r WHERE r.dobQuantity = :dobQuantity"),
-    @NamedQuery(name = "Requestdetail.findByDobTotal", query = "SELECT r FROM Requestdetail r WHERE r.dobTotal = :dobTotal")})
+    @NamedQuery(name = "Requestdetail.findByDobTotal", query = "SELECT r FROM Requestdetail r WHERE r.dobTotal = :dobTotal"),
+    @NamedQuery(name = "Requestdetail.findByBolAssigned", query = "SELECT r FROM Requestdetail r WHERE r.bolAssigned = :bolAssigned")})
 public class Requestdetail implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -49,11 +49,13 @@ public class Requestdetail implements Serializable {
     @Basic(optional = false)
     @Column(name = "dobTotal")
     private double dobTotal;
+    @Column(name = "bolAssigned")
+    private Boolean bolAssigned;
     @JoinColumn(name = "idRequest", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Request idRequest;
     @JoinColumn(name = "idProduct", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Product idProduct;
 
     public Requestdetail() {
@@ -100,6 +102,14 @@ public class Requestdetail implements Serializable {
 
     public void setDobTotal(double dobTotal) {
         this.dobTotal = dobTotal;
+    }
+
+    public Boolean getBolAssigned() {
+        return bolAssigned;
+    }
+
+    public void setBolAssigned(Boolean bolAssigned) {
+        this.bolAssigned = bolAssigned;
     }
 
     public Request getIdRequest() {

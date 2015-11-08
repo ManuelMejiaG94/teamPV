@@ -362,12 +362,14 @@ public class Request_Valid extends javax.swing.JPanel {
     }//GEN-LAST:event_btnGenerateActionPerformed
 
     private void btnPoPartialsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoPartialsActionPerformed
-        Request_Start.viewRequest.setVisible(false);
-        Request_Start.pnOptions.setVisible(false);
-        Request_Start.viewDefault.setVisible(false);
-        Request_Start.viewProcess.setVisible(false);
-        Request_Start.viewPartial.setVisible(true);
-        Request_Start.viewValid.setVisible(false);
+//        Request_Start.viewRequest.setVisible(false);
+//        Request_Start.pnOptions.setVisible(false);
+//        Request_Start.viewDefault.setVisible(false);
+//        Request_Start.viewProcess.setVisible(false);
+//        Request_Start.viewPartial.setVisible(true);
+//        Request_Start.viewValid.setVisible(false);
+        int folio=Integer.parseInt(this.lbFolio.getText());
+        Request_Start.viewPartial.OpenWindows(folio);
     }//GEN-LAST:event_btnPoPartialsActionPerformed
 
 

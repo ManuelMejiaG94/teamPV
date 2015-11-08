@@ -585,6 +585,7 @@ public class Request_New_Update extends javax.swing.JPanel {
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
         if(Request_Start.RequestProcess.SaveRequest(this.GetProductClaveByTabData(),
                 this.GetRequest(), total))
+            this.Open_NewWindows();
         {
             this.PaintViewNewDefault();
             this.btnCreateRequest.setText("Crear nueva solicitud");

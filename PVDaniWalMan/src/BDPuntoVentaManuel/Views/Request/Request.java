@@ -34,9 +34,11 @@ import BDPuntoVentaManuel.MODEL.Supplier;
 import BDPuntoVentaManuel.ViewsProcess.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
 import javax.swing.table.DefaultTableModel;
 
@@ -118,9 +120,9 @@ public class Request {
     
     public BDPuntoVentaManuel.MODEL.Request GetRequestByFolio(int folio)
     {
-        List<BDPuntoVentaManuel.MODEL.Request> listRequest = ctrRequestExtends.RetriveRequestByFolio(folio);
-        
-        return listRequest.get(0);
+//        List<BDPuntoVentaManuel.MODEL.Request> listRequest = ctrRequestExtends.RetriveRequestByFolio(folio);        
+//        return listRequest.get(0);
+        return ctrRequest.findRequest(folio);
     }
     
     public void ChargeDataByFolio(DefaultTableModel model, int folio) {
@@ -188,8 +190,8 @@ public class Request {
     {
         try{
             this.startTransaccion();
-            if(product.getIntStock()>stock)
-            {
+//            if(product.getIntStock()>stock)
+//            {
                 product.setIntStock(product.getIntStock()-stock);
                 ctrProduct.edit(product);
                 
@@ -207,10 +209,10 @@ public class Request {
                 
                 
                 return total;    
-            }else{
-                
-                errorMessage.setText("No cuenta con suficientes unidades\nPara surtir el producto");
-            }
+//            }else{
+//                
+//                errorMessage.setText("No cuenta con suficientes unidades\nPara surtir el producto");
+//            }
         }catch(Exception e)
         {
             Logger.getLogger(Request.class.getName()).log(Level.SEVERE, null, e);
@@ -237,6 +239,7 @@ public class Request {
             requestDetail.setDobPrice(Double.parseDouble(productCodes.get(i)[1].toString()));
             requestDetail.setDobQuantity(Double.parseDouble(productCodes.get(i)[2].toString()));
             requestDetail.setDobTotal(Double.parseDouble(productCodes.get(i)[3].toString()));
+            requestDetail.setBolAssigned(false);
 
             ctrRequestDetail.create(requestDetail);
         }
@@ -317,6 +320,22 @@ public class Request {
 
     }
     
+    public DefaultListModel getModelListProduct(BDPuntoVentaManuel.MODEL.Request request)
+    {
+        DefaultListModel lm=new DefaultListModel();
+        List<BDPuntoVentaManuel.MODEL.Requestdetail> listRequestDetails=(List<BDPuntoVentaManuel.MODEL.Requestdetail>) request.getRequestdetailCollection();
+        
+         for ( BDPuntoVentaManuel.MODEL.Requestdetail item : listRequestDetails ) {
+            lm.addElement(item.getIdProduct());
+       }
+         return lm;
+    }
+    public DefaultListModel getModelListProductNull()
+    {
+        DefaultListModel lm=new DefaultListModel();
+       
+         return lm;
+    }
 //    public List<Requestdetail> getRequestDetailsByRequestId()
 //    {
 //        List<Requestdetail> listdetail=ctrRequest

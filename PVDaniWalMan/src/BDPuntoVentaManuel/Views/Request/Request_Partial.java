@@ -5,6 +5,8 @@
  */
 package BDPuntoVentaManuel.Views.Request;
 
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author manuel
@@ -17,7 +19,66 @@ public class Request_Partial extends javax.swing.JPanel {
     public Request_Partial() {
         initComponents();
     }
+    
+    public void OpenWindows(int folio)
+    {
+        BDPuntoVentaManuel.MODEL.Request request=Request_Start.RequestProcess.GetRequestByFolio(folio);
+        this.ChargeData(request);
+         
+        Request_Start.viewRequest.setVisible(false);
+        Request_Start.pnOptions.setVisible(false);
+        Request_Start.viewDefault.setVisible(false);
+        Request_Start.viewProcess.setVisible(false);
+        Request_Start.viewPartial.setVisible(true);
+        Request_Start.viewValid.setVisible(false);
+    }
+    
+    private void ChargeData(BDPuntoVentaManuel.MODEL.Request request)
+    {
+        this.lbDate.setText(request.getDatFecha().toGMTString());
+        this.lbEmail.setText(request.getIdSuplier().getIdContacto().getStrEmail());
+        this.lbSupplier.setText(request.getIdSuplier().getStrBussinessName());
+        this.lbTotal.setText("$"+request.getDoubTotal());
+        
+        this.listProduct1.setModel(Request_Start.RequestProcess.getModelListProduct(request));
+        this.listProduct2.setModel(Request_Start.RequestProcess.getModelListProductNull());
 
+    }
+    
+    private void ChargeProductToPo()
+    {
+        DefaultListModel lm1=(DefaultListModel) this.listProduct1.getModel();
+        DefaultListModel lm2=(DefaultListModel) this.listProduct2.getModel();
+        
+        BDPuntoVentaManuel.MODEL.Product product=(BDPuntoVentaManuel.MODEL.Product)lm1.getElementAt(this.listProduct1.getSelectedIndex());
+        
+        lm1.removeElement(product);
+        lm2.addElement(product);
+        
+        this.listProduct1.setModel(lm1);
+        this.listProduct2.setModel(lm2);
+        
+    }
+
+    private void DeleteProductToPo()
+    {
+        DefaultListModel lm1=(DefaultListModel) this.listProduct1.getModel();
+        DefaultListModel lm2=(DefaultListModel) this.listProduct2.getModel();
+        
+        BDPuntoVentaManuel.MODEL.Product product=(BDPuntoVentaManuel.MODEL.Product)lm2.getElementAt(this.listProduct2.getSelectedIndex());
+        
+        lm2.removeElement(product);
+        lm1.addElement(product);
+        
+        this.listProduct1.setModel(lm1);
+        this.listProduct2.setModel(lm2);
+        
+    }
+    
+    private void PaintErrorMessage()
+    {
+        this.lbErrorMessage.setText("Es necesario seleccionar un producto");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,19 +92,19 @@ public class Request_Partial extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        lbSupplier = new javax.swing.JLabel();
+        lbEmail = new javax.swing.JLabel();
+        lbDate = new javax.swing.JLabel();
+        lbTotal = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        listProduct1 = new javax.swing.JList();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList();
+        listProduct2 = new javax.swing.JList();
         btnNext = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         btnGenerar = new javax.swing.JButton();
-        jLabel9 = new javax.swing.JLabel();
+        lbErrorMessage = new javax.swing.JLabel();
 
         jLabel1.setText("Provedor");
 
@@ -53,31 +114,31 @@ public class Request_Partial extends javax.swing.JPanel {
 
         jLabel4.setText("Total general");
 
-        jLabel5.setText("jLabel5");
+        lbSupplier.setText("jLabel5");
 
-        jLabel6.setText("jLabel6");
+        lbEmail.setText("jLabel6");
 
-        jLabel7.setText("jLabel7");
+        lbDate.setText("jLabel7");
 
-        jLabel8.setText("jLabel8");
+        lbTotal.setText("jLabel8");
 
-        jList1.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(listProduct1);
 
-        jList2.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane2.setViewportView(jList2);
+        jScrollPane2.setViewportView(listProduct2);
 
         btnNext.setText(">");
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
+            }
+        });
 
         btnBack.setText("<");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -93,8 +154,8 @@ public class Request_Partial extends javax.swing.JPanel {
             }
         });
 
-        jLabel9.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel9.setText("jLabel9");
+        lbErrorMessage.setForeground(new java.awt.Color(204, 0, 0));
+        lbErrorMessage.setText("jLabel9");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -108,8 +169,8 @@ public class Request_Partial extends javax.swing.JPanel {
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(48, 48, 48))
+                        .addComponent(lbErrorMessage, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -118,8 +179,8 @@ public class Request_Partial extends javax.swing.JPanel {
                                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(lbEmail, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                                    .addComponent(lbSupplier, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(47, 47, 47)
@@ -134,8 +195,8 @@ public class Request_Partial extends javax.swing.JPanel {
                                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(lbTotal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lbDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -148,14 +209,14 @@ public class Request_Partial extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel7))
+                    .addComponent(lbSupplier)
+                    .addComponent(lbDate))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel8))
+                    .addComponent(lbEmail)
+                    .addComponent(lbTotal))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(28, 28, 28)
@@ -167,13 +228,13 @@ public class Request_Partial extends javax.swing.JPanel {
                         .addComponent(btnNext)
                         .addGap(18, 18, 18)
                         .addComponent(btnBack)))
-                .addGap(43, 43, 43)
+                .addGap(18, 18, 18)
+                .addComponent(lbErrorMessage)
+                .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnGenerar)
                     .addComponent(btnCancelar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel9)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -188,12 +249,31 @@ public class Request_Partial extends javax.swing.JPanel {
 
     private void btnGenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerarActionPerformed
         Request_Start.viewRequest.setVisible(false);
-        Request_Start.pnOptions.setVisible(false);
-        Request_Start.viewDefault.setVisible(false);
+        Request_Start.pnOptions.setVisible(true);
+        Request_Start.viewDefault.setVisible(true);
+        Request_Start.viewDefault.ChargeDataTable();
         Request_Start.viewProcess.setVisible(false);
         Request_Start.viewPartial.setVisible(false);
-        Request_Start.viewValid.setVisible(true);
+        Request_Start.viewValid.setVisible(false);
     }//GEN-LAST:event_btnGenerarActionPerformed
+
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        if(this.listProduct1.getSelectedIndex()>0)
+        {
+        this.ChargeProductToPo();
+        }else{
+            
+        }
+    }//GEN-LAST:event_btnNextActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        if(this.listProduct2.getSelectedIndex()>0)
+        {
+        this.DeleteProductToPo();
+        }else{
+            
+        }
+    }//GEN-LAST:event_btnBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -205,14 +285,14 @@ public class Request_Partial extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JList jList1;
-    private javax.swing.JList jList2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lbDate;
+    private javax.swing.JLabel lbEmail;
+    private javax.swing.JLabel lbErrorMessage;
+    private javax.swing.JLabel lbSupplier;
+    private javax.swing.JLabel lbTotal;
+    private javax.swing.JList listProduct1;
+    private javax.swing.JList listProduct2;
     // End of variables declaration//GEN-END:variables
 }
