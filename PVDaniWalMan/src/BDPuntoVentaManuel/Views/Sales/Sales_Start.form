@@ -233,9 +233,9 @@
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtCantidad" alignment="0" max="32767" attributes="0"/>
+                              <Component id="txtCantidad" alignment="0" pref="149" max="32767" attributes="0"/>
                               <Component id="txtCodigo" alignment="0" max="32767" attributes="0"/>
-                              <Component id="txtFolio" alignment="0" pref="149" max="32767" attributes="0"/>
+                              <Component id="lbFolio" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -249,9 +249,9 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtFolio" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lbFolio" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="txtCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -321,7 +321,10 @@
             <Property name="text" type="java.lang.String" value="Folio"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtFolio">
+        <Component class="javax.swing.JLabel" name="lbFolio">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jLabel10"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

@@ -7,11 +7,11 @@ package BDPuntoVentaManuel.MODEL;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,6 +19,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -32,8 +34,8 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "Sales.findAll", query = "SELECT s FROM Sales s"),
     @NamedQuery(name = "Sales.findById", query = "SELECT s FROM Sales s WHERE s.id = :id"),
-    @NamedQuery(name = "Sales.findByIntFolio", query = "SELECT s FROM Sales s WHERE s.intFolio = :intFolio"),
-    @NamedQuery(name = "Sales.findByDobTotal", query = "SELECT s FROM Sales s WHERE s.dobTotal = :dobTotal")})
+    @NamedQuery(name = "Sales.findByDobTotal", query = "SELECT s FROM Sales s WHERE s.dobTotal = :dobTotal"),
+    @NamedQuery(name = "Sales.findByDatFecha", query = "SELECT s FROM Sales s WHERE s.datFecha = :datFecha")})
 public class Sales implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -42,12 +44,12 @@ public class Sales implements Serializable {
     @Column(name = "id")
     private Integer id;
     @Basic(optional = false)
-    @Column(name = "intFolio")
-    private int intFolio;
-    @Basic(optional = false)
     @Column(name = "dobTotal")
     private double dobTotal;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSales", fetch = FetchType.LAZY)
+    @Column(name = "datFecha")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date datFecha;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSales")
     private Collection<Salesdetail> salesdetailCollection;
 
     public Sales() {
@@ -57,9 +59,8 @@ public class Sales implements Serializable {
         this.id = id;
     }
 
-    public Sales(Integer id, int intFolio, double dobTotal) {
+    public Sales(Integer id, double dobTotal) {
         this.id = id;
-        this.intFolio = intFolio;
         this.dobTotal = dobTotal;
     }
 
@@ -71,20 +72,20 @@ public class Sales implements Serializable {
         this.id = id;
     }
 
-    public int getIntFolio() {
-        return intFolio;
-    }
-
-    public void setIntFolio(int intFolio) {
-        this.intFolio = intFolio;
-    }
-
     public double getDobTotal() {
         return dobTotal;
     }
 
     public void setDobTotal(double dobTotal) {
         this.dobTotal = dobTotal;
+    }
+
+    public Date getDatFecha() {
+        return datFecha;
+    }
+
+    public void setDatFecha(Date datFecha) {
+        this.datFecha = datFecha;
     }
 
     @XmlTransient

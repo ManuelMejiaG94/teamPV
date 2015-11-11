@@ -26,13 +26,13 @@ public class Sales_Start extends javax.swing.JInternalFrame {
     
     public void New_Windows()
     {
+        salesProcess=new Sales();
         this.btnOk.setText("Cerrar venta");
-//        this.ctrVenta=new Controller_Venta();
         this.modelo=new DefaultTableModel();
         this.Carge_Model();
         this.tbData.setModel(modelo);
         this.ClearWindws();
-        Defaultdata();
+        this.Defaultdata();
         this.BloquearValidateData();
     }
     private void BloquearValidateData()
@@ -43,9 +43,7 @@ public class Sales_Start extends javax.swing.JInternalFrame {
         this.txtTotalVenta.setEditable(false);
         this.txtTotalVenta.setText("0.00");
         this.txtCantidad.setText("1");
-        
     }
-    
     private void ClearWindws()
     {
         this.lbErrorsMessage.setVisible(false);
@@ -56,40 +54,16 @@ public class Sales_Start extends javax.swing.JInternalFrame {
     }
     private void Defaultdata()
     {
-//        String Folio=this.ctrVenta.getNextFolio();
-//        String[] Foliodev=Folio.split("");
-//        
-//        int limite=Foliodev.length-1;
-//        System.out.println("Limite "+limite);
-//        Foliodev[limite]=String.valueOf(Integer.parseInt(Foliodev[limite].toString())+1);
-//
-//        
-//        String FinalFolio="";
-//        
-//        for (int i = 0; i < Foliodev.length; i++) {
-//            FinalFolio=FinalFolio+Foliodev[i];
-//        }
-//        
-//        this.txtFolio.setText(FinalFolio);
-//        this.txtFolio.setEditable(false);
-
+        this.lbFolio.setText(String.valueOf(salesProcess.GetFolio()));
     }
-    
     private void Carge_Model()
     {
-    
-        
         modelo.addColumn("Codigo");
         modelo.addColumn("Nombre");
         modelo.addColumn("Cantidad");
         modelo.addColumn("Presentacion");
         modelo.addColumn("Precio");
         modelo.addColumn("Total");
-        
-        //return model;
-        
-    
-        //this.ctrVenta.addDefaultModel(modelo);
     }
     private boolean Validate_Charge()
     {
@@ -118,7 +92,6 @@ public class Sales_Start extends javax.swing.JInternalFrame {
         this.txtCodigo.setText(null);
         this.txtCantidad.setText("1");
     }
-    
     private boolean Validate_Sale()
     {
         if(StringUtils.isNullOrEmpty(this.txtEfectivo.getText()))
@@ -130,7 +103,7 @@ public class Sales_Start extends javax.swing.JInternalFrame {
         }
         return true;
     }
-    private List<Object> geProducts()
+    private List<Object> getProducts()
     {
 //        int numRows=this.tbData.getRowCount();
         List<Object> Data=new ArrayList<Object>();
@@ -149,7 +122,33 @@ public class Sales_Start extends javax.swing.JInternalFrame {
         
         return Data;
     }
-
+    private void PaintErrorProductNull()
+    {
+            this.lbErrorsMessage.setText("No existe un producto registrado con el codigo "
+                    + "solicitado");
+            this.lbErrorsMessage.setVisible(true);
+            this.lbError1.setVisible(true);
+    }
+    private void CleanErrorProductNull()
+    {
+            this.lbErrorsMessage.setVisible(false);
+            this.lbError1.setVisible(false);
+    }
+    private void PaintCostValues(double total, double subtotal)
+    {
+        this.txtSubTotal.setText(String.valueOf(subTotal));
+        this.txtTotalVenta.setText(String.valueOf(total));
+    }
+    private void PaintErroSelectedData()
+    {
+          this.lbErrorMInTB.setText("Es necesario seleccionar un registro");
+          this.lbErrorMInTB.setVisible(true);
+    }
+    private void CleanErrorSelectedData()
+    {
+        this.lbErrorMInTB.setVisible(false);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -180,7 +179,7 @@ public class Sales_Start extends javax.swing.JInternalFrame {
         btnCharge = new javax.swing.JButton();
         lbErrorsMessage = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        txtFolio = new javax.swing.JTextField();
+        lbFolio = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         txtEfectivo = new javax.swing.JTextField();
@@ -316,6 +315,8 @@ public class Sales_Start extends javax.swing.JInternalFrame {
 
         jLabel9.setText("Folio");
 
+        lbFolio.setText("jLabel10");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -340,9 +341,9 @@ public class Sales_Start extends javax.swing.JInternalFrame {
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtCantidad)
+                            .addComponent(txtCantidad, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                             .addComponent(txtCodigo)
-                            .addComponent(txtFolio, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))))
+                            .addComponent(lbFolio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(63, 63, 63))
         );
         jPanel1Layout.setVerticalGroup(
@@ -351,8 +352,8 @@ public class Sales_Start extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(txtFolio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(lbFolio))
+                .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -476,21 +477,23 @@ public class Sales_Start extends javax.swing.JInternalFrame {
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         if(this.tbData.getSelectedRow()>=0)
         {
-//            this.lbErrorMInTB.setVisible(false);
+            this.CleanErrorSelectedData();
+            int Registro=this.tbData.getSelectedRow();
+            String clave=this.tbData.getValueAt(Registro, 0).toString();
+            int cantidad = Integer.parseInt(this.tbData.getValueAt(Registro, 2).toString());
             
-//            int Registro=this.tbData.getSelectedRow();
-//            this.Total=this.Total-Double.parseDouble(this.tbData.getValueAt(Registro, 5).toString());
-//
-//            this.txtSubTotal.setText(String.valueOf(this.Total));
-//            this.txtTotalVenta.setText(String.valueOf(this.Total));
-//
-//            DefaultTableModel dtm = (DefaultTableModel) this.tbData.getModel();
-//            dtm.removeRow(this.tbData.getSelectedRow());
+            BDPuntoVentaManuel.MODEL.Product product=salesProcess.GetProductByClave(clave);
+            subTotal=subTotal-(product.getDobPV()*cantidad);
+            Total=(subTotal+((IVA*subTotal)/100));
+            this.PaintCostValues(Total, subTotal);
+            
+            DefaultTableModel dtm = (DefaultTableModel) this.tbData.getModel();
+            dtm.removeRow(this.tbData.getSelectedRow());
+            
+            salesProcess.RestarProductStock(product, cantidad);
 
-            
         }else{
-//            this.lbErrorMInTB.setText("Es necesario seleccionar un registro");
-//            this.lbErrorMInTB.setVisible(true);
+          this.PaintErroSelectedData();
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
@@ -516,18 +519,22 @@ public class Sales_Start extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtCantidadKeyTyped
 
     private void btnChargeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChargeActionPerformed
-        if(this.Validate_Charge())
-        {
-//            int cantidad=Integer.parseInt(this.txtCantidad.getText().trim());
-//            if(this.ctrVenta.SetDataTabla(this.modelo,
-//                this.txtCodigo.getText().trim(),cantidad,this.lbErrorsMessage,this.lbError1))
-//        {
-//            this.Total=this.ctrVenta.gettotal();
-//            this.txtSubTotal.setText(String.valueOf(this.Total));
-//            this.txtTotalVenta.setText(String.valueOf(this.Total));
-            this.CleanDataCharge();
-//        }
-
+        if (this.Validate_Charge()) {
+            int cantidad = Integer.parseInt(this.txtCantidad.getText().trim());
+            BDPuntoVentaManuel.MODEL.Product product=salesProcess.GetProductByClave(this.txtCodigo.getText().trim());
+            
+            if(product !=null)
+            {
+                this.CleanErrorProductNull();
+                salesProcess.AddProductToSale(modelo, product, cantidad);
+                subTotal=subTotal+(product.getDobPV()*cantidad);
+                Total=(subTotal+((IVA*subTotal)/100));
+                this.PaintCostValues(Total, subTotal);
+                this.tbData.setModel(modelo);
+                this.CleanDataCharge();
+            }else{
+                this.PaintErrorProductNull();
+            }
         }
 
     }//GEN-LAST:event_btnChargeActionPerformed
@@ -599,22 +606,28 @@ public class Sales_Start extends javax.swing.JInternalFrame {
     private javax.swing.JLabel lbErrorBtnClose;
     private javax.swing.JLabel lbErrorMInTB;
     private javax.swing.JLabel lbErrorsMessage;
+    private javax.swing.JLabel lbFolio;
     private javax.swing.JTable tbData;
     private javax.swing.JTextField txtCambio;
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtEfectivo;
-    private javax.swing.JTextField txtFolio;
     private javax.swing.JTextField txtSubTotal;
     private javax.swing.JTextField txtTotalVenta;
     // End of variables declaration//GEN-END:variables
 
     //Variables
-    private double Total;
+    private double Total=0;
+    private double subTotal=0;
+    private double IVA=5;
     private int Cantidad_Default=1;
     private DefaultTableModel modelo;
     
+    
     //Controlador
+    
   
+    //Procesos
+    private Sales salesProcess;
     
 }
