@@ -199,6 +199,7 @@ public class Sales_Start extends javax.swing.JInternalFrame {
         BDPuntoVentaManuel.MODEL.Sales sale=new BDPuntoVentaManuel.MODEL.Sales();
         sale.setDobTotal(Total);
         sale.setDatFecha(now);
+        sale.setIva(IVA);
         
         return sale;
     }

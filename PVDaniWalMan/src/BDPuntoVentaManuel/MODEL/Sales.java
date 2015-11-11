@@ -35,7 +35,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Sales.findAll", query = "SELECT s FROM Sales s"),
     @NamedQuery(name = "Sales.findById", query = "SELECT s FROM Sales s WHERE s.id = :id"),
     @NamedQuery(name = "Sales.findByDobTotal", query = "SELECT s FROM Sales s WHERE s.dobTotal = :dobTotal"),
-    @NamedQuery(name = "Sales.findByDatFecha", query = "SELECT s FROM Sales s WHERE s.datFecha = :datFecha")})
+    @NamedQuery(name = "Sales.findByDatFecha", query = "SELECT s FROM Sales s WHERE s.datFecha = :datFecha"),
+    @NamedQuery(name = "Sales.findByIva", query = "SELECT s FROM Sales s WHERE s.iva = :iva")})
 public class Sales implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -49,6 +50,9 @@ public class Sales implements Serializable {
     @Column(name = "datFecha")
     @Temporal(TemporalType.TIMESTAMP)
     private Date datFecha;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @Column(name = "IVA")
+    private Double iva;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSales")
     private Collection<Salesdetail> salesdetailCollection;
 
@@ -86,6 +90,14 @@ public class Sales implements Serializable {
 
     public void setDatFecha(Date datFecha) {
         this.datFecha = datFecha;
+    }
+
+    public Double getIva() {
+        return iva;
+    }
+
+    public void setIva(Double iva) {
+        this.iva = iva;
     }
 
     @XmlTransient

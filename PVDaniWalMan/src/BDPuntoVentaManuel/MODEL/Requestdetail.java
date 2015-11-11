@@ -150,7 +150,7 @@ public class Requestdetail implements Serializable {
 
     @Override
     public String toString() {
-        return this.idProduct.getStrName();
+        return "BDPuntoVentaManuel.MODEL.Requestdetail[ id=" + id + " ]";
     }
     
 }

@@ -11,7 +11,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -69,13 +68,13 @@ public class Product implements Serializable {
     @Column(name = "strPresentation")
     private String strPresentation;
     @JoinColumn(name = "idCategoria", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Catcategoria idCategoria;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProducto", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProducto")
     private Collection<Salesdetail> salesdetailCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProducto", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProducto")
     private Collection<Podetail> podetailCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProduct", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idProduct")
     private Collection<Requestdetail> requestdetailCollection;
 
     public Product() {
@@ -83,10 +82,6 @@ public class Product implements Serializable {
 
     public Product(Integer id) {
         this.id = id;
-    }
-    public Product(Integer id, String Nombre) {
-        this.id = id;
-        this.strName=Nombre;
     }
 
     public Product(Integer id, String strClave, String strName, double dobPV, double donPC, int intStock, String strPresentation) {
@@ -220,7 +215,7 @@ public class Product implements Serializable {
 
     @Override
     public String toString() {
-        return this.strName;
+        return "BDPuntoVentaManuel.MODEL.Product[ id=" + id + " ]";
     }
     
 }

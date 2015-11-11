@@ -11,7 +11,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -50,13 +49,12 @@ public class Contacto implements Serializable {
     @Basic(optional = false)
     @Column(name = "strCellphone")
     private String strCellphone;
-    @Basic(optional = false)
     @Column(name = "strReference")
     private String strReference;
     @JoinColumn(name = "idPersona", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Persona idPersona;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idContacto", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idContacto")
     private Collection<Supplier> supplierCollection;
 
     public Contacto() {
@@ -66,11 +64,10 @@ public class Contacto implements Serializable {
         this.id = id;
     }
 
-    public Contacto(Integer id, String strEmail, String strCellphone, String strReference) {
+    public Contacto(Integer id, String strEmail, String strCellphone) {
         this.id = id;
         this.strEmail = strEmail;
         this.strCellphone = strCellphone;
-        this.strReference = strReference;
     }
 
     public Integer getId() {
