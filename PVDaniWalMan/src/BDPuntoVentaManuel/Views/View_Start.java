@@ -13,6 +13,8 @@ import BDPuntoVentaManuel.Views.Product.Products_Start;
 import BDPuntoVentaManuel.Views.PurchaseOrder.PO_Start;
 import BDPuntoVentaManuel.Views.Sales.Sales_Start;
 import BDPuntoVentaManuel.Views.Supplier.Suppliers_Start;
+import java.text.NumberFormat;
+import java.util.Locale;
 import javax.swing.JInternalFrame;
 
 /**
@@ -30,12 +32,18 @@ public class View_Start extends javax.swing.JFrame {
     public View_Start() {
         initComponents();
         this.setLocationRelativeTo(null);
-         this.setExtendedState(this.MAXIMIZED_BOTH);
+        this.setExtendedState(this.MAXIMIZED_BOTH);
+        this.ChargeDefaultCurrency();
  
        this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
 //        this.setVisible(true);
         //this.setBackground();
 //        this.Start_Conection_Views();
+    }
+    
+    private void ChargeDefaultCurrency()
+    {
+        currencySystem=NumberFormat.getCurrencyInstance(Locale.US);
     }
     
 //    private void setBackground()
@@ -317,5 +325,6 @@ public class View_Start extends javax.swing.JFrame {
     Suppliers_Start view_Suppliers;
     Request_Start view_Orders;
     PO_Start view_PO;
+    public static NumberFormat currencySystem;
 
 }

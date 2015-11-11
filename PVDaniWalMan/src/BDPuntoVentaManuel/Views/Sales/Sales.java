@@ -7,11 +7,15 @@ package BDPuntoVentaManuel.Views.Sales;
 
 import BDPuntoVentaManuel.ABSTRACT.IProduct;
 import BDPuntoVentaManuel.ABSTRACT.ISales;
+import BDPuntoVentaManuel.ABSTRACT.ISalesDetail;
 import BDPuntoVentaManuel.CONCREATE.ExtendsAbstracts.ISalesExtends;
 import BDPuntoVentaManuel.CONCREATE.ExtendsAbstracts.IProductExtends;
 import BDPuntoVentaManuel.FACTORY.FactoryProduct;
 import BDPuntoVentaManuel.FACTORY.FactorySales;
+import BDPuntoVentaManuel.FACTORY.FactorySalesDetail;
 import BDPuntoVentaManuel.MODEL.Product;
+import BDPuntoVentaManuel.MODEL.Salesdetail;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
@@ -33,6 +37,7 @@ public class Sales {
         ctrProductExtends=new FactoryProduct().getInstanceAbstractExtends();
         ctrSalesExtends=new FactorySales().getInstanceExtends();
         ctrProduct=new FactoryProduct().getInstanceAbstract();
+        ctrSalesDetail=new FactorySalesDetail().getInstanceAbstract();
     }
     
     public Product GetProductByClave(String clave)
@@ -83,10 +88,57 @@ public class Sales {
         
     }
     
+     public void RestarListProductsStock(List<Product> listproduct)
+    {
+        try{
+            for(Product product: listproduct)
+            {
+                int stockProduct=product.getIntStock();
+                Product itemUpdate=ctrProduct.findProduct(product.getId());
+                
+                itemUpdate.setIntStock(itemUpdate.getIntStock()+stockProduct);
+            
+                ctrProduct.edit(product);
+            }
+            
+        }catch(Exception e)
+        {
+            Logger.getLogger(Sales.class.getName()).log(Level.SEVERE, null, e);
+        }
+        
+    }
+    
+    public boolean CreateNewSale(BDPuntoVentaManuel.MODEL.Sales _sale,List<String[]> listProductObject)
+    {
+        try{
+            ctrSales.create(_sale);
+            for (int i=0 ; i<listProductObject.size(); i++) {
+                BDPuntoVentaManuel.MODEL.Salesdetail salesDetails=new Salesdetail();
+                Product product=GetProductByClave(listProductObject.get(i)[0]);
+                
+                salesDetails.setIdSales(_sale);
+                salesDetails.setIdProducto(product);
+                salesDetails.setIntquantity(Integer.parseInt(listProductObject.get(i)[2]));
+                salesDetails.setDobPrice(Double.parseDouble(listProductObject.get(i)[1]));
+                salesDetails.setDobTotal(Double.parseDouble(listProductObject.get(i)[3]));
+                ctrSalesDetail.create(salesDetails);
+            }
+            
+            return true;
+        }catch(Exception e)
+        {
+            Logger.getLogger(Sales.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return false;
+    }
+    
+    
     //Controladora
     private ISales ctrSales;
+    private ISalesDetail ctrSalesDetail;
     private IProduct ctrProduct;
     private IProductExtends ctrProductExtends;
     private ISalesExtends ctrSalesExtends;
+    
     
 }

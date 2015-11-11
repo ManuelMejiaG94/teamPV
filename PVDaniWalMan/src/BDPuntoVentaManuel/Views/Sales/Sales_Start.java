@@ -5,9 +5,15 @@
  */
 package BDPuntoVentaManuel.Views.Sales;
 
+import BDPuntoVentaManuel.MODEL.Product;
+import BDPuntoVentaManuel.Views.View_Start;
 import com.mysql.jdbc.StringUtils;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -27,6 +33,7 @@ public class Sales_Start extends javax.swing.JInternalFrame {
     public void New_Windows()
     {
         salesProcess=new Sales();
+        listProducts=new ArrayList<Product>();
         this.btnOk.setText("Cerrar venta");
         this.modelo=new DefaultTableModel();
         this.Carge_Model();
@@ -43,6 +50,8 @@ public class Sales_Start extends javax.swing.JInternalFrame {
         this.txtTotalVenta.setEditable(false);
         this.txtTotalVenta.setText("0.00");
         this.txtCantidad.setText("1");
+        this.txtCambio.setText("0.00");
+        this.txtEfectivo.setText(null);
     }
     private void ClearWindws()
     {
@@ -103,25 +112,6 @@ public class Sales_Start extends javax.swing.JInternalFrame {
         }
         return true;
     }
-    private List<Object> getProducts()
-    {
-//        int numRows=this.tbData.getRowCount();
-        List<Object> Data=new ArrayList<Object>();
-        
-        
-//        for (int i = 0; i < numRows; i++) {
-//            String Codigo=this.tbData.getValueAt(i, 0).toString();
-//            int Cantidad=Integer.parseInt(this.tbData.getValueAt(i, 2).toString());
-//                        
-//            Model_Producto producto=(Model_Producto) this.ctrVenta.getProductUniqFull(Codigo);
-//            producto.setIntStock(Cantidad);
-//            producto.setTotal(producto.getIntStock()*producto.getDobPV());
-//            
-//            Data.add(producto);
-//        }
-        
-        return Data;
-    }
     private void PaintErrorProductNull()
     {
             this.lbErrorsMessage.setText("No existe un producto registrado con el codigo "
@@ -136,8 +126,8 @@ public class Sales_Start extends javax.swing.JInternalFrame {
     }
     private void PaintCostValues(double total, double subtotal)
     {
-        this.txtSubTotal.setText(String.valueOf(subTotal));
-        this.txtTotalVenta.setText(String.valueOf(total));
+        this.txtSubTotal.setText(View_Start.currencySystem.format(subtotal));
+        this.txtTotalVenta.setText(View_Start.currencySystem.format(total));
     }
     private void PaintErroSelectedData()
     {
@@ -147,6 +137,70 @@ public class Sales_Start extends javax.swing.JInternalFrame {
     private void CleanErrorSelectedData()
     {
         this.lbErrorMInTB.setVisible(false);
+    }
+    private boolean ValidateTotal()
+    {
+        boolean validate=true;
+        if (StringUtils.isNullOrEmpty(this.txtEfectivo.getText())) {
+            this.lbErrorBtnClose.setText("Es necesario ingresar el monto dado por el cliente");
+            this.lbErrorBtnClose.setVisible(true);
+             validate= false;
+        }
+        
+        return validate;
+    }
+    private void clearErrorValidateTotal()
+    {
+        this.lbErrorBtnClose.setVisible(false);
+    }
+    private void PaintErrorAddToSale()
+    {
+        this.lbErrorsMessage.setText("El producto ya ha sido agregado a la venta");
+        this.lbErrorsMessage.setVisible(true);
+    }
+    private void CleanErrorAddToSale()
+    {
+        this.lbErrorsMessage.setVisible(false);
+    }
+    private void PaintErrorFailedCreateSale()
+    {
+        this.lbErrorsMessage.setText("No fue posible crear la venta");
+        this.lbErrorsMessage.setVisible(true);
+    }
+    private void ClearErrorFailedCreateSale()
+    {
+        this.lbErrorsMessage.setVisible(false);
+    }
+    private List<String[]> GetObjectProduct()
+    {
+        int rows=this.tbData.getRowCount();
+        listObjectProduct=new ArrayList<>();
+        
+        
+        for (int i = 0; i < rows; i++) {
+            String []data=new String[4];
+            data[0]=this.tbData.getValueAt(i,0).toString();
+            data[1]=this.tbData.getValueAt(i,4).toString();
+            data[2]=this.tbData.getValueAt(i,2).toString();
+            data[3]=this.tbData.getValueAt(i,5).toString();
+            
+            
+            listObjectProduct.add(data);
+        }
+
+        return listObjectProduct;
+    }
+    
+    
+    private BDPuntoVentaManuel.MODEL.Sales getSale()
+    {
+        Date now = new Date(System.currentTimeMillis());
+
+        BDPuntoVentaManuel.MODEL.Sales sale=new BDPuntoVentaManuel.MODEL.Sales();
+        sale.setDobTotal(Total);
+        sale.setDatFecha(now);
+        
+        return sale;
     }
     
     /**
@@ -525,13 +579,20 @@ public class Sales_Start extends javax.swing.JInternalFrame {
             
             if(product !=null)
             {
-                this.CleanErrorProductNull();
-                salesProcess.AddProductToSale(modelo, product, cantidad);
-                subTotal=subTotal+(product.getDobPV()*cantidad);
-                Total=(subTotal+((IVA*subTotal)/100));
-                this.PaintCostValues(Total, subTotal);
-                this.tbData.setModel(modelo);
-                this.CleanDataCharge();
+                if (!listProducts.contains(product)) {
+                    
+                    this.CleanErrorAddToSale();
+                    this.CleanErrorProductNull();
+                    listProducts.add(product);
+                    salesProcess.AddProductToSale(modelo, product, cantidad);
+                    subTotal = subTotal + (product.getDobPV() * cantidad);
+                    Total = (subTotal + ((IVA * subTotal) / 100));
+                    this.PaintCostValues(Total, subTotal);
+                    this.tbData.setModel(modelo);
+                    this.CleanDataCharge();
+                } else {
+                    this.PaintErrorAddToSale();
+                }
             }else{
                 this.PaintErrorProductNull();
             }
@@ -548,36 +609,50 @@ public class Sales_Start extends javax.swing.JInternalFrame {
         {
             evt.consume();
         }
-
-        //        this.txtCambio.setText(String.valueOf(
-            //                Double.parseDouble(this.txtTotalVenta.getText())
-            //                        -
-            //                        Double.parseDouble(this.txtEfectivo.getText())));
-
     }//GEN-LAST:event_txtEfectivoKeyTyped
 
     private void btnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOkActionPerformed
 
+        
+        
         if(btnOk.getText().equals("Finalizar Venta"))
         {
             if(this.Validate_Sale()){
-//                Object o=this.ctrVenta.getSaleModel(this.txtFolio.getText().trim(),Double.parseDouble(this.txtTotalVenta.getText().trim()));
-//                if(this.ctrVenta.NewSale(this.geProducts(),o))
-//                {
-//                    this.btnOk.setText("Cerrar venta");
-//                    this.New_Windows();
-//                }
+                if(salesProcess.CreateNewSale(this.getSale(), this.GetObjectProduct()))
+                {
+                    this.ClearErrorFailedCreateSale();
+                    this.btnOk.setText("Cerrar venta");
+                    this.New_Windows();
+                    
+                }else
+                {
+                    this.PaintErrorFailedCreateSale();
+                }
             }
         }else if(btnOk.getText().equals("Cerrar venta")){
-//            this.btnOk.setText("Finalizar Venta");
-//            double cambio=Double.parseDouble(this.txtEfectivo.getText())-Double.parseDouble(this.txtTotalVenta.getText());
-//            System.out.println("El cambio es de "+cambio+"\n"+this.txtTotalVenta.getText()+"\n"+this.txtTotalVenta.getText());
-//            this.txtCambio.setText(String.valueOf(cambio));
+            if(ValidateTotal())
+            {
+                clearErrorValidateTotal();
+                double _total=Total;//Double.parseDouble(this.txtTotalVenta.getText());
+                double _efectivo=Double.parseDouble(this.txtEfectivo.getText());
+                double cambio=_efectivo-_total;
+                if(cambio>=0)
+                {
+                    
+                    this.lbErrorBtnClose.setVisible(false);
+                    this.txtCambio.setText(View_Start.currencySystem.format(cambio));
+                    this.btnOk.setText("Finalizar Venta");
+                }else{
+                    this.lbErrorBtnClose.setText("La cantidad dada no cubre el gasto de la venta");
+                    this.lbErrorBtnClose.setVisible(true);
+                }
+                
+            }
         }
     }//GEN-LAST:event_btnOkActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-//        this.process.btnCancel(this);
+        salesProcess.RestarListProductsStock(listProducts);
         this.dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
 
@@ -622,6 +697,8 @@ public class Sales_Start extends javax.swing.JInternalFrame {
     private double IVA=5;
     private int Cantidad_Default=1;
     private DefaultTableModel modelo;
+    private List<Product> listProducts;
+    private List<String[]> listObjectProduct;
     
     
     //Controlador

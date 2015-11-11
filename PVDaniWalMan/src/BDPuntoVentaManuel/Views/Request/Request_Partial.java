@@ -5,7 +5,9 @@
  */
 package BDPuntoVentaManuel.Views.Request;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultListModel;
 
@@ -38,7 +40,10 @@ public class Request_Partial extends javax.swing.JPanel {
     
     private void ChargeData(BDPuntoVentaManuel.MODEL.Request request)
     {
-        this.lbDate.setText(request.getDatFecha().toGMTString());
+           
+        SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy");
+
+        this.lbDate.setText(date.format(request.getDatFecha()));
         this.lbEmail.setText(request.getIdSuplier().getIdContacto().getStrEmail());
         this.lbSupplier.setText(request.getIdSuplier().getStrBussinessName());
         this.lbTotal.setText("$"+request.getDoubTotal());

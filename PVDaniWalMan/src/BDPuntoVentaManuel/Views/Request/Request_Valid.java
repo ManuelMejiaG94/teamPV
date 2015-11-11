@@ -7,6 +7,7 @@ package BDPuntoVentaManuel.Views.Request;
 
 import BDPuntoVentaManuel.MODEL.Po;
 import BDPuntoVentaManuel.MODEL.Requestdetail;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -62,11 +63,11 @@ public class Request_Valid extends javax.swing.JPanel {
     private void PaintDataDetail(int folio)
     {
         SetModelTable();
-        
+        SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy");
         BDPuntoVentaManuel.MODEL.Request request=Request_Start.RequestProcess.GetRequestByFolio(folio);
         
         this.lbFolio.setText(request.getId().toString());
-        this.lbDate.setText(request.getDatFecha().toString());
+        this.lbDate.setText(date.format(request.getDatFecha()));
         
         this.lbEmail.setText(request.getIdSuplier().getIdContacto().getStrEmail());
         this.lbSupplier.setText(request.getIdSuplier().getStrBussinessName());
