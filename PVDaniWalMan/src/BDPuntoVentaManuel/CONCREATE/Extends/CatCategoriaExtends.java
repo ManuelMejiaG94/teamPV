@@ -18,7 +18,7 @@ public class CatCategoriaExtends {
     
     public CatCategoriaExtends()
     {
-        this.emf=Persistence.createEntityManagerFactory("BDPuntoVentaManuelPU");
+        this.emf=Persistence.createEntityManagerFactory("PVDaniWalManPU");
     }
     
     public EntityManager getEntityManager()

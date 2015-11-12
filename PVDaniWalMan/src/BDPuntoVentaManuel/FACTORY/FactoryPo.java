@@ -7,6 +7,8 @@ package BDPuntoVentaManuel.FACTORY;
 
 import BDPuntoVentaManuel.ABSTRACT.IPO;
 import BDPuntoVentaManuel.CONCREAT.PoJpaController;
+import BDPuntoVentaManuel.CONCREATE.Extends.PoJPAControllerExtends;
+import BDPuntoVentaManuel.CONCREATE.ExtendsAbstracts.IPoExtends;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -35,6 +37,17 @@ public class FactoryPo {
         try{
             PoJpaController po= new PoJpaController();
             return (IPO) po;
+        }catch(Exception ex)
+        {
+            Logger.getLogger(FactoryPo.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+     public IPoExtends getInstanceExtends()
+    {
+        try{
+            PoJPAControllerExtends po= new PoJPAControllerExtends();
+            return (IPoExtends) po;
         }catch(Exception ex)
         {
             Logger.getLogger(FactoryPo.class.getName()).log(Level.SEVERE, null, ex);

@@ -7,10 +7,12 @@ package BDPuntoVentaManuel.MODEL;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,6 +22,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -34,7 +38,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Po.findAll", query = "SELECT p FROM Po p"),
     @NamedQuery(name = "Po.findById", query = "SELECT p FROM Po p WHERE p.id = :id"),
     @NamedQuery(name = "Po.findByDobTotal", query = "SELECT p FROM Po p WHERE p.dobTotal = :dobTotal"),
-    @NamedQuery(name = "Po.findByBitEstatus", query = "SELECT p FROM Po p WHERE p.bitEstatus = :bitEstatus")})
+    @NamedQuery(name = "Po.findByBitEstatus", query = "SELECT p FROM Po p WHERE p.bitEstatus = :bitEstatus"),
+    @NamedQuery(name = "Po.findByDatFechaGenerada", query = "SELECT p FROM Po p WHERE p.datFechaGenerada = :datFechaGenerada")})
 public class Po implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -48,13 +53,16 @@ public class Po implements Serializable {
     @Basic(optional = false)
     @Column(name = "bitEstatus")
     private int bitEstatus;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPo")
+    @Column(name = "datFechaGenerada")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date datFechaGenerada;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idPo", fetch = FetchType.LAZY)
     private Collection<Podetail> podetailCollection;
     @JoinColumn(name = "idSupplier", referencedColumnName = "id")
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Supplier idSupplier;
     @JoinColumn(name = "idCurrency", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Currency idCurrency;
 
     public Po() {
@@ -92,6 +100,14 @@ public class Po implements Serializable {
 
     public void setBitEstatus(int bitEstatus) {
         this.bitEstatus = bitEstatus;
+    }
+
+    public Date getDatFechaGenerada() {
+        return datFechaGenerada;
+    }
+
+    public void setDatFechaGenerada(Date datFechaGenerada) {
+        this.datFechaGenerada = datFechaGenerada;
     }
 
     @XmlTransient

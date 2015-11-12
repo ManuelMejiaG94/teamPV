@@ -32,6 +32,7 @@ import BDPuntoVentaManuel.MODEL.Product;
 import BDPuntoVentaManuel.MODEL.Requestdetail;
 import BDPuntoVentaManuel.MODEL.Supplier;
 import BDPuntoVentaManuel.ViewsProcess.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -105,11 +106,13 @@ public class Request {
         List<BDPuntoVentaManuel.MODEL.Request> listRequest = ctrRequest.findRequestEntities(100, 1);
         Object[] data = new Object[5];
         String status="";
+        SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy");
+        
 
         for (BDPuntoVentaManuel.MODEL.Request item : listRequest) {
             data[0] = item.getId();
             data[1] = item.getIdSuplier().getStrBussinessName();
-            data[2] = item.getDatFecha();
+            data[2] = date.format(item.getDatFecha());
             data[3] = item.getDoubTotal();
             data[4] = this.StatusRequest(item);
 
@@ -128,11 +131,12 @@ public class Request {
     public void ChargeDataByFolio(DefaultTableModel model, int folio) {
         List<BDPuntoVentaManuel.MODEL.Request> listRequest = ctrRequestExtends.RetriveRequestByFolio(folio);
         Object[] data = new Object[5];
+        SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy");
 
         for (BDPuntoVentaManuel.MODEL.Request item : listRequest) {
             data[0] = item.getId();
             data[1] = item.getIdSuplier().getStrBussinessName();
-            data[2] = item.getDatFecha();
+            data[2] = date.format(item.getDatFecha());
             data[3] = item.getDoubTotal();
             data[4] = this.StatusRequest(item);
 
@@ -144,11 +148,12 @@ public class Request {
         List<BDPuntoVentaManuel.MODEL.Request> listRequest = ctrRequestExtends.RetriveRequestBySupplierAndStatus(supplier, statusId+1);
         Object[] data = new Object[5];
         String status="";
+        SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy");
 
         for (BDPuntoVentaManuel.MODEL.Request item : listRequest) {
             data[0] = item.getId();
             data[1] = item.getIdSuplier().getStrBussinessName();
-            data[2] = item.getDatFecha();
+            data[2] = date.format(item.getDatFecha());
             data[3] = item.getDoubTotal();
             data[4] = this.StatusRequest(item);
 
@@ -294,6 +299,7 @@ public class Request {
 
             po.setBitEstatus(pocreate);
             po.setDobTotal(request.getDoubTotal());
+            po.setDatFechaGenerada(request.getDatFecha());
             po.setIdCurrency(request.getIdCurrency());
             po.setIdSupplier(request.getIdSuplier());
             ctrPo.create(po);

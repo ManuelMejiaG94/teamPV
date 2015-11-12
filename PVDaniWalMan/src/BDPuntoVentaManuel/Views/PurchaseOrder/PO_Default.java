@@ -6,6 +6,7 @@
 package BDPuntoVentaManuel.Views.PurchaseOrder;
 
 import BDPuntoVentaManuel.Views.Request.*;
+import java.awt.event.ItemEvent;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -29,7 +30,37 @@ public class PO_Default extends javax.swing.JPanel {
     
     private void Charge_Data_Default()
     {
-//        this.cmbCategorias.setModel(Orders_Start.RequestProcess.getModelCategorias());
+        this.cmbCategoria.setModel(PO_Start.PoProcess.getModelCategorias());
+        
+        //Pintamos los datos por default en la tabla
+        this.PaintDataDefaultInTable();
+        
+    }
+    
+    private void PaintDataDefaultInTableByStatus(int status)
+    {
+        this.ResetTableDefault();
+        PO_Start.PoProcess.PainDataTableByStatus(modelTab, status);
+        this.tbData.setModel(modelTab);
+    }
+    private void PaintDataDefaultInTableByStatusAndSupplier(int status,BDPuntoVentaManuel.MODEL.Supplier supplier)
+    {
+        this.ResetTableDefault();
+        PO_Start.PoProcess.PainDataTableByStatusAndSupplier(modelTab, status, supplier);
+        this.tbData.setModel(modelTab);
+    }
+    
+    private void PaintDataDefaultInTable()
+    {
+        this.ResetTableDefault();
+        PO_Start.PoProcess.PainDefaultDataTable(modelTab);
+        this.tbData.setModel(modelTab);
+    }
+    
+    private void ResetTableDefault()
+    {
+        this.SetModelTable();
+        this.tbData.setModel(modelTab);
     }
     
     private void SetModelTable()
@@ -52,7 +83,7 @@ public class PO_Default extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        cmbCategorias = new javax.swing.JComboBox();
+        cmbSupplier = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
@@ -60,11 +91,20 @@ public class PO_Default extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbData = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
+        cmbStatus = new javax.swing.JComboBox();
+        jLabel5 = new javax.swing.JLabel();
+        cmbCategoria = new javax.swing.JComboBox();
 
         setForeground(new java.awt.Color(255, 0, 51));
 
-        jLabel1.setText("Categoria");
+        jLabel1.setText("Supplier");
+
+        cmbSupplier.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar" }));
+        cmbSupplier.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbSupplierItemStateChanged(evt);
+            }
+        });
 
         jLabel2.setText("Numero de folio");
 
@@ -85,7 +125,20 @@ public class PO_Default extends javax.swing.JPanel {
 
         jLabel4.setText("Estatus");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Activas", "Inactivas" }));
+        cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Activas", "Inactivas" }));
+        cmbStatus.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbStatusItemStateChanged(evt);
+            }
+        });
+
+        jLabel5.setText("Categoria");
+
+        cmbCategoria.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbCategoriaItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -93,59 +146,101 @@ public class PO_Default extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)))
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox2, 0, 211, Short.MAX_VALUE)
-                            .addComponent(cmbCategorias, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24)
-                        .addComponent(jLabel3)
+                            .addComponent(cmbStatus, 0, 211, Short.MAX_VALUE)
+                            .addComponent(cmbCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(24, 24, 24)
+                                .addComponent(jLabel3))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmbSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(cmbCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(btnSearch)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jLabel3)
+                    .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
+                    .addComponent(jLabel1)
+                    .addComponent(cmbSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmbStatusItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbStatusItemStateChanged
+                
+        if (this.cmbStatus.getSelectedIndex() <= 0) {
+            this.PaintDataDefaultInTable();
+            this.cmbSupplier.setModel(PO_Start.PoProcess.getModelSuppliersDefault(null));
+        } else if ((this.cmbStatus.getSelectedIndex() > 0) || (this.cmbSupplier.getSelectedIndex() != 0)) {
+            this.cmbSupplier.setModel(PO_Start.PoProcess.getModelSuppliersDefault(null));
+            if (evt.getStateChange() == ItemEvent.SELECTED) {
+                BDPuntoVentaManuel.MODEL.Supplier supplier
+                        = (BDPuntoVentaManuel.MODEL.Supplier) this.cmbSupplier.getSelectedItem();
+                this.PaintDataDefaultInTableByStatusAndSupplier(this.cmbStatus.getSelectedIndex(), supplier);
+        }
+        }
+        else if ((this.cmbStatus.getSelectedIndex() > 0) || (this.cmbSupplier.getSelectedIndex() == 0)) {
+            this.PaintDataDefaultInTableByStatus(this.cmbStatus.getSelectedIndex());
+        }
+    }//GEN-LAST:event_cmbStatusItemStateChanged
+
+    private void cmbCategoriaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbCategoriaItemStateChanged
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+                BDPuntoVentaManuel.MODEL.Catcategoria categori
+                        = (BDPuntoVentaManuel.MODEL.Catcategoria) this.cmbCategoria.getSelectedItem();
+                this.cmbSupplier.setModel(PO_Start.PoProcess.getModelSuppliers(categori));
+        }
+    }//GEN-LAST:event_cmbCategoriaItemStateChanged
+
+    private void cmbSupplierItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbSupplierItemStateChanged
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+                BDPuntoVentaManuel.MODEL.Supplier supplier
+                        = (BDPuntoVentaManuel.MODEL.Supplier) this.cmbSupplier.getSelectedItem();
+                this.PaintDataDefaultInTableByStatusAndSupplier(this.cmbStatus.getSelectedIndex(), supplier);
+        }
+    }//GEN-LAST:event_cmbSupplierItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSearch;
-    private javax.swing.JComboBox cmbCategorias;
-    private javax.swing.JComboBox jComboBox2;
+    private javax.swing.JComboBox cmbCategoria;
+    private javax.swing.JComboBox cmbStatus;
+    private javax.swing.JComboBox cmbSupplier;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tbData;

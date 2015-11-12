@@ -12,6 +12,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -56,13 +57,13 @@ public class Request implements Serializable {
     @Basic(optional = false)
     @Column(name = "bitEstatus")
     private int bitEstatus;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idRequest")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idRequest", fetch = FetchType.LAZY)
     private Collection<Requestdetail> requestdetailCollection;
     @JoinColumn(name = "idCurrency", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Currency idCurrency;
     @JoinColumn(name = "idSuplier", referencedColumnName = "id")
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Supplier idSuplier;
 
     public Request() {

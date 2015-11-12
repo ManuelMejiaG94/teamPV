@@ -1,0 +1,5 @@
+/***12/11/2015
+/*******Se agrego el nuevo campo fecha a la table Po
+
+ALTER TABLE `puntoventa`.`po`   
+  ADD COLUMN `datFechaGenerada` DATETIME NULL AFTER `idSupplier`;

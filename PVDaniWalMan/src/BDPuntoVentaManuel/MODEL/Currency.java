@@ -11,6 +11,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -42,9 +43,9 @@ public class Currency implements Serializable {
     @Basic(optional = false)
     @Column(name = "strValor")
     private String strValor;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCurrency")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCurrency", fetch = FetchType.LAZY)
     private Collection<Request> requestCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCurrency")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCurrency", fetch = FetchType.LAZY)
     private Collection<Po> poCollection;
 
     public Currency() {
