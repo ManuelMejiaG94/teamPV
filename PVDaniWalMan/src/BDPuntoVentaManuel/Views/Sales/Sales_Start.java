@@ -592,8 +592,7 @@ public class Sales_Start extends javax.swing.JInternalFrame {
                     this.tbData.setModel(modelo);
                     this.CleanDataCharge();
                 } else {
-                    this.PaintErrorAddToSale();
-                }
+                    this.PaintErrorAddToSale();                }
             }else{
                 this.PaintErrorProductNull();
             }

@@ -404,6 +404,6 @@ public class Request_Valid extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private DefaultTableModel modelTable;
-    boolean visitError=false;
+    private boolean visitError=false;
 
 }

@@ -6,15 +6,27 @@
 package BDPuntoVentaManuel.Views.PurchaseOrder;
 
 import BDPuntoVentaManuel.ABSTRACT.IPO;
+import BDPuntoVentaManuel.ABSTRACT.IPoDetail;
+import BDPuntoVentaManuel.ABSTRACT.IProduct;
 import BDPuntoVentaManuel.CONCREAT.PoJpaController;
+import BDPuntoVentaManuel.CONCREATE.ExtendsAbstracts.IPoDetailExtends;
 import BDPuntoVentaManuel.CONCREATE.ExtendsAbstracts.IPoExtends;
 import BDPuntoVentaManuel.FACTORY.FactoryPo;
+import BDPuntoVentaManuel.FACTORY.FactoryPoDetail;
+import BDPuntoVentaManuel.FACTORY.FactoryProduct;
 import BDPuntoVentaManuel.MODEL.Catcategoria;
+import BDPuntoVentaManuel.MODEL.Po;
+import BDPuntoVentaManuel.MODEL.Podetail;
+import BDPuntoVentaManuel.MODEL.Product;
 import BDPuntoVentaManuel.MODEL.Supplier;
 import BDPuntoVentaManuel.ViewsProcess.Process_CatCategoria;
 import BDPuntoVentaManuel.ViewsProcess.Process_Suppliers;
+import com.mysql.jdbc.StringUtils;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
 
@@ -35,6 +47,9 @@ public class PO {
         SupplierProcess=new Process_Suppliers();
         ctrPo=new FactoryPo().getInstanceAbstract();
         ctrPoExtends=new FactoryPo().getInstanceExtends();
+        ctrPoDetails=new FactoryPoDetail().getInstanceAbstract();
+        ctrPoDetailsExtends=new FactoryPoDetail().getInstanceExtends();
+        ctrProduct=new FactoryProduct().getInstanceAbstract();
     }
     
      public DefaultComboBoxModel getModelCategorias() {
@@ -112,9 +127,71 @@ public class PO {
              model.addRow(data);
          }
      }
+    
+    public BDPuntoVentaManuel.MODEL.Po GetPoByFolio(int folio)
+    {
+        return ctrPo.findPo(folio);
+    }
+    
+
+    
+    public void ChargeData(DefaultTableModel model,Po po)
+    {
+     List<BDPuntoVentaManuel.MODEL.Podetail> listPo= ctrPoDetailsExtends.GetPoDetaiByPo(po);
+         Object []data=new Object[5];
+         if(listPo.size()>0)
+         {
+         for (BDPuntoVentaManuel.MODEL.Podetail itemPo : listPo) {
+             data[0]=itemPo.getId();
+             data[1]=itemPo.getIdProducto().getStrName();
+             data[2]=itemPo.getDobPc();
+             data[3]=itemPo.getDobQuantity();
+             data[4]=itemPo.getDobTotal();
+             
+             model.addRow(data);
+         }
+         }
+    }
+    
+    public boolean ReseptPpProduct(int folio)
+    {
+        Po po=ctrPo.findPo(folio);
+        
+        List<Podetail> listDetails=(List<Podetail>)po.getPodetailCollection();
+        try{
+        if(listDetails.size()>0)
+        {
+            for(Podetail itemPoDetails: listDetails)
+            {
+                Product itemProduct=itemPoDetails.getIdProducto();
+                double stockProduct=Double.parseDouble(String.valueOf(itemProduct.getIntStock()))+itemPoDetails.getDobQuantity();
+                
+                itemProduct.setIntStock(stockProduct);
+                
+                ctrProduct.edit(itemProduct);
+               
+            }
+        }
+        po.setBitEstatus(poClosed);
+        ctrPo.edit(po);
+        
+        return true;
+         }catch(Exception e)
+                {
+                    Logger.getLogger(PO.class.getName()).log(Level.SEVERE, null, e);
+                }
+        
+        return false;
+    }
+    
+    
     //Controladoras
     private IPO ctrPo;
     private IPoExtends ctrPoExtends;
+    private IPoDetail ctrPoDetails;
+    private IPoDetailExtends ctrPoDetailsExtends;
+    private IProduct ctrProduct;
+    
     
      //Estatus de las ordenes de compra
     private int pocreate=1;

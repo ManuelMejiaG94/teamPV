@@ -3,3 +3,8 @@
 
 ALTER TABLE `puntoventa`.`po`   
   ADD COLUMN `datFechaGenerada` DATETIME NULL AFTER `idSupplier`;
+
+/***12/11/2015
+/*******Se modifico la propiedad del stock del producto
+ALTER TABLE `puntoventa`.`product`   
+  CHANGE `intStock` `intStock` DOUBLE NULL;
