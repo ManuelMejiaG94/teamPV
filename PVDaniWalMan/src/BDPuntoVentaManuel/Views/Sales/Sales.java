@@ -93,7 +93,7 @@ public class Sales {
         try{
             for(Product product: listproduct)
             {
-                int stockProduct=product.getIntStock();
+                double stockProduct=product.getIntStock();
                 Product itemUpdate=ctrProduct.findProduct(product.getId());
                 
                 itemUpdate.setIntStock(itemUpdate.getIntStock()+stockProduct);

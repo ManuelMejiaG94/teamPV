@@ -158,7 +158,7 @@ public void Open_Windows_New(boolean open) {
         product.setStrClave(this.txtCodigo.getText().trim());
         product.setStrName(this.txtName.getText().trim());
         product.setStrPresentation(this.txtPrecent.getText().trim());
-        product.setIntStock(Integer.parseInt(this.txtStock.getText().trim()));
+        product.setIntStock(Double.parseDouble(this.txtStock.getText().trim()));
         product.setDonPC(Double.parseDouble(this.txtPC.getText().trim()));
         product.setDobPV(Double.parseDouble(this.txtPV.getText().trim()));
         product.setIdCategoria(this.categoriaProduct);
@@ -173,7 +173,7 @@ public void Open_Windows_New(boolean open) {
         product.setStrClave(this.txtCodigo.getText().trim());
         product.setStrName(this.txtName.getText().trim());
         product.setStrPresentation(this.txtPrecent.getText().trim());
-        product.setIntStock(Integer.parseInt(this.txtStock.getText().trim()));
+        product.setIntStock(Double.parseDouble(this.txtStock.getText().trim()));
         product.setDonPC(Double.parseDouble(this.txtPC.getText().trim()));
         product.setDobPV(Double.parseDouble(this.txtPV.getText().trim()));
         product.setIdCategoria(this.categoriaProduct);

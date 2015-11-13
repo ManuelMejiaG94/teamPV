@@ -11,7 +11,6 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -65,15 +64,15 @@ public class Supplier implements Serializable {
     @Basic(optional = false)
     @Column(name = "boolEstatus")
     private boolean boolEstatus;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSuplier", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSuplier")
     private Collection<Request> requestCollection;
-    @OneToMany(mappedBy = "idSupplier", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idSupplier")
     private Collection<Po> poCollection;
     @JoinColumn(name = "idContacto", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Contacto idContacto;
     @JoinColumn(name = "idCategoria", referencedColumnName = "id")
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Catcategoria idCategoria;
 
     public Supplier() {

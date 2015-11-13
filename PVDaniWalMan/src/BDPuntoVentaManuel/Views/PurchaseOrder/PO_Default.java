@@ -5,6 +5,7 @@
  */
 package BDPuntoVentaManuel.Views.PurchaseOrder;
 
+import BDPuntoVentaManuel.MODEL.Supplier;
 import BDPuntoVentaManuel.Views.Request.*;
 import java.awt.event.ItemEvent;
 import javax.swing.table.DefaultTableModel;
@@ -50,7 +51,7 @@ public class PO_Default extends javax.swing.JPanel {
         this.tbData.setModel(modelTab);
     }
     
-    private void PaintDataDefaultInTable()
+    public void PaintDataDefaultInTable()
     {
         this.ResetTableDefault();
         PO_Start.PoProcess.PainDefaultDataTable(modelTab);
@@ -71,6 +72,18 @@ public class PO_Default extends javax.swing.JPanel {
         modelTab.addColumn("Fecha de pedido");
         modelTab.addColumn("Total");
         modelTab.addColumn("Estatus");
+    }
+    
+    public void ResetTableValid()
+    {
+        if(this.cmbStatus.getSelectedIndex()>0)
+        {
+            this.PaintDataDefaultInTableByStatus(this.cmbStatus.getSelectedIndex());
+        }
+        if(this.cmbStatus.getSelectedIndex()>=0 && this.cmbCategoria.getSelectedIndex()>0 && this.cmbSupplier.getSelectedIndex()>=0)
+        {
+            this.PaintDataDefaultInTableByStatusAndSupplier(this.cmbStatus.getSelectedIndex(), (Supplier)this.cmbSupplier.getSelectedItem());
+        }
     }
 
     /**
@@ -94,6 +107,7 @@ public class PO_Default extends javax.swing.JPanel {
         cmbStatus = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
         cmbCategoria = new javax.swing.JComboBox();
+        btnReseptio = new javax.swing.JButton();
 
         setForeground(new java.awt.Color(255, 0, 51));
 
@@ -140,37 +154,49 @@ public class PO_Default extends javax.swing.JPanel {
             }
         });
 
+        btnReseptio.setText("Procesar orden de compra");
+        btnReseptio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnReseptioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cmbStatus, 0, 211, Short.MAX_VALUE)
-                            .addComponent(cmbCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnReseptio, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(24, 24, 24)
-                                .addComponent(jLabel3))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(cmbSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5))
+                                .addGap(27, 27, 27)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cmbStatus, 0, 211, Short.MAX_VALUE)
+                                    .addComponent(cmbCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(20, 20, 20)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(24, 24, 24)
+                                        .addComponent(jLabel3))
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(cmbSupplier, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -192,7 +218,9 @@ public class PO_Default extends javax.swing.JPanel {
                     .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(21, 21, 21)
+                .addComponent(btnReseptio)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -230,8 +258,21 @@ public class PO_Default extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_cmbSupplierItemStateChanged
 
+    private void btnReseptioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReseptioActionPerformed
+
+        int row=this.tbData.getSelectedRow();
+        if(row>=0)
+        {
+            int folio=Integer.parseInt(this.tbData.getValueAt(row, 0).toString());
+            PO_Start.viewProcess.OpenWindows(folio);
+        /*PO_Start.viewDefault.setVisible(false);
+        PO_Start.viewProcess.setVisible(true);*/
+        }
+    }//GEN-LAST:event_btnReseptioActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnReseptio;
     private javax.swing.JButton btnSearch;
     private javax.swing.JComboBox cmbCategoria;
     private javax.swing.JComboBox cmbStatus;
