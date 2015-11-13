@@ -142,7 +142,7 @@ public class Contacto implements Serializable {
 
     @Override
     public String toString() {
-        return "BDPuntoVentaManuel.MODEL.Contacto[ id=" + id + " ]";
+        return idPersona.getStrNombre()+" "+idPersona.getStrAPaterno()+" "+idPersona.getStrAMaterno();
     }
     
 }

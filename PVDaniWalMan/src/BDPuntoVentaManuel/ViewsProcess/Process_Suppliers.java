@@ -26,7 +26,7 @@ public class Process_Suppliers {
     
     private void Start_tools()
     {
-        ctrSupplier=new FactorySupplier().getInstanceEstends();
+        ctrSupplier=new FactorySupplier().getInstanceExtends();
         
     }
     

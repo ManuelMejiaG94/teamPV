@@ -35,16 +35,26 @@ public class FactorySupplier {
     public ISupplier getInstanceAbstract()
     {
         try{
-            SupplierJpaController supplier= new SupplierJpaController();
-            return (ISupplier) supplier;
+            SupplierJpaController ctrlsupplier= new SupplierJpaController();
+            return (ISupplier) ctrlsupplier;
         }catch(Exception ex)
         {
-            Logger.getLogger(FactorySupplier.class.getName()).log(Level.SEVERE, null, ex);
+           System.out.println("Error\n"+ex.getMessage());
             return null;
         }
     }
-    public ISupplierExtends getInstanceEstends()
-    {
+    
+       public ISupplierExtends getInstanceAbstractExtends() {
+        try{
+            SupplierJpasControllerExtends ctrlSupplier= new SupplierJpasControllerExtends();
+            return (ISupplierExtends) ctrlSupplier;
+        }catch(Exception ex)
+        {
+            System.out.println("Error\n"+ex.getMessage());
+            return null;
+        }
+    }
+       public ISupplierExtends getInstanceExtends(){
         try{
             SupplierJpasControllerExtends supplier= new SupplierJpasControllerExtends();
             return (ISupplierExtends) supplier;

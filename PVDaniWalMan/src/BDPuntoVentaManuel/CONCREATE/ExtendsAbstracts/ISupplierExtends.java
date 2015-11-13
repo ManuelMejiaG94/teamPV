@@ -15,9 +15,11 @@ import javax.persistence.EntityManager;
  * @author manuel
  */
 public interface ISupplierExtends {
-
+    List<Supplier> findDataDefault();
     List<Supplier> FindDataByCategoriaId(Catcategoria categoria);
 
     EntityManager getEntityManager();
-    
+    Supplier findSupplierByCode(String strClave);
+
+    List<Supplier> FindDataByFirstLetter(String letter);
 }

@@ -240,4 +240,7 @@ public class Suppliers_Start extends javax.swing.JInternalFrame {
     
     //Variables
     GridBagLayout Layout=new GridBagLayout();
+    
+    //Variable de los procesos de la vista
+    public static Suppliers SuppliersProcess;
 }

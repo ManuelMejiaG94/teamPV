@@ -5,6 +5,9 @@
  */
 package BDPuntoVentaManuel.Views.Supplier;
 
+import BDPuntoVentaManuel.MODEL.Supplier;
+import com.mysql.jdbc.StringUtils;
+
 /**
  *
  * @author manuel
@@ -16,6 +19,27 @@ public class Suppliers_Select_Innabilit extends javax.swing.JPanel {
      */
     public Suppliers_Select_Innabilit() {
         initComponents();
+    }
+    
+    public void Open_Update() {
+        this.btnProcess.setText("Siguiente");
+
+        this.Clean_Windows();
+        this.setVisible(true);
+    }
+
+    private void Clean_Windows() {
+        this.txtCodigo.setText(null);
+
+        this.lbError1.setVisible(false);
+        this.lbErrorMessage.setVisible(false);
+    }
+
+    private void Paint_ErrorMessage(String MEssage) {
+        this.lbError1.setVisible(true);
+
+        this.lbErrorMessage.setText(MEssage);
+        this.lbErrorMessage.setVisible(true);
     }
 
     /**
@@ -29,11 +53,10 @@ public class Suppliers_Select_Innabilit extends javax.swing.JPanel {
 
         btnProcess = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
+        txtCodigo = new javax.swing.JTextField();
+        lbError1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        lbErrorMessage = new javax.swing.JLabel();
 
         btnProcess.setText("Process");
         btnProcess.addActionListener(new java.awt.event.ActionListener() {
@@ -44,43 +67,46 @@ public class Suppliers_Select_Innabilit extends javax.swing.JPanel {
 
         jButton2.setText("Cancelar");
 
-        jScrollPane1.setViewportView(jList1);
-
-        jLabel2.setText("*");
+        lbError1.setText("*");
 
         jLabel1.setText("Ingresar codigo del provedor");
+
+        lbErrorMessage.setForeground(new java.awt.Color(255, 51, 51));
+        lbErrorMessage.setText("Error");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(151, 151, 151)
+                .addComponent(jButton2)
+                .addGap(175, 175, 175)
+                .addComponent(btnProcess)
+                .addContainerGap(178, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addGap(175, 175, 175)
-                        .addComponent(btnProcess))
+                    .addComponent(lbErrorMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(53, 53, 53)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbError1, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(87, 87, 87))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addContainerGap(54, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbError1))
+                .addGap(27, 27, 27)
+                .addComponent(lbErrorMessage)
+                .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnProcess)
                     .addComponent(jButton2))
@@ -89,12 +115,23 @@ public class Suppliers_Select_Innabilit extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
-        //        if(btnProcess.getText().equals("Siguiente"))
-        //        {
-            Suppliers_Start.viewSuppliers.setVisible(true);
-            Suppliers_Start.viewSelect.setVisible(false);
-            Suppliers_Start.viewDefault.setVisible(false);
-            //        }
+        //        if (btnProcess.getText().equals("Siguiente")) {
+            if (!StringUtils.isNullOrEmpty(this.txtCodigo.getText())) {
+                String Codigo = txtCodigo.getText().trim();
+                Supplier item = Suppliers_Start.SuppliersProcess.GetSupplierByCode(Codigo);
+
+                if (item != null) {
+                   Suppliers_Start.viewSuppliers.Open_Windows_Update(item);
+                   Suppliers_Start.viewSelect.setVisible(false);
+                   Suppliers_Start.viewDefault.setVisible(false);
+
+                } else {
+                    this.Paint_ErrorMessage("No existe en tu repletorio un producto con el codigo ingresado");
+                }
+
+            } else {
+                this.Paint_ErrorMessage("Es necesario ingresar el codigo del producto");
+            }
     }//GEN-LAST:event_btnProcessActionPerformed
 
 
@@ -102,10 +139,9 @@ public class Suppliers_Select_Innabilit extends javax.swing.JPanel {
     private javax.swing.JButton btnProcess;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JList jList1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lbError1;
+    private javax.swing.JLabel lbErrorMessage;
+    private javax.swing.JTextField txtCodigo;
     // End of variables declaration//GEN-END:variables
 
     //Vistas del provedor
