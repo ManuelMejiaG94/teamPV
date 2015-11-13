@@ -79,10 +79,10 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
     }
      private void Clean_Windows() {
         this.txtCodigo.setText(null);
-        this.txtDireccion.setText(null);
         this.txtNombreEmpresa.setText(null);
         this.txtRazonSocial.setText(null);
         this.txtNumero.setText(null);
+        this.txtDireccion.setText(null);
         this.txtAMaterno.setText(null);
         this.txtAPaterno.setText(null);
         this.txtNombreContacto.setText(null);
@@ -90,7 +90,7 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
         this.txtEmailContact.setText(null);
         this.txtReferences.setText(null);
         this.txtDescripcion.setText(null);
-        this.cmbCategories.setModel(null);
+    
         
 
         this.lbError1.setVisible(false);

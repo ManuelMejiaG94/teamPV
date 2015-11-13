@@ -32,7 +32,7 @@ public class Suppliers_Start extends javax.swing.JInternalFrame {
     
     private void Start_Connections()
     {
-        viewSuppliers=new Suppliers_New_Update();
+        viewSupplier=new Suppliers_New_Update();
         viewSelect=new Suppliers_Select_Innabilit();
         viewDefault=new Suppliers_Default();
         
@@ -41,7 +41,7 @@ public class Suppliers_Start extends javax.swing.JInternalFrame {
         
         cons.gridx=0;
         cons.gridy=0;
-        pnContainer.add(viewSuppliers,cons);
+        pnContainer.add(viewSupplier,cons);
         pnContainer.add(viewSelect,cons);
         pnContainer.add(viewDefault,cons);
         
@@ -50,14 +50,14 @@ public class Suppliers_Start extends javax.swing.JInternalFrame {
     
     private void Open_COnfigVindowsDefault()
     {
-         viewSuppliers.setVisible(false);
+         viewSupplier.setVisible(false);
         viewSelect.setVisible(false);
         viewDefault.setVisible(true);
     }
     
     private void Close_Views()
     {
-        viewSuppliers.setVisible(false);
+        viewSupplier.setVisible(false);
         viewSelect.setVisible(true);
         this.viewDefault.setVisible(false);
     }
@@ -201,19 +201,19 @@ public class Suppliers_Start extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
-           viewSuppliers.setVisible(true);
+        viewSupplier.Open_Windows_New(true);
         viewSelect.setVisible(false);
         viewDefault.setVisible(false);
     }//GEN-LAST:event_btnNewActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-           viewSuppliers.setVisible(false);
+           viewSupplier.setVisible(false);
         viewSelect.setVisible(true);
         viewDefault.setVisible(false);
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnInnabilitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInnabilitActionPerformed
-           viewSuppliers.setVisible(false);
+           viewSupplier.setVisible(false);
         viewSelect.setVisible(true);
         viewDefault.setVisible(false);
     }//GEN-LAST:event_btnInnabilitActionPerformed
@@ -234,8 +234,9 @@ public class Suppliers_Start extends javax.swing.JInternalFrame {
 
 
     //Vistas de proveedor
+ 
     public static Suppliers_Default viewDefault;
-    public static Suppliers_New_Update viewSuppliers;
+    public static Suppliers_New_Update viewSupplier;
     public static Suppliers_Select_Innabilit viewSelect;
     
     //Variables

@@ -31,12 +31,12 @@ public class Suppliers_Select_Innabilit extends javax.swing.JPanel {
     private void Clean_Windows() {
         this.txtCodigo.setText(null);
 
-        this.lbError1.setVisible(false);
+        this.lbErro1.setVisible(false);
         this.lbErrorMessage.setVisible(false);
     }
 
     private void Paint_ErrorMessage(String MEssage) {
-        this.lbError1.setVisible(true);
+        this.lbErro1.setVisible(true);
 
         this.lbErrorMessage.setText(MEssage);
         this.lbErrorMessage.setVisible(true);
@@ -54,9 +54,9 @@ public class Suppliers_Select_Innabilit extends javax.swing.JPanel {
         btnProcess = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         txtCodigo = new javax.swing.JTextField();
-        lbError1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         lbErrorMessage = new javax.swing.JLabel();
+        lbErro1 = new javax.swing.JLabel();
 
         btnProcess.setText("Process");
         btnProcess.addActionListener(new java.awt.event.ActionListener() {
@@ -66,13 +66,19 @@ public class Suppliers_Select_Innabilit extends javax.swing.JPanel {
         });
 
         jButton2.setText("Cancelar");
-
-        lbError1.setText("*");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Ingresar codigo del provedor");
 
         lbErrorMessage.setForeground(new java.awt.Color(255, 51, 51));
         lbErrorMessage.setText("Error");
+
+        lbErro1.setForeground(new java.awt.Color(255, 51, 51));
+        lbErro1.setText("*");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -91,7 +97,7 @@ public class Suppliers_Select_Innabilit extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(53, 53, 53)
-                        .addComponent(lbError1, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbErro1, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(87, 87, 87))
@@ -103,7 +109,7 @@ public class Suppliers_Select_Innabilit extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbError1))
+                    .addComponent(lbErro1))
                 .addGap(27, 27, 27)
                 .addComponent(lbErrorMessage)
                 .addGap(28, 28, 28)
@@ -121,7 +127,7 @@ public class Suppliers_Select_Innabilit extends javax.swing.JPanel {
                 Supplier item = Suppliers_Start.SuppliersProcess.GetSupplierByCode(Codigo);
 
                 if (item != null) {
-                   Suppliers_Start.viewSuppliers.Open_Windows_Update(item);
+                   Suppliers_Start.viewSupplier.Open_Windows_Update(item);
                    Suppliers_Start.viewSelect.setVisible(false);
                    Suppliers_Start.viewDefault.setVisible(false);
 
@@ -134,12 +140,18 @@ public class Suppliers_Select_Innabilit extends javax.swing.JPanel {
             }
     }//GEN-LAST:event_btnProcessActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Suppliers_Start.viewSupplier.setVisible(false);
+        Suppliers_Start.viewSelect.setVisible(false);
+        Suppliers_Start.viewDefault.setVisible(true);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnProcess;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel lbError1;
+    private javax.swing.JLabel lbErro1;
     private javax.swing.JLabel lbErrorMessage;
     private javax.swing.JTextField txtCodigo;
     // End of variables declaration//GEN-END:variables
