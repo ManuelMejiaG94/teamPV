@@ -105,6 +105,17 @@ public class Request_Default extends javax.swing.JPanel {
          lbErrorMessage2.setVisible(false);
          visitError=false;   
      }
+     private void PaintErrorOpenValid()
+     {
+         lbErrorMessage2.setText("La solicitud no cuenta con el estatus para ser procesada de la opcion dada");
+         lbErrorMessage2.setVisible(true);
+         visitError=true;   
+     }
+     private void CleanErrorOpenValid()
+     {
+         lbErrorMessage2.setVisible(false);
+         visitError=false;   
+     }
      
      
         /**
@@ -279,6 +290,7 @@ public class Request_Default extends javax.swing.JPanel {
             Process_cmb();
             if (categoria.getId() == -1) {
                 supplier = null;
+                this.cmbSuppliers.setModel(Request_Start.RequestProcess.getModelSuppliersDefault(categoria));
                 ChargeDataTable();
             }
         }
@@ -314,7 +326,14 @@ public class Request_Default extends javax.swing.JPanel {
         }
         if (tbData.getSelectedRow() >= 0) {
             int folio=Integer.parseInt((tbData.getValueAt(tbData.getSelectedRow(),0).toString()));
-            Request_Start.viewValid.Open_View_Valid(folio);
+            
+            if(Request_Start.viewValid.Open_View_Valid(folio))
+            {
+                CleanErrorOpenValid();
+            }else
+            {
+                PaintErrorOpenValid();
+            }
             
         } else {
             PaintErrorItemSelect();

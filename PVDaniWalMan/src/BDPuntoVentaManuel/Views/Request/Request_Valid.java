@@ -30,16 +30,20 @@ public class Request_Valid extends javax.swing.JPanel {
     public void Open_View_Detail(int folio)
     {
         Button_Detail();
-        PaintDataDetail(folio);
+        PaintDataDetail2(folio);
         
         OpenWindowsDetail();
     }
-    public void Open_View_Valid(int folio)
+    public boolean Open_View_Valid(int folio)
     {
         Button_Validate();
-        
-        PaintDataDetail(folio);
+        boolean valid=false;
+        if(PaintDataDetail(folio))
+        {
         OpenWindowsValidate();
+        valid=true;
+        }
+        return valid;
     }
 
     private void Button_Validate()
@@ -60,7 +64,33 @@ public class Request_Valid extends javax.swing.JPanel {
         this.btnReject.setVisible(false);
     }
  
-    private void PaintDataDetail(int folio)
+    private boolean PaintDataDetail(int folio)
+    {
+        SetModelTable();
+        SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy");
+        BDPuntoVentaManuel.MODEL.Request request=Request_Start.RequestProcess.GetRequestByFolio(folio);
+        
+        this.lbFolio.setText(request.getId().toString());
+        this.lbDate.setText(date.format(request.getDatFecha()));
+        
+        this.lbEmail.setText(request.getIdSuplier().getIdContacto().getStrEmail());
+        this.lbSupplier.setText(request.getIdSuplier().getStrBussinessName());
+        
+        this.lbTotal.setText("$"+String.valueOf(request.getDoubTotal()));
+     
+        if(request.getBitEstatus()==4)
+        {
+            this.btnGenerate.setVisible(false);
+        }
+        if(request.getBitEstatus()==1 || request.getBitEstatus()== 4)
+        {
+            PaintDataTable((List<Requestdetail>) request.getRequestdetailCollection());
+            return true;
+        }
+        return false;
+    }
+    
+    private void PaintDataDetail2(int folio)
     {
         SetModelTable();
         SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy");
@@ -79,7 +109,8 @@ public class Request_Valid extends javax.swing.JPanel {
             this.btnGenerate.setVisible(false);
         }
         
-        PaintDataTableDetail((List<Requestdetail>) request.getRequestdetailCollection());
+            PaintDataTableDetail((List<Requestdetail>) request.getRequestdetailCollection());
+        
     }
     
     private void SetModelTable()
@@ -94,12 +125,14 @@ public class Request_Valid extends javax.swing.JPanel {
         
         tbDatadetails.setModel(modelTable);
     }
-     private void PaintDataTableDetail(List<BDPuntoVentaManuel.MODEL.Requestdetail> listDetails)
+     private void PaintDataTable(List<BDPuntoVentaManuel.MODEL.Requestdetail> listDetails)
     {
         Object[] data=new Object[5];
         
         for(BDPuntoVentaManuel.MODEL.Requestdetail item : listDetails)
         {
+            if(!item.getBolAssigned())
+            {
                 data[0]=item.getIdProduct().getStrClave();
                 data[1]=item.getIdProduct().getStrName();
                 data[2]=item.getDobPrice();
@@ -107,20 +140,20 @@ public class Request_Valid extends javax.swing.JPanel {
                 data[4]=item.getDobTotal();
             
                 modelTable.addRow(data);
+            }
         }
         this.tbDatadetails.setModel(modelTable);
         
         this.tbDatadetails.setEnabled(false);
     }
     
-    private void PaintDataTable(List<BDPuntoVentaManuel.MODEL.Requestdetail> listDetails)
+    private void PaintDataTableDetail(List<BDPuntoVentaManuel.MODEL.Requestdetail> listDetails)
     {
         Object[] data=new Object[5];
         
         for(BDPuntoVentaManuel.MODEL.Requestdetail item : listDetails)
         {
-           if(item.getBolAssigned()==false)
-           {
+           
                 data[0]=item.getIdProduct().getStrClave();
                 data[1]=item.getIdProduct().getStrName();
                 data[2]=item.getDobPrice();
@@ -128,7 +161,6 @@ public class Request_Valid extends javax.swing.JPanel {
                 data[4]=item.getDobTotal();
             
                 modelTable.addRow(data);
-           }
         }
         this.tbDatadetails.setModel(modelTable);
         

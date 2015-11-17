@@ -110,13 +110,16 @@ public class Request {
         
 
         for (BDPuntoVentaManuel.MODEL.Request item : listRequest) {
-            data[0] = item.getId();
+            if(item.getBitEstatus()==1)
+            {
+                data[0] = item.getId();
             data[1] = item.getIdSuplier().getStrBussinessName();
             data[2] = date.format(item.getDatFecha());
             data[3] = item.getDoubTotal();
             data[4] = this.StatusRequest(item);
 
             model.addRow(data);
+            }
         }
 
     }
@@ -367,6 +370,7 @@ public class Request {
 
             List<Requestdetail> listRequestDetails = (List<Requestdetail>) request.getRequestdetailCollection();
             double total=0;
+            List<Podetail> podetails=new ArrayList<Podetail>();
 
             for (Requestdetail requestdetail : listRequestDetails) {
                 int a=0;
@@ -386,14 +390,16 @@ public class Request {
 
                         ctrRequestDetail.edit(requestdetail);
                         ctrPoDetail.create(poDetail);
+                        podetails.add(poDetail);
                     }
                 }
                 a++;
             }
             po.setDobTotal(total);
+            po.setPodetailCollection(podetails);
             ctrPo.edit(po);
 
-            request.setBitEstatus(this.ValidateStatusForPartialPo(listRequestDetails, _listRequestdetails));
+            request.setBitEstatus(this.ValidateStatusForPartialPo(listRequestDetails));
             ctrRequest.edit(request);
             return true;
         } catch (Exception e) {
@@ -402,14 +408,22 @@ public class Request {
         return false;
     }
 
-    private int ValidateStatusForPartialPo(List<BDPuntoVentaManuel.MODEL.Requestdetail> listRequestDetails,
-            List<BDPuntoVentaManuel.MODEL.Requestdetail> _listRequestdetails)
+    private int ValidateStatusForPartialPo(List<BDPuntoVentaManuel.MODEL.Requestdetail> listRequestDetails)
     {
-        if(listRequestDetails.size()>_listRequestdetails.size())
-        {
-            return Processed;
+        
+        int datatrue=0;
+        for (int i = 0; i < listRequestDetails.size(); i++) {
+            if(listRequestDetails.get(i).getBolAssigned())
+            {
+                datatrue++;
+            }
         }
-        return Asepted;
+        if(listRequestDetails.size()==datatrue)
+        {
+            return Asepted;
+        }
+        
+        return Processed;
     }
     
     

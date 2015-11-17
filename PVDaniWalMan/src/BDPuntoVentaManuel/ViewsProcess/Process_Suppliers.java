@@ -40,8 +40,10 @@ public class Process_Suppliers {
         
         dataModel.add(defaultModel);
         
-        if(categori != null)
+        if(categori != null )
         {
+            if(categori.getId()>0)
+            {
             List<Supplier> listSuppliers=this.ctrSupplier.FindDataByCategoriaId(categori);    
             for ( Supplier item : listSuppliers ) {
                 
@@ -49,6 +51,7 @@ public class Process_Suppliers {
                 {
                     dataModel.add(item);
                 }
+            }
             }
         }
         

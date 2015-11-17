@@ -690,7 +690,7 @@ public class Request_New_Update extends javax.swing.JPanel {
     private DefaultTableModel modelTab;
     private boolean validError=false;
     private double total=0;
-    private double IVA=2;
+    private double IVA=0;
     
     private Date dateNow = new Date(System.currentTimeMillis());
 
