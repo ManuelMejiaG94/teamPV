@@ -79,7 +79,7 @@ public class Request_Valid extends javax.swing.JPanel {
             this.btnGenerate.setVisible(false);
         }
         
-        PaintDataTable((List<Requestdetail>) request.getRequestdetailCollection());
+        PaintDataTableDetail((List<Requestdetail>) request.getRequestdetailCollection());
     }
     
     private void SetModelTable()
@@ -94,6 +94,24 @@ public class Request_Valid extends javax.swing.JPanel {
         
         tbDatadetails.setModel(modelTable);
     }
+     private void PaintDataTableDetail(List<BDPuntoVentaManuel.MODEL.Requestdetail> listDetails)
+    {
+        Object[] data=new Object[5];
+        
+        for(BDPuntoVentaManuel.MODEL.Requestdetail item : listDetails)
+        {
+                data[0]=item.getIdProduct().getStrClave();
+                data[1]=item.getIdProduct().getStrName();
+                data[2]=item.getDobPrice();
+                data[3]=item.getDobQuantity();
+                data[4]=item.getDobTotal();
+            
+                modelTable.addRow(data);
+        }
+        this.tbDatadetails.setModel(modelTable);
+        
+        this.tbDatadetails.setEnabled(false);
+    }
     
     private void PaintDataTable(List<BDPuntoVentaManuel.MODEL.Requestdetail> listDetails)
     {
@@ -101,15 +119,15 @@ public class Request_Valid extends javax.swing.JPanel {
         
         for(BDPuntoVentaManuel.MODEL.Requestdetail item : listDetails)
         {
-           if(!item.getBolAssigned())
+           if(item.getBolAssigned()==false)
            {
                 data[0]=item.getIdProduct().getStrClave();
-            data[1]=item.getIdProduct().getStrName();
-            data[2]=item.getDobPrice();
-            data[3]=item.getDobQuantity();
-            data[4]=item.getDobTotal();
+                data[1]=item.getIdProduct().getStrName();
+                data[2]=item.getDobPrice();
+                data[3]=item.getDobQuantity();
+                data[4]=item.getDobTotal();
             
-            modelTable.addRow(data);
+                modelTable.addRow(data);
            }
         }
         this.tbDatadetails.setModel(modelTable);

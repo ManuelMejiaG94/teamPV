@@ -197,11 +197,11 @@ public class Request {
     public double SetDataTableNewUpdate(DefaultTableModel model, Product product,int stock,JLabel errorMessage)
     {
         try{
-            this.startTransaccion();
+            //this.startTransaccion();
 //            if(product.getIntStock()>stock)
 //            {
-                product.setIntStock(product.getIntStock()-stock);
-                ctrProduct.edit(product);
+                //product.setIntStock(product.getIntStock()-stock);
+                //ctrProduct.edit(product);
                 
                 Object []dataProduct=new Object[6];
         
@@ -316,6 +316,9 @@ public class Request {
                 poDetail.setIdProducto(requestdetail.getIdProduct());
 
                 ctrPoDetail.create(poDetail);
+                
+                requestdetail.setBolAssigned(true);
+                ctrRequestDetail.edit(requestdetail);
             }
 
             request.setBitEstatus(Asepted);
@@ -356,12 +359,14 @@ public class Request {
             BDPuntoVentaManuel.MODEL.Po po = new Po();
 
             po.setBitEstatus(pocreate);
-            po.setDobTotal(request.getDoubTotal());
+            
             po.setIdCurrency(request.getIdCurrency());
             po.setIdSupplier(request.getIdSuplier());
+            po.setDatFechaGenerada(request.getDatFecha());
             ctrPo.create(po);
 
             List<Requestdetail> listRequestDetails = (List<Requestdetail>) request.getRequestdetailCollection();
+            double total=0;
 
             for (Requestdetail requestdetail : listRequestDetails) {
                 int a=0;
@@ -373,6 +378,7 @@ public class Request {
                         poDetail.setDobPc(requestdetail.getDobPrice());
                         poDetail.setDobQuantity(requestdetail.getDobQuantity());
                         poDetail.setDobTotal(requestdetail.getDobTotal());
+                        total=total+requestdetail.getDobTotal();
                         poDetail.setIdPo(po);
                         poDetail.setIdProducto(requestdetail.getIdProduct());
 
@@ -384,6 +390,8 @@ public class Request {
                 }
                 a++;
             }
+            po.setDobTotal(total);
+            ctrPo.edit(po);
 
             request.setBitEstatus(this.ValidateStatusForPartialPo(listRequestDetails, _listRequestdetails));
             ctrRequest.edit(request);

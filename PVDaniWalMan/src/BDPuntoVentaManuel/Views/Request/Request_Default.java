@@ -296,7 +296,7 @@ public class Request_Default extends javax.swing.JPanel {
     private void cmbStatusItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbStatusItemStateChanged
         bitStatus = this.cmbStatus.getSelectedIndex();
         ChargeDataTable();
-        if(this.cmbStatus.getSelectedIndex()>0)
+        if(this.cmbStatus.getSelectedIndex()>0 && this.cmbStatus.getSelectedIndex()<3)
         {
             this.btnValidar.setVisible(false);
         }else{

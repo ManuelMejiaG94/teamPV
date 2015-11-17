@@ -167,6 +167,11 @@ public class Sales_Start extends javax.swing.JInternalFrame {
         this.lbErrorsMessage.setText("No fue posible crear la venta");
         this.lbErrorsMessage.setVisible(true);
     }
+    private void PaintErrorStock()
+    {
+        this.lbErrorsMessage.setText("No cuentas con las unidades solicitadas para surtir el pedido");
+        this.lbErrorsMessage.setVisible(true);
+    }
     private void ClearErrorFailedCreateSale()
     {
         this.lbErrorsMessage.setVisible(false);
@@ -580,19 +585,26 @@ public class Sales_Start extends javax.swing.JInternalFrame {
             
             if(product !=null)
             {
+                if(product.getIntStock()>cantidad)
+                {  
                 if (!listProducts.contains(product)) {
                     
                     this.CleanErrorAddToSale();
                     this.CleanErrorProductNull();
-                    listProducts.add(product);
                     salesProcess.AddProductToSale(modelo, product, cantidad);
                     subTotal = subTotal + (product.getDobPV() * cantidad);
                     Total = (subTotal + ((IVA * subTotal) / 100));
                     this.PaintCostValues(Total, subTotal);
                     this.tbData.setModel(modelo);
+                    product.setIntStock(Double.parseDouble(String.valueOf(cantidad)));
+                    listProducts.add(product);
                     this.CleanDataCharge();
                 } else {
-                    this.PaintErrorAddToSale();                }
+                    this.PaintErrorAddToSale();                
+                }
+                }else{
+                    this.PaintErrorStock();
+                }
             }else{
                 this.PaintErrorProductNull();
             }

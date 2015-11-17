@@ -98,7 +98,7 @@ public class Sales {
                 
                 itemUpdate.setIntStock(itemUpdate.getIntStock()+stockProduct);
             
-                ctrProduct.edit(product);
+                ctrProduct.edit(itemUpdate);
             }
             
         }catch(Exception e)
