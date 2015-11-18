@@ -32,6 +32,7 @@ public class Suppliers_Start extends javax.swing.JInternalFrame {
     
     private void Start_Connections()
     {
+        SuppliersProcess=new Suppliers();
         viewSupplier=new Suppliers_New_Update();
         viewSelect=new Suppliers_Select_Innabilit();
         viewDefault=new Suppliers_Default();
@@ -203,7 +204,7 @@ public class Suppliers_Start extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
-        viewSupplier.Open_Windows_New(true);
+        viewSupplier.Open_New_Windows();
         viewSelect.setVisible(false);
         viewDefault.setVisible(false);
     }//GEN-LAST:event_btnNewActionPerformed

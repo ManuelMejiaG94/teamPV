@@ -54,17 +54,17 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="lbError4" min="-2" max="-2" attributes="0"/>
+                                          <Component id="lb5" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel10" min="-2" pref="97" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lbError13" alignment="1" min="-2" pref="7" max="-2" attributes="0"/>
-                                              <Component id="lbError1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                              <Component id="lbError2" alignment="1" min="-2" pref="6" max="-2" attributes="0"/>
-                                              <Component id="lbError3" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lb1" alignment="1" min="-2" pref="7" max="-2" attributes="0"/>
+                                              <Component id="lb2" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="lb3" alignment="1" min="-2" pref="6" max="-2" attributes="0"/>
+                                              <Component id="lb4" alignment="1" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -90,9 +90,9 @@
                                           </Group>
                                           <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="lbError7" min="-2" pref="15" max="-2" attributes="0"/>
-                                              <Component id="lbError6" min="-2" pref="15" max="-2" attributes="0"/>
-                                              <Component id="lbError5" alignment="0" min="-2" pref="15" max="-2" attributes="0"/>
+                                              <Component id="lb10" min="-2" pref="15" max="-2" attributes="0"/>
+                                              <Component id="lb9" min="-2" pref="15" max="-2" attributes="0"/>
+                                              <Component id="lb6" alignment="0" min="-2" pref="15" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
@@ -102,8 +102,8 @@
                                           </Group>
                                           <EmptySpace max="32767" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="lbError11" alignment="1" min="-2" pref="15" max="-2" attributes="0"/>
-                                              <Component id="lbError12" alignment="1" min="-2" pref="15" max="-2" attributes="0"/>
+                                              <Component id="lb8" alignment="1" min="-2" pref="15" max="-2" attributes="0"/>
+                                              <Component id="lb7" alignment="1" min="-2" pref="15" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -125,7 +125,7 @@
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel1" min="-2" pref="106" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                  <Component id="lbError8" min="-2" pref="15" max="-2" attributes="0"/>
+                                  <Component id="lb11" min="-2" pref="15" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="txtDireccion" max="32767" attributes="0"/>
                               </Group>
@@ -154,36 +154,36 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtNombreContacto" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbError5" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lb6" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbError12" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lb7" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtAPaterno" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="txtAMaterno" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbError11" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lb8" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtNumCelularCont" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbError6" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lb9" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtEmailContact" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbError7" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lb10" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbError8" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lb11" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtDireccion" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="32767" attributes="0"/>
@@ -196,31 +196,31 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbError13" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lb1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtxRazonSocial" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbError1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lb2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="cmbCategorias" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbError2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lb3" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtNumEmpresa" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbError3" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lb4" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbError4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lb5" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" max="32767" attributes="0"/>
@@ -291,7 +291,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtNumEmpresa">
         </Component>
-        <Component class="javax.swing.JLabel" name="lbError1">
+        <Component class="javax.swing.JLabel" name="lb2">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="0" red="ff" type="rgb"/>
@@ -299,7 +299,7 @@
             <Property name="text" type="java.lang.String" value="*"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lbError2">
+        <Component class="javax.swing.JLabel" name="lb3">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="0" red="ff" type="rgb"/>
@@ -307,7 +307,7 @@
             <Property name="text" type="java.lang.String" value="*"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lbError3">
+        <Component class="javax.swing.JLabel" name="lb4">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="0" red="ff" type="rgb"/>
@@ -315,7 +315,7 @@
             <Property name="text" type="java.lang.String" value="*"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lbError4">
+        <Component class="javax.swing.JLabel" name="lb5">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="0" red="ff" type="rgb"/>
@@ -325,7 +325,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtCodigo">
         </Component>
-        <Component class="javax.swing.JLabel" name="lbError13">
+        <Component class="javax.swing.JLabel" name="lb1">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="0" red="ff" type="rgb"/>
@@ -370,7 +370,7 @@
             <Property name="text" type="java.lang.String" value="Email"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lbError7">
+        <Component class="javax.swing.JLabel" name="lb10">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="0" red="ff" type="rgb"/>
@@ -378,7 +378,7 @@
             <Property name="text" type="java.lang.String" value="*"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lbError6">
+        <Component class="javax.swing.JLabel" name="lb9">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="0" red="ff" type="rgb"/>
@@ -386,7 +386,7 @@
             <Property name="text" type="java.lang.String" value="*"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lbError11">
+        <Component class="javax.swing.JLabel" name="lb8">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="0" red="ff" type="rgb"/>
@@ -394,7 +394,7 @@
             <Property name="text" type="java.lang.String" value="*"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lbError12">
+        <Component class="javax.swing.JLabel" name="lb7">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="0" red="ff" type="rgb"/>
@@ -402,7 +402,7 @@
             <Property name="text" type="java.lang.String" value="*"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lbError5">
+        <Component class="javax.swing.JLabel" name="lb6">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="0" red="ff" type="rgb"/>
@@ -425,7 +425,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JList" name="Errors2">
+            <Component class="javax.swing.JList" name="Errors">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="ff" type="rgb"/>
@@ -458,7 +458,7 @@
             <Property name="text" type="java.lang.String" value="Direccion"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lbError8">
+        <Component class="javax.swing.JLabel" name="lb11">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="0" red="ff" type="rgb"/>

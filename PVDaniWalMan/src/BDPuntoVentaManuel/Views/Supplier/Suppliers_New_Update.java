@@ -6,8 +6,14 @@
 package BDPuntoVentaManuel.Views.Supplier;
 
 
+import BDPuntoVentaManuel.MODEL.Contacto;
+import BDPuntoVentaManuel.MODEL.Persona;
+import BDPuntoVentaManuel.MODEL.Supplier;
 import BDPuntoVentaManuel.MODEL.Supplier_;
 import BDPuntoVentaManuel.Views.View_Start;
+import com.mysql.jdbc.StringUtils;
+import java.awt.event.ItemEvent;
+import java.util.Vector;
 import javax.swing.JInternalFrame;
 
 /**
@@ -33,6 +39,12 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
         this.btnProcess.setText("Modificar");
         this.supplier=_supplier;
         this.Chargedata();
+        
+        Suppliers_Start.viewDefault.setVisible(false);
+        Suppliers_Start.viewDireccion.setVisible(false);
+        Suppliers_Start.viewSelect.setVisible(false);
+        Suppliers_Start.viewSupplier.setVisible(true);
+    
     }
     public void Chargedata()
     {
@@ -49,15 +61,133 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
         this.txtNumCelularCont.setText(supplier.getIdContacto().getStrCellphone());
         this.txtEmailContact.setText(supplier.getIdContacto().getStrEmail());
         
-        this.txtDireccion.setText(supplier.get);
-
+        this.txtDireccion.setText(supplier.getStrAddress());
     }
     public void ChargeCategori()
     {
         this.cmbCategorias.setModel(Suppliers_Start.SuppliersProcess.getModelCategorias());
     }
+    public void SupplierAddAddress()
+    {
+        Suppliers_Start.viewDireccion.getSupplier();
+    }
     
+    public BDPuntoVentaManuel.MODEL.Persona getPersona()
+    {
+        BDPuntoVentaManuel.MODEL.Persona persona=new Persona();
+        persona.setStrNombre(txtNombreContacto.getText().trim());
+        persona.setStrAPaterno(txtAPaterno.getText().trim());
+        persona.setStrAMaterno(txtAMaterno.getText().trim());
+        
+        return persona;
+        
+        
+    }
+    public BDPuntoVentaManuel.MODEL.Contacto getContact()
+    {
+        BDPuntoVentaManuel.MODEL.Contacto Contact=new Contacto();
+        Contact.setStrReference("N/A");
+        Contact.setStrEmail(txtEmailContact.getText().trim());
+        Contact.setStrCellphone(txtNumCelularCont.getText().trim());
+        
+        return Contact;
+    }
+    public BDPuntoVentaManuel.MODEL.Supplier getSupplier()
+    {
+        BDPuntoVentaManuel.MODEL.Supplier supplier=new Supplier();
+        supplier.setBoolEstatus(true);
+        supplier.setStrBussinessName(txtxRazonSocial.getText().trim());
+        supplier.setStrClave(txtCodigo.getText().trim());
+        supplier.setStrDescripcion(taDescripcion.getText().trim());
+        supplier.setStrNumber(txtNumEmpresa.getText().trim());
+        supplier.setIdCategoria(categoria);
+        
+        return supplier;
+    }
+    private void LimpiarErrores()
+    {
+        lb1.setVisible(false);
+        lb2.setVisible(false);
+        lb3.setVisible(false);
+        lb4.setVisible(false);
+        lb5.setVisible(false);
+        lb6.setVisible(false);
+        lb7.setVisible(false);
+        lb8.setVisible(false);
+        lb9.setVisible(false);
+        lb10.setVisible(false);
+        lb11.setVisible(false);
 
+    }
+    private boolean Validar_Datos()
+    {
+        errors=new Vector();
+
+        boolean Result = true;
+        if (StringUtils.isNullOrEmpty(txtCodigo.getText())) {
+            lb1.setVisible(true);
+            Result = false;
+        }
+        if (StringUtils.isNullOrEmpty(txtxRazonSocial.getText())) {
+            lb2.setVisible(true);
+            Result = false;
+        }
+        if (StringUtils.isNullOrEmpty(txtNumEmpresa.getText())) {
+            lb4.setVisible(true);
+            Result = false;
+        }
+        if (StringUtils.isNullOrEmpty(taDescripcion.getText())) {
+            lb5.setVisible(true);
+            Result = false;
+        }
+        if (StringUtils.isNullOrEmpty(txtNombreContacto.getText())) {
+            lb6.setVisible(true);
+            Result = false;
+        }
+        if (StringUtils.isNullOrEmpty(txtAPaterno.getText())) {
+            lb7.setVisible(true);
+            Result = false;
+        }
+        if (StringUtils.isNullOrEmpty(txtAMaterno.getText())) {
+            lb8.setVisible(true);
+            Result = false;
+        }
+        if (StringUtils.isNullOrEmpty(txtNumCelularCont.getText())) {
+            lb9.setVisible(true);
+            Result = false;
+        }
+        if (StringUtils.isNullOrEmpty(txtEmailContact.getText())) {
+            lb10.setVisible(true);
+            Result = false;
+        }
+        if (StringUtils.isNullOrEmpty(txtDireccion.getText())) {
+            lb11.setVisible(true);
+            Result = false;
+        }
+
+        if (!Result) {
+            String error = "Los campos marcados con * son obligatorios";
+            errors.add(error);
+        }
+
+        if (cmbCategorias.getSelectedIndex() <= 0) {
+            String error = "Es necesario indicar una categoria";
+
+            errors.add(error);
+            this.lb3.setVisible(true);
+            Result = false;
+        }
+
+        return Result;
+    }
+
+     private void Back()
+    {
+        Suppliers_Start.viewDefault.setVisible(false);
+        Suppliers_Start.viewDireccion.setVisible(false);
+        Suppliers_Start.viewSelect.setVisible(false);
+        Suppliers_Start.viewSupplier.setVisible(true);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -78,12 +208,12 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
         taDescripcion = new javax.swing.JTextArea();
         jLabel17 = new javax.swing.JLabel();
         txtNumEmpresa = new javax.swing.JTextField();
-        lbError1 = new javax.swing.JLabel();
-        lbError2 = new javax.swing.JLabel();
-        lbError3 = new javax.swing.JLabel();
-        lbError4 = new javax.swing.JLabel();
+        lb2 = new javax.swing.JLabel();
+        lb3 = new javax.swing.JLabel();
+        lb4 = new javax.swing.JLabel();
+        lb5 = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
-        lbError13 = new javax.swing.JLabel();
+        lb1 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtNombreContacto = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
@@ -92,21 +222,21 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        lbError7 = new javax.swing.JLabel();
-        lbError6 = new javax.swing.JLabel();
-        lbError11 = new javax.swing.JLabel();
-        lbError12 = new javax.swing.JLabel();
-        lbError5 = new javax.swing.JLabel();
+        lb10 = new javax.swing.JLabel();
+        lb9 = new javax.swing.JLabel();
+        lb8 = new javax.swing.JLabel();
+        lb7 = new javax.swing.JLabel();
+        lb6 = new javax.swing.JLabel();
         txtAPaterno = new javax.swing.JTextField();
         txtAMaterno = new javax.swing.JTextField();
         txtNumCelularCont = new javax.swing.JTextField();
         txtEmailContact = new javax.swing.JTextField();
         jScrollPane5 = new javax.swing.JScrollPane();
-        Errors2 = new javax.swing.JList();
+        Errors = new javax.swing.JList();
         btnCancel2 = new javax.swing.JButton();
         btnProcess = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        lbError8 = new javax.swing.JLabel();
+        lb11 = new javax.swing.JLabel();
         txtDireccion = new javax.swing.JTextField();
         btnDireccion = new javax.swing.JButton();
 
@@ -130,20 +260,20 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
 
         jLabel17.setText("Numero");
 
-        lbError1.setForeground(new java.awt.Color(255, 0, 51));
-        lbError1.setText("*");
+        lb2.setForeground(new java.awt.Color(255, 0, 51));
+        lb2.setText("*");
 
-        lbError2.setForeground(new java.awt.Color(255, 0, 51));
-        lbError2.setText("*");
+        lb3.setForeground(new java.awt.Color(255, 0, 51));
+        lb3.setText("*");
 
-        lbError3.setForeground(new java.awt.Color(255, 0, 51));
-        lbError3.setText("*");
+        lb4.setForeground(new java.awt.Color(255, 0, 51));
+        lb4.setText("*");
 
-        lbError4.setForeground(new java.awt.Color(255, 0, 51));
-        lbError4.setText("*");
+        lb5.setForeground(new java.awt.Color(255, 0, 51));
+        lb5.setText("*");
 
-        lbError13.setForeground(new java.awt.Color(255, 0, 51));
-        lbError13.setText("*");
+        lb1.setForeground(new java.awt.Color(255, 0, 51));
+        lb1.setText("*");
 
         jLabel10.setText("Codigo del provedor");
 
@@ -159,23 +289,23 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
 
         jLabel16.setText("Email");
 
-        lbError7.setForeground(new java.awt.Color(255, 0, 51));
-        lbError7.setText("*");
+        lb10.setForeground(new java.awt.Color(255, 0, 51));
+        lb10.setText("*");
 
-        lbError6.setForeground(new java.awt.Color(255, 0, 51));
-        lbError6.setText("*");
+        lb9.setForeground(new java.awt.Color(255, 0, 51));
+        lb9.setText("*");
 
-        lbError11.setForeground(new java.awt.Color(255, 0, 51));
-        lbError11.setText("*");
+        lb8.setForeground(new java.awt.Color(255, 0, 51));
+        lb8.setText("*");
 
-        lbError12.setForeground(new java.awt.Color(255, 0, 51));
-        lbError12.setText("*");
+        lb7.setForeground(new java.awt.Color(255, 0, 51));
+        lb7.setText("*");
 
-        lbError5.setForeground(new java.awt.Color(255, 0, 51));
-        lbError5.setText("*");
+        lb6.setForeground(new java.awt.Color(255, 0, 51));
+        lb6.setText("*");
 
-        Errors2.setForeground(new java.awt.Color(255, 0, 0));
-        jScrollPane5.setViewportView(Errors2);
+        Errors.setForeground(new java.awt.Color(255, 0, 0));
+        jScrollPane5.setViewportView(Errors);
 
         btnCancel2.setText("Cancelar");
         btnCancel2.addActionListener(new java.awt.event.ActionListener() {
@@ -193,8 +323,8 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
 
         jLabel1.setText("Direccion");
 
-        lbError8.setForeground(new java.awt.Color(255, 0, 51));
-        lbError8.setText("*");
+        lb11.setForeground(new java.awt.Color(255, 0, 51));
+        lb11.setText("*");
 
         btnDireccion.setText("Asignar direccion");
         btnDireccion.addActionListener(new java.awt.event.ActionListener() {
@@ -221,16 +351,16 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel8)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lbError4))
+                                        .addComponent(lb5))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel2)
-                                            .addComponent(lbError13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lbError1, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lbError2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lbError3, javax.swing.GroupLayout.Alignment.TRAILING))))
+                                            .addComponent(lb1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 7, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lb2, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(lb3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 6, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lb4, javax.swing.GroupLayout.Alignment.TRAILING))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtCodigo)
@@ -249,17 +379,17 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
                                             .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lbError7, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lbError6, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lbError5, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(lb10, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lb9, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lb6, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lbError11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lbError12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                            .addComponent(lb8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lb7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtAPaterno)
@@ -275,7 +405,7 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(lbError8, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lb11, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtDireccion))
                             .addComponent(btnDireccion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -297,31 +427,31 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel13)
                             .addComponent(txtNombreContacto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbError5))
+                            .addComponent(lb6))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(lbError12)
+                            .addComponent(lb7)
                             .addComponent(txtAPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(14, 14, 14)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtAMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbError11)
+                            .addComponent(lb8)
                             .addComponent(jLabel9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel14)
                             .addComponent(txtNumCelularCont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbError6))
+                            .addComponent(lb9))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel16)
                             .addComponent(txtEmailContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbError7))
+                            .addComponent(lb10))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
-                            .addComponent(lbError8)
+                            .addComponent(lb11)
                             .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnDireccion)
@@ -332,27 +462,27 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
-                            .addComponent(lbError13)
+                            .addComponent(lb1)
                             .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(txtxRazonSocial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbError1))
+                            .addComponent(lb2))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(cmbCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbError2))
+                            .addComponent(lb3))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel17)
                             .addComponent(txtNumEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbError3))
+                            .addComponent(lb4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel8)
-                            .addComponent(lbError4))
+                            .addComponent(lb5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -381,43 +511,36 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmbCategoriasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbCategoriasItemStateChanged
-//        if(evt.getStateChange()==ItemEvent.SELECTED)
-//        {
-//            CatCategorias cat=(CatCategorias) this.cmbCategorias.getSelectedItem();
-//            this.idCategoria=cat.getId();
-//        }
+        if(evt.getStateChange()==ItemEvent.SELECTED)
+        {
+            categoria=(BDPuntoVentaManuel.MODEL.Catcategoria) this.cmbCategorias.getSelectedItem();
+        }
     }//GEN-LAST:event_cmbCategoriasItemStateChanged
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
-//
-//        //this.process.setMessage("Mejia_Garcia94@hotmail.com");
-//
-//        this.Limpiar_Errores();
-//
-//        if (this.Validar_Datos()) {
-//            if (this.AccionMap == 1) {
-//                Object persona=this.process.getPersona(this.txtNombreContacto.getText().trim(), this.txtAPaterno.getText().trim(),this.txtAMaterno.getText().trim());
-//                Object contacto=this.process.getContacto(this.txtNumCelularCont.getText().trim(),this.txtEmailContact.getText().trim());
-//                Object provedor=this.process.getProvedor(this.txtxRazonSocial.getText().trim(),this.idCategoria,this.txtNumEmpresa.getText().trim(),this.taDescripcion.getText().trim(), this.txtCalle.getText().trim(), this.txtReferencia.getText().trim(),this.txtCodigo.getText().trim());
-//
-//                if(this.process.RegistrarProvedor(persona, contacto, provedor))
-//                {
-//                    JOptionPane.showMessageDialog(null,"ok");
-//                    this.dispose();
-//                }
-//
-//            } else {
-//                PuntoDeVenta.ManuelMejia.Models.ErrorMessage.MessageError MessageFieldError
-//                = new PuntoDeVenta.ManuelMejia.Models.ErrorMessage.MessageError();
-//
-//                MessageFieldError.setId("Field");
-//                MessageFieldError.setMessage("Es necesario identificar primero la direccion");
-//                this.Errores.add(MessageFieldError);
-//                this.ErrorsPaint();
-//            }
-//        } else {
-//            this.ErrorsPaint();
-//        }
+
+        //this.process.setMessage("Mejia_Garcia94@hotmail.com");
+
+        this.LimpiarErrores();
+
+        if (this.Validar_Datos()) {
+            if (valid) {
+                BDPuntoVentaManuel.MODEL.Persona persona=getPersona();
+                BDPuntoVentaManuel.MODEL.Contacto contact=getContact();
+                BDPuntoVentaManuel.MODEL.Supplier supplier=Suppliers_Start.viewDireccion.getSupplier();
+                
+                if(Suppliers_Start.SuppliersProcess.SaveSupplier( supplier,contact,persona))
+                {
+                    Back();
+                }
+
+            } else {
+
+
+            }
+        } else {
+            LimpiarErrores();
+        }
     }//GEN-LAST:event_btnProcessActionPerformed
 
     private void btnCancel2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancel2ActionPerformed
@@ -425,23 +548,15 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
     }//GEN-LAST:event_btnCancel2ActionPerformed
 
     private void btnDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDireccionActionPerformed
-        
-        
-        Suppliers_Start.viewDefault.setVisible(false);
-        Suppliers_Start.viewSelect.setVisible(false);
-        
-       
-        
-        
-        
-        
+        valid=true;
+        Suppliers_Start.viewDireccion.Open_New_Windows(supplier);
     }//GEN-LAST:event_btnDireccionActionPerformed
 
 
   
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JList Errors2;
+    private javax.swing.JList Errors;
     private javax.swing.JButton btnCancel2;
     private javax.swing.JButton btnDireccion;
     private javax.swing.JButton btnProcess;
@@ -462,17 +577,17 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JLabel lbError1;
-    private javax.swing.JLabel lbError11;
-    private javax.swing.JLabel lbError12;
-    private javax.swing.JLabel lbError13;
-    private javax.swing.JLabel lbError2;
-    private javax.swing.JLabel lbError3;
-    private javax.swing.JLabel lbError4;
-    private javax.swing.JLabel lbError5;
-    private javax.swing.JLabel lbError6;
-    private javax.swing.JLabel lbError7;
-    private javax.swing.JLabel lbError8;
+    private javax.swing.JLabel lb1;
+    private javax.swing.JLabel lb10;
+    private javax.swing.JLabel lb11;
+    private javax.swing.JLabel lb2;
+    private javax.swing.JLabel lb3;
+    private javax.swing.JLabel lb4;
+    private javax.swing.JLabel lb5;
+    private javax.swing.JLabel lb6;
+    private javax.swing.JLabel lb7;
+    private javax.swing.JLabel lb8;
+    private javax.swing.JLabel lb9;
     private javax.swing.JTextArea taDescripcion;
     private javax.swing.JTextField txtAMaterno;
     private javax.swing.JTextField txtAPaterno;
@@ -488,4 +603,8 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
     //Objects view
     Suppliers_Direccion view_Direction;
     private BDPuntoVentaManuel.MODEL.Supplier supplier;
+    private BDPuntoVentaManuel.MODEL.Catcategoria categoria;
+    private Vector errors;
+    private boolean valid=false;
+    
 }

@@ -25,7 +25,21 @@ public class Suppliers_Select_Innabilit extends javax.swing.JPanel {
         this.btnProcess.setText("Siguiente");
 
         this.Clean_Windows();
-        this.setVisible(true);
+        
+    }
+     private void Back()
+    {
+        Suppliers_Start.viewDefault.setVisible(false);
+        Suppliers_Start.viewDireccion.setVisible(false);
+        Suppliers_Start.viewSelect.setVisible(false);
+        Suppliers_Start.viewSupplier.setVisible(true);
+    }
+      private void Nex()
+    {
+        Suppliers_Start.viewDefault.setVisible(false);
+        Suppliers_Start.viewDireccion.setVisible(false);
+        Suppliers_Start.viewSelect.setVisible(false);
+        Suppliers_Start.viewSupplier.setVisible(true);
     }
 
     private void Clean_Windows() {
@@ -127,7 +141,7 @@ public class Suppliers_Select_Innabilit extends javax.swing.JPanel {
                 Supplier item = Suppliers_Start.SuppliersProcess.GetSupplierByCode(Codigo);
 
                 if (item != null) {
-                   Suppliers_Start.viewSupplier.Open_Windows_Update(item);
+                   Suppliers_Start.viewSupplier.Open_Update_Windows(item);
                    Suppliers_Start.viewSelect.setVisible(false);
                    Suppliers_Start.viewDefault.setVisible(false);
 
@@ -159,4 +173,5 @@ public class Suppliers_Select_Innabilit extends javax.swing.JPanel {
     //Vistas del provedor
     
 
+    
 }

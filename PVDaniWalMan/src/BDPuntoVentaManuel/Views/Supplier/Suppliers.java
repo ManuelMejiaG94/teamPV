@@ -5,8 +5,12 @@
  */
 package BDPuntoVentaManuel.Views.Supplier;
 
+import BDPuntoVentaManuel.ABSTRACT.IContact;
+import BDPuntoVentaManuel.ABSTRACT.IPersona;
 import BDPuntoVentaManuel.ABSTRACT.ISupplier;
 import BDPuntoVentaManuel.CONCREATE.ExtendsAbstracts.ISupplierExtends;
+import BDPuntoVentaManuel.FACTORY.FactoryContact;
+import BDPuntoVentaManuel.FACTORY.FactoryPerson;
 import BDPuntoVentaManuel.FACTORY.FactoryProduct;
 import BDPuntoVentaManuel.FACTORY.FactorySupplier;
 import BDPuntoVentaManuel.MODEL.Catcategoria;
@@ -32,6 +36,8 @@ public class Suppliers {
         CategoriasProcess = new Process_CatCategoria();
         ctrlSupplier = new FactorySupplier().getInstanceAbstractExtends();
         ctrlSupplierDefault = new FactorySupplier().getInstanceAbstract();
+        ctrContact=new FactoryContact().getInstanceAbstract();
+        ctrPersona=new FactoryPerson().getInstanceAbstract();
     }
     
     public DefaultComboBoxModel getModelCategorias() {
@@ -62,8 +68,18 @@ public class Suppliers {
         }
 
     }
-    public void SaveSupplier(Supplier supplier,Contacto contact,Persona person ) {
+    public boolean SaveSupplier(Supplier supplier,Contacto contact,Persona person ) {
+        try{
+        ctrPersona.create(person);
+        contact.setIdPersona(person);
+        ctrContact.create(contact);
+        supplier.setIdContacto(contact);
         ctrlSupplierDefault.create(supplier);
+        return true;
+        }catch(Exception e)
+        {
+            return false;
+        }
     }
     
     public void ChargeDataByCategoriaId(DefaultTableModel model, Catcategoria categoria) {
@@ -142,4 +158,7 @@ public class Suppliers {
     
     ISupplier ctrlSupplierDefault;
     ISupplierExtends ctrlSupplier;
+    
+    IPersona ctrPersona;
+    IContact ctrContact;
 }

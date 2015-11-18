@@ -5,6 +5,8 @@
  */
 package BDPuntoVentaManuel.Views.Supplier;
 
+import com.mysql.jdbc.StringUtils;
+
 /**
  *
  * @author manuel
@@ -20,6 +22,56 @@ public class Suppliers_Direccion extends javax.swing.JInternalFrame {
     public void Open_New_Windows(BDPuntoVentaManuel.MODEL.Supplier _supplier)
     {
         supplier=_supplier;
+        this.PaintViews();
+    }
+    
+    private void PaintViews()
+    {
+        Suppliers_Start.viewDefault.setVisible(false);
+        Suppliers_Start.viewDireccion.setVisible(true);
+        Suppliers_Start.viewSelect.setVisible(false);
+        Suppliers_Start.viewSupplier.setVisible(false);
+    }
+    public BDPuntoVentaManuel.MODEL.Supplier getSupplier()
+    {
+        return supplier;
+    }
+    private void Back()
+    {
+        Suppliers_Start.viewDefault.setVisible(false);
+        Suppliers_Start.viewDireccion.setVisible(false);
+        Suppliers_Start.viewSelect.setVisible(false);
+        Suppliers_Start.viewSupplier.setVisible(true);
+    }
+    private void Limpiar_Errores()
+    {
+        this.lb1.setVisible(false);
+        this.lb2.setVisible(false);
+        this.lbError.setVisible(false);
+    }
+    private boolean Validar_Direccion()
+    {
+        boolean Result = true;
+        
+        if (StringUtils.isNullOrEmpty(this.txtCalle.getText())) {
+            this.lb1.setVisible(true);
+            Result = false;
+        }
+        if (StringUtils.isNullOrEmpty(this.txtReferencia.getText())) {
+            this.lb2.setVisible(true);
+            Result = false;
+        }
+
+        if (!Result) {
+            String error = "Los campos marcados con * son obligatorios";
+            this.lbError.setText(error);
+        }
+        return Result;
+    }
+    private void CargarDireccion()
+    {
+        this.supplier.setStrAddress(this.txtCalle.getText().trim());
+        this.supplier.setStrReferencia(this.txtReferencia.getText().trim());
     }
 
     /**
@@ -165,17 +217,16 @@ public class Suppliers_Direccion extends javax.swing.JInternalFrame {
 
     private void btnIdentifiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIdentifiActionPerformed
 
-//        this.Limpiar_Errores();
-//        if (this.Validar_Direccion()) {
+        this.Limpiar_Errores();
+        if (this.Validar_Direccion()) {
+            this.CargarDireccion();
 //            try {
 //                this.crearMapa();
 //                this.AccionMap=1;
 //            } catch (Exception ex) {
 //                System.out.println(ex.getMessage());
 //            }
-//        }else{
-//            this.ErrorsPaint();
-//        }
+        }
     }//GEN-LAST:event_btnIdentifiActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
