@@ -10,6 +10,8 @@ import BDPuntoVentaManuel.CONCREATE.ExtendsAbstracts.ISupplierExtends;
 import BDPuntoVentaManuel.FACTORY.FactoryProduct;
 import BDPuntoVentaManuel.FACTORY.FactorySupplier;
 import BDPuntoVentaManuel.MODEL.Catcategoria;
+import BDPuntoVentaManuel.MODEL.Contacto;
+import BDPuntoVentaManuel.MODEL.Persona;
 import BDPuntoVentaManuel.MODEL.Supplier;
 import BDPuntoVentaManuel.ViewsProcess.Process_CatCategoria;
 import java.util.List;
@@ -60,7 +62,7 @@ public class Suppliers {
         }
 
     }
-    public void SaveSupplier(Supplier supplier) {
+    public void SaveSupplier(Supplier supplier,Contacto contact,Persona person ) {
         ctrlSupplierDefault.create(supplier);
     }
     

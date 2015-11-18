@@ -8,3 +8,8 @@ ALTER TABLE `puntoventa`.`po`
 /*******Se modifico la propiedad del stock del producto
 ALTER TABLE `puntoventa`.`product`   
   CHANGE `intStock` `intStock` DOUBLE NULL;
+
+/***17/11/2015
+/*******Se agrego un nuevo campo necesario a la tabla de provedores
+ALTER TABLE `puntoventa`.`supplier`   
+  ADD COLUMN `strReferencia` VARCHAR(500) NULL AFTER `boolEstatus`;

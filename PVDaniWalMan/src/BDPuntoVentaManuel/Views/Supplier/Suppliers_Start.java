@@ -35,6 +35,7 @@ public class Suppliers_Start extends javax.swing.JInternalFrame {
         viewSupplier=new Suppliers_New_Update();
         viewSelect=new Suppliers_Select_Innabilit();
         viewDefault=new Suppliers_Default();
+        viewDireccion=new Suppliers_Direccion();
         
         pnContainer.setLayout(Layout);
         GridBagConstraints cons= new GridBagConstraints();
@@ -44,6 +45,7 @@ public class Suppliers_Start extends javax.swing.JInternalFrame {
         pnContainer.add(viewSupplier,cons);
         pnContainer.add(viewSelect,cons);
         pnContainer.add(viewDefault,cons);
+        pnContainer.add(viewDireccion,cons);
         
         
     }
@@ -238,6 +240,7 @@ public class Suppliers_Start extends javax.swing.JInternalFrame {
     public static Suppliers_Default viewDefault;
     public static Suppliers_New_Update viewSupplier;
     public static Suppliers_Select_Innabilit viewSelect;
+    public static Suppliers_Direccion viewDireccion;
     
     //Variables
     GridBagLayout Layout=new GridBagLayout();

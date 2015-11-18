@@ -92,7 +92,8 @@ public class ProductoJpaControllerExtends implements IProductExtends {
                     .setParameter("strClave", strClave).getSingleResult();
             return product;
         } catch (Exception ex) {
-            System.out.println("Error es "+ex.getMessage());
+            Logger.getLogger(ProductoJpaControllerExtends.class.getName()).log(Level.SEVERE, null, ex);
+            //System.out.println("Error es "+ex.getMessage());
             return null;
             }
     }

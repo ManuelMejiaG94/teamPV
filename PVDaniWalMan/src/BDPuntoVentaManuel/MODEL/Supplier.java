@@ -38,7 +38,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Supplier.findByStrNumber", query = "SELECT s FROM Supplier s WHERE s.strNumber = :strNumber"),
     @NamedQuery(name = "Supplier.findByStrDescripcion", query = "SELECT s FROM Supplier s WHERE s.strDescripcion = :strDescripcion"),
     @NamedQuery(name = "Supplier.findByStrAddress", query = "SELECT s FROM Supplier s WHERE s.strAddress = :strAddress"),
-    @NamedQuery(name = "Supplier.findByBoolEstatus", query = "SELECT s FROM Supplier s WHERE s.boolEstatus = :boolEstatus")})
+    @NamedQuery(name = "Supplier.findByBoolEstatus", query = "SELECT s FROM Supplier s WHERE s.boolEstatus = :boolEstatus"),
+    @NamedQuery(name = "Supplier.findByStrReferencia", query = "SELECT s FROM Supplier s WHERE s.strReferencia = :strReferencia")})
 public class Supplier implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -64,6 +65,8 @@ public class Supplier implements Serializable {
     @Basic(optional = false)
     @Column(name = "boolEstatus")
     private boolean boolEstatus;
+    @Column(name = "strReferencia")
+    private String strReferencia;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idSuplier")
     private Collection<Request> requestCollection;
     @OneToMany(mappedBy = "idSupplier")
@@ -146,6 +149,14 @@ public class Supplier implements Serializable {
 
     public void setBoolEstatus(boolean boolEstatus) {
         this.boolEstatus = boolEstatus;
+    }
+
+    public String getStrReferencia() {
+        return strReferencia;
+    }
+
+    public void setStrReferencia(String strReferencia) {
+        this.strReferencia = strReferencia;
     }
 
     @XmlTransient

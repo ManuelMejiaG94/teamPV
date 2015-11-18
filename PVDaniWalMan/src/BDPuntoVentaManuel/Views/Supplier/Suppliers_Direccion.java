@@ -17,6 +17,10 @@ public class Suppliers_Direccion extends javax.swing.JInternalFrame {
     public Suppliers_Direccion() {
         initComponents();
     }
+    public void Open_New_Windows(BDPuntoVentaManuel.MODEL.Supplier _supplier)
+    {
+        supplier=_supplier;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -36,9 +40,10 @@ public class Suppliers_Direccion extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         txtReferencia = new javax.swing.JTextArea();
         jLabel15 = new javax.swing.JLabel();
-        lbError8 = new javax.swing.JLabel();
-        lbError9 = new javax.swing.JLabel();
+        lb1 = new javax.swing.JLabel();
+        lb2 = new javax.swing.JLabel();
         btnCancel = new javax.swing.JButton();
+        lbError = new javax.swing.JLabel();
 
         JLabel_ME_Imagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         JLabel_ME_Imagen.setText("Mapa estático");
@@ -60,11 +65,11 @@ public class Suppliers_Direccion extends javax.swing.JInternalFrame {
 
         jLabel15.setText("Referencia");
 
-        lbError8.setForeground(new java.awt.Color(255, 0, 51));
-        lbError8.setText("*");
+        lb1.setForeground(new java.awt.Color(255, 0, 51));
+        lb1.setText("*");
 
-        lbError9.setForeground(new java.awt.Color(255, 0, 51));
-        lbError9.setText("*");
+        lb2.setForeground(new java.awt.Color(255, 0, 51));
+        lb2.setText("*");
 
         btnCancel.setText("Cancelar");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -72,6 +77,9 @@ public class Suppliers_Direccion extends javax.swing.JInternalFrame {
                 btnCancelActionPerformed(evt);
             }
         });
+
+        lbError.setForeground(new java.awt.Color(255, 51, 0));
+        lbError.setText("jLabel1");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -89,20 +97,21 @@ public class Suppliers_Direccion extends javax.swing.JInternalFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lbError8, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lb1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(76, 76, 76)
                                 .addComponent(txtCalle))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel15)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(lbError9, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lb2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnCancel)
                         .addGap(38, 38, 38)
-                        .addComponent(btnIdentifi, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnIdentifi, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lbError, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -113,15 +122,17 @@ public class Suppliers_Direccion extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(lbError8)
+                    .addComponent(lb1)
                     .addComponent(txtCalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(lbError9))
+                    .addComponent(lb2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lbError)
+                .addGap(14, 14, 14)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnIdentifi)
                     .addComponent(btnCancel))
@@ -181,9 +192,13 @@ public class Suppliers_Direccion extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel lbError8;
-    private javax.swing.JLabel lbError9;
+    private javax.swing.JLabel lb1;
+    private javax.swing.JLabel lb2;
+    private javax.swing.JLabel lbError;
     private javax.swing.JTextField txtCalle;
     private javax.swing.JTextArea txtReferencia;
     // End of variables declaration//GEN-END:variables
+
+    
+    private BDPuntoVentaManuel.MODEL.Supplier supplier;
 }

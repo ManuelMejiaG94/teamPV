@@ -141,7 +141,7 @@ public class Contacto implements Serializable {
 
     @Override
     public String toString() {
-        return idPersona.getStrNombre()+" "+idPersona.getStrAPaterno()+" "+idPersona.getStrAMaterno();
+        return getIdPersona().getStrNombre();
     }
     
 }

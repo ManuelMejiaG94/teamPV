@@ -115,7 +115,7 @@ public class Currency implements Serializable {
 
     @Override
     public String toString() {
-        return "BDPuntoVentaManuel.MODEL.Currency[ id=" + id + " ]";
+        return strValor;
     }
     
 }
