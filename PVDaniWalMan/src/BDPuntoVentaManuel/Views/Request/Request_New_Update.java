@@ -240,6 +240,10 @@ public class Request_New_Update extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         txtTotalVenta = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        pn1.setBackground(new java.awt.Color(255, 255, 255));
+
         tbData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -250,11 +254,15 @@ public class Request_New_Update extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tbData);
 
+        jLabel4.setForeground(new java.awt.Color(51, 204, 255));
         jLabel4.setText("Productos de la solicitud");
 
+        jLabel5.setForeground(new java.awt.Color(51, 204, 255));
         jLabel5.setText("Sub total");
 
+        btnDelete.setForeground(new java.awt.Color(51, 204, 255));
         btnDelete.setText("Retirar");
+        btnDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
@@ -307,8 +315,12 @@ public class Request_New_Update extends javax.swing.JPanel {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        lbProductCode.setForeground(new java.awt.Color(51, 204, 255));
         lbProductCode.setText("Codigo del producto");
 
+        lbAmount.setForeground(new java.awt.Color(51, 204, 255));
         lbAmount.setText("Cantidad");
 
         lbError2.setForeground(new java.awt.Color(255, 0, 0));
@@ -320,7 +332,9 @@ public class Request_New_Update extends javax.swing.JPanel {
             }
         });
 
+        btnCharge.setForeground(new java.awt.Color(51, 204, 255));
         btnCharge.setText("Cargar");
+        btnCharge.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCharge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChargeActionPerformed(evt);
@@ -330,37 +344,49 @@ public class Request_New_Update extends javax.swing.JPanel {
         lbErrorsMessage.setForeground(new java.awt.Color(255, 0, 0));
         lbErrorsMessage.setText("jLabel4");
 
+        jLabel9.setForeground(new java.awt.Color(51, 204, 255));
         jLabel9.setText("Folio");
 
+        jLabel1.setForeground(new java.awt.Color(51, 204, 255));
         jLabel1.setText("Categoria");
 
+        cmbCategoria.setForeground(new java.awt.Color(51, 204, 255));
+        cmbCategoria.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cmbCategoria.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbCategoriaItemStateChanged(evt);
             }
         });
 
+        cmbProduct.setForeground(new java.awt.Color(51, 204, 255));
+        cmbProduct.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cmbProduct.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbProductItemStateChanged(evt);
             }
         });
 
+        cmbSupplier.setForeground(new java.awt.Color(51, 204, 255));
+        cmbSupplier.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cmbSupplier.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbSupplierItemStateChanged(evt);
             }
         });
 
+        jLabel10.setForeground(new java.awt.Color(51, 204, 255));
         jLabel10.setText("Provedor");
 
+        btnCreateRequest.setForeground(new java.awt.Color(51, 204, 255));
         btnCreateRequest.setText("Crear Solicictud");
+        btnCreateRequest.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCreateRequest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCreateRequestActionPerformed(evt);
             }
         });
 
+        lbFolio.setForeground(new java.awt.Color(51, 204, 255));
         lbFolio.setText("jLabel6");
         lbFolio.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         lbFolio.setVerifyInputWhenFocusTarget(false);
@@ -368,7 +394,9 @@ public class Request_New_Update extends javax.swing.JPanel {
         lbError1.setForeground(new java.awt.Color(255, 0, 0));
         lbError1.setText("*");
 
+        btnExit.setForeground(new java.awt.Color(51, 204, 255));
         btnExit.setText("Salir");
+        btnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
@@ -454,20 +482,27 @@ public class Request_New_Update extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        pn2.setBackground(new java.awt.Color(255, 255, 255));
+
+        btnOk.setForeground(new java.awt.Color(51, 204, 255));
         btnOk.setText("Generar solicitud");
+        btnOk.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnOk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnOkActionPerformed(evt);
             }
         });
 
+        btnCancel.setForeground(new java.awt.Color(51, 204, 255));
         btnCancel.setText("Cancelar");
+        btnCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelActionPerformed(evt);
             }
         });
 
+        jLabel7.setForeground(new java.awt.Color(51, 204, 255));
         jLabel7.setText("Total");
 
         javax.swing.GroupLayout pn2Layout = new javax.swing.GroupLayout(pn2);

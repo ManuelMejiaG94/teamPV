@@ -75,6 +75,10 @@ public class PO_Start extends javax.swing.JInternalFrame {
         btnExit = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        pnContainer.setBackground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout pnContainerLayout = new javax.swing.GroupLayout(pnContainer);
         pnContainer.setLayout(pnContainerLayout);
         pnContainerLayout.setHorizontalGroup(
@@ -86,7 +90,10 @@ public class PO_Start extends javax.swing.JInternalFrame {
             .addGap(0, 353, Short.MAX_VALUE)
         );
 
+        btnExit.setBackground(new java.awt.Color(255, 255, 255));
+        btnExit.setForeground(new java.awt.Color(51, 204, 255));
         btnExit.setText("Salir");
+        btnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);

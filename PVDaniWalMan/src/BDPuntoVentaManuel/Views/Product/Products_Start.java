@@ -81,7 +81,12 @@ public class Products_Start extends javax.swing.JInternalFrame {
         btnUpdate = new javax.swing.JMenuItem();
         btnInabilit = new javax.swing.JMenuItem();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        btnExit.setBackground(new java.awt.Color(255, 255, 255));
+        btnExit.setForeground(new java.awt.Color(51, 204, 255));
         btnExit.setText("Salir");
+        btnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnExitActionPerformed(evt);
@@ -135,9 +140,16 @@ public class Products_Start extends javax.swing.JInternalFrame {
                 .addContainerGap(12, Short.MAX_VALUE))
         );
 
+        jMenu1.setBackground(new java.awt.Color(255, 255, 255));
+        jMenu1.setForeground(new java.awt.Color(51, 204, 255));
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/1447399939_app_type_catalog_512px_GREY.png"))); // NOI18N
         jMenu1.setText("Producto");
+        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        btnNew.setBackground(new java.awt.Color(255, 255, 255));
+        btnNew.setForeground(new java.awt.Color(51, 204, 255));
         btnNew.setText("Nuevo");
+        btnNew.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNewActionPerformed(evt);
@@ -145,7 +157,10 @@ public class Products_Start extends javax.swing.JInternalFrame {
         });
         jMenu1.add(btnNew);
 
+        btnUpdate.setBackground(new java.awt.Color(255, 255, 255));
+        btnUpdate.setForeground(new java.awt.Color(51, 204, 255));
         btnUpdate.setText("Modificar");
+        btnUpdate.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnUpdateActionPerformed(evt);
@@ -153,7 +168,10 @@ public class Products_Start extends javax.swing.JInternalFrame {
         });
         jMenu1.add(btnUpdate);
 
+        btnInabilit.setBackground(new java.awt.Color(255, 255, 255));
+        btnInabilit.setForeground(new java.awt.Color(51, 204, 255));
         btnInabilit.setText("Innabilitar");
+        btnInabilit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnInabilit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInabilitActionPerformed(evt);
@@ -186,7 +204,7 @@ public class Products_Start extends javax.swing.JInternalFrame {
                 .addComponent(pnContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         pack();

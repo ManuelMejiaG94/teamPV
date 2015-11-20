@@ -133,48 +133,68 @@ public class Request_Partial extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         lbFolio = new javax.swing.JLabel();
 
+        jLabel1.setForeground(new java.awt.Color(51, 204, 255));
         jLabel1.setText("Provedor");
 
+        jLabel2.setForeground(new java.awt.Color(51, 204, 255));
         jLabel2.setText("Email");
 
+        jLabel3.setForeground(new java.awt.Color(51, 204, 255));
         jLabel3.setText("Fecha");
 
+        jLabel4.setForeground(new java.awt.Color(51, 204, 255));
         jLabel4.setText("Total general");
 
+        lbSupplier.setForeground(new java.awt.Color(51, 204, 255));
         lbSupplier.setText("jLabel5");
 
+        lbEmail.setForeground(new java.awt.Color(51, 204, 255));
         lbEmail.setText("jLabel6");
 
+        lbDate.setForeground(new java.awt.Color(51, 204, 255));
         lbDate.setText("jLabel7");
 
+        lbTotal.setForeground(new java.awt.Color(51, 204, 255));
         lbTotal.setText("jLabel8");
 
         jScrollPane1.setViewportView(listProduct1);
 
         jScrollPane2.setViewportView(listProduct2);
 
+        btnNext.setBackground(new java.awt.Color(255, 255, 255));
+        btnNext.setForeground(new java.awt.Color(51, 204, 255));
         btnNext.setText(">");
+        btnNext.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnNext.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNextActionPerformed(evt);
             }
         });
 
+        btnBack.setBackground(new java.awt.Color(255, 255, 255));
+        btnBack.setForeground(new java.awt.Color(51, 204, 255));
         btnBack.setText("<");
+        btnBack.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
 
+        btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setForeground(new java.awt.Color(51, 204, 255));
         btnCancelar.setText("Cancelar");
+        btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
             }
         });
 
+        btnGenerar.setBackground(new java.awt.Color(255, 255, 255));
+        btnGenerar.setForeground(new java.awt.Color(51, 204, 255));
         btnGenerar.setText("Generar orden de compra");
+        btnGenerar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGenerar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGenerarActionPerformed(evt);
@@ -184,8 +204,10 @@ public class Request_Partial extends javax.swing.JPanel {
         lbErrorMessage.setForeground(new java.awt.Color(204, 0, 0));
         lbErrorMessage.setText("jLabel9");
 
+        jLabel5.setForeground(new java.awt.Color(51, 204, 255));
         jLabel5.setText("Folio");
 
+        lbFolio.setForeground(new java.awt.Color(51, 204, 255));
         lbFolio.setText("jLabel6");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

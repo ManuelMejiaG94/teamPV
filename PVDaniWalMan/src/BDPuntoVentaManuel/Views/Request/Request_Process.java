@@ -42,6 +42,8 @@ public class Request_Process extends javax.swing.JPanel {
         btnAsept = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
         tbData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -52,7 +54,10 @@ public class Request_Process extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tbData);
 
+        btnDelete.setBackground(new java.awt.Color(255, 255, 255));
+        btnDelete.setForeground(new java.awt.Color(51, 204, 255));
         btnDelete.setText("Retirar");
+        btnDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteActionPerformed(evt);
@@ -69,33 +74,48 @@ public class Request_Process extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tbData1);
 
+        btnCharge.setBackground(new java.awt.Color(255, 255, 255));
+        btnCharge.setForeground(new java.awt.Color(51, 204, 255));
         btnCharge.setText("Cargar");
+        btnCharge.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCharge.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChargeActionPerformed(evt);
             }
         });
 
+        jLabel1.setForeground(new java.awt.Color(51, 204, 255));
         jLabel1.setText("jLabel1");
 
+        jLabel2.setForeground(new java.awt.Color(51, 204, 255));
         jLabel2.setText("Productos en la solicitud");
 
+        jLabel3.setForeground(new java.awt.Color(51, 204, 255));
         jLabel3.setText("Productos resividos");
 
+        jTextField1.setForeground(new java.awt.Color(51, 204, 255));
         jTextField1.setText("jTextField1");
 
+        jLabel4.setForeground(new java.awt.Color(51, 204, 255));
         jLabel4.setText("Cantidad del producto resivida");
 
+        jLabel5.setForeground(new java.awt.Color(255, 0, 0));
         jLabel5.setText("*");
 
+        btnAsept.setBackground(new java.awt.Color(255, 255, 255));
+        btnAsept.setForeground(new java.awt.Color(51, 204, 255));
         btnAsept.setText("Aseptar");
+        btnAsept.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAsept.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAseptActionPerformed(evt);
             }
         });
 
+        btnCancel.setBackground(new java.awt.Color(255, 255, 255));
+        btnCancel.setForeground(new java.awt.Color(51, 204, 255));
         btnCancel.setText("Cancelar");
+        btnCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelActionPerformed(evt);
@@ -126,8 +146,7 @@ public class Request_Process extends javax.swing.JPanel {
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabel5)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, 0)))
+                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

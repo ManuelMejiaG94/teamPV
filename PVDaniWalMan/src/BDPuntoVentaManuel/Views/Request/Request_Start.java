@@ -90,6 +90,8 @@ public class Request_Start extends javax.swing.JInternalFrame {
         jMenu1 = new javax.swing.JMenu();
         btnNew = new javax.swing.JMenuItem();
 
+        pnContainer.setBackground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout pnContainerLayout = new javax.swing.GroupLayout(pnContainer);
         pnContainer.setLayout(pnContainerLayout);
         pnContainerLayout.setHorizontalGroup(
@@ -101,6 +103,8 @@ public class Request_Start extends javax.swing.JInternalFrame {
             .addGap(0, 353, Short.MAX_VALUE)
         );
 
+        btnExit.setBackground(new java.awt.Color(255, 255, 255));
+        btnExit.setForeground(new java.awt.Color(51, 204, 255));
         btnExit.setText("Salir");
         btnExit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,9 +129,15 @@ public class Request_Start extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jMenu1.setBackground(new java.awt.Color(255, 255, 255));
+        jMenu1.setForeground(new java.awt.Color(51, 204, 255));
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/1447400386_purchase_order.png"))); // NOI18N
         jMenu1.setText("Solicitudes");
+        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        btnNew.setForeground(new java.awt.Color(51, 204, 255));
         btnNew.setText("Generar nueva solicitud");
+        btnNew.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnNew.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNewActionPerformed(evt);
@@ -157,7 +167,7 @@ public class Request_Start extends javax.swing.JInternalFrame {
                 .addComponent(pnContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(pnOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

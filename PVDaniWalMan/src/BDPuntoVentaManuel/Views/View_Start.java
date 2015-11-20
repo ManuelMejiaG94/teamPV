@@ -115,9 +115,18 @@ public class View_Start extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
-        btnMenProducts.setText("Productos");
+        jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
 
+        btnMenProducts.setBackground(new java.awt.Color(255, 255, 255));
+        btnMenProducts.setForeground(new java.awt.Color(51, 204, 255));
+        btnMenProducts.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/1447399939_app_type_catalog_512px_GREY.png"))); // NOI18N
+        btnMenProducts.setText("Productos");
+        btnMenProducts.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        btnGestionProduct.setBackground(new java.awt.Color(255, 255, 255));
+        btnGestionProduct.setForeground(new java.awt.Color(51, 204, 255));
         btnGestionProduct.setText("Gestionar Productos");
+        btnGestionProduct.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGestionProduct.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGestionProductActionPerformed(evt);
@@ -127,9 +136,16 @@ public class View_Start extends javax.swing.JFrame {
 
         jMenuBar1.add(btnMenProducts);
 
+        jMenu2.setBackground(new java.awt.Color(255, 255, 255));
+        jMenu2.setForeground(new java.awt.Color(51, 204, 255));
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/1447400004_emblem-sales.png"))); // NOI18N
         jMenu2.setText(" Ventas");
+        jMenu2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        btnNewSale.setBackground(new java.awt.Color(255, 255, 255));
+        btnNewSale.setForeground(new java.awt.Color(51, 204, 255));
         btnNewSale.setText("Nueva venta");
+        btnNewSale.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnNewSale.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNewSaleActionPerformed(evt);
@@ -139,9 +155,16 @@ public class View_Start extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu2);
 
+        jMenu3.setBackground(new java.awt.Color(255, 255, 255));
+        jMenu3.setForeground(new java.awt.Color(51, 204, 255));
+        jMenu3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/1447400076_suppliers.png"))); // NOI18N
         jMenu3.setText("Provedores");
+        jMenu3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        btnProvedor.setBackground(new java.awt.Color(255, 255, 255));
+        btnProvedor.setForeground(new java.awt.Color(51, 204, 255));
         btnProvedor.setText("Gestionar provedor");
+        btnProvedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnProvedor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProvedorActionPerformed(evt);
@@ -151,9 +174,16 @@ public class View_Start extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
+        jMenu4.setBackground(new java.awt.Color(255, 255, 255));
+        jMenu4.setForeground(new java.awt.Color(51, 204, 255));
+        jMenu4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/1447400386_purchase_order.png"))); // NOI18N
         jMenu4.setText("Solicitud");
+        jMenu4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        btnNewOrders.setBackground(new java.awt.Color(255, 255, 255));
+        btnNewOrders.setForeground(new java.awt.Color(51, 204, 255));
         btnNewOrders.setText("Gestionar solicitudes");
+        btnNewOrders.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnNewOrders.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNewOrdersActionPerformed(evt);
@@ -163,9 +193,16 @@ public class View_Start extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu4);
 
+        jMenu1.setBackground(new java.awt.Color(255, 255, 255));
+        jMenu1.setForeground(new java.awt.Color(51, 204, 255));
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/1447400173_git-pull-request.png"))); // NOI18N
         jMenu1.setText("Ordenes de compra");
+        jMenu1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        jMenuItem2.setBackground(new java.awt.Color(255, 255, 255));
+        jMenuItem2.setForeground(new java.awt.Color(51, 204, 255));
         jMenuItem2.setText("Gestionar Orden de Compra");
+        jMenuItem2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);

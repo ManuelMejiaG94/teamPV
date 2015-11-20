@@ -109,10 +109,14 @@ public class PO_Default extends javax.swing.JPanel {
         cmbCategoria = new javax.swing.JComboBox();
         btnReseptio = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(255, 0, 51));
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(51, 204, 255));
         jLabel1.setText("Supplier");
 
+        cmbSupplier.setForeground(new java.awt.Color(51, 204, 255));
         cmbSupplier.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar" }));
         cmbSupplier.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -120,9 +124,14 @@ public class PO_Default extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(51, 204, 255));
         jLabel2.setText("Numero de folio");
 
+        btnSearch.setBackground(new java.awt.Color(255, 255, 255));
+        btnSearch.setForeground(new java.awt.Color(51, 204, 255));
         btnSearch.setText("Buscar");
+        btnSearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel3.setForeground(new java.awt.Color(255, 0, 0));
         jLabel3.setText("*");
@@ -137,8 +146,11 @@ public class PO_Default extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tbData);
 
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(51, 204, 255));
         jLabel4.setText("Estatus");
 
+        cmbStatus.setForeground(new java.awt.Color(51, 204, 255));
         cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "Activas", "Inactivas" }));
         cmbStatus.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -146,15 +158,21 @@ public class PO_Default extends javax.swing.JPanel {
             }
         });
 
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setForeground(new java.awt.Color(51, 204, 255));
         jLabel5.setText("Categoria");
 
+        cmbCategoria.setForeground(new java.awt.Color(51, 204, 255));
         cmbCategoria.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbCategoriaItemStateChanged(evt);
             }
         });
 
+        btnReseptio.setBackground(new java.awt.Color(255, 255, 255));
+        btnReseptio.setForeground(new java.awt.Color(51, 204, 255));
         btnReseptio.setText("Procesar orden de compra");
+        btnReseptio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnReseptio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnReseptioActionPerformed(evt);
