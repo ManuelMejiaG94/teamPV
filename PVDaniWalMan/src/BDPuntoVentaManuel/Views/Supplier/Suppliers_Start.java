@@ -88,6 +88,7 @@ public class Suppliers_Start extends javax.swing.JInternalFrame {
         btnNew = new javax.swing.JMenuItem();
         btnUpdate = new javax.swing.JMenuItem();
         btnInnabilit = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout pnContainerLayout = new javax.swing.GroupLayout(pnContainer);
         pnContainer.setLayout(pnContainerLayout);
@@ -169,6 +170,14 @@ public class Suppliers_Start extends javax.swing.JInternalFrame {
         });
         jMenu1.add(btnInnabilit);
 
+        jMenuItem1.setText("Habilitar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
@@ -211,16 +220,16 @@ public class Suppliers_Start extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnNewActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        viewSupplier.setVisible(false);
-        viewSelect.setVisible(true);
-        viewDefault.setVisible(false);
+       viewSelect.Open_Update();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnInnabilitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInnabilitActionPerformed
-           viewSupplier.setVisible(false);
-        viewSelect.setVisible(true);
-        viewDefault.setVisible(false);
+        viewSelect.Open_Innailit();
     }//GEN-LAST:event_btnInnabilitActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        viewSelect.Open_Habilit();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -231,6 +240,7 @@ public class Suppliers_Start extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel pnContainer;

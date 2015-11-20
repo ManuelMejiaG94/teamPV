@@ -6,6 +6,7 @@
 package BDPuntoVentaManuel.Views.Supplier;
 
 import BDPuntoVentaManuel.MODEL.Supplier;
+import BDPuntoVentaManuel.MODEL.Supplier_;
 import com.mysql.jdbc.StringUtils;
 
 /**
@@ -23,18 +24,36 @@ public class Suppliers_Select_Innabilit extends javax.swing.JPanel {
     
     public void Open_Update() {
         this.btnProcess.setText("Siguiente");
-
         this.Clean_Windows();
-        
+        this.AbrirVentana();
+    }
+    public void Open_Innailit()
+    {
+        this.btnProcess.setText("Innabilitar");
+        this.Clean_Windows();
+        this.AbrirVentana();
+    }
+     public void Open_Habilit()
+    {
+        this.btnProcess.setText("Habilitar");
+        this.Clean_Windows();
+        this.AbrirVentana();
     }
      private void Back()
     {
-        Suppliers_Start.viewDefault.setVisible(false);
+        Suppliers_Start.viewSupplier.setVisible(false);
         Suppliers_Start.viewDireccion.setVisible(false);
         Suppliers_Start.viewSelect.setVisible(false);
-        Suppliers_Start.viewSupplier.setVisible(true);
+        Suppliers_Start.viewDefault.setVisible(true);
     }
-      private void Nex()
+    private void Finish()
+    {
+        Suppliers_Start.viewSupplier.setVisible(false);
+        Suppliers_Start.viewDireccion.setVisible(false);
+        Suppliers_Start.viewSelect.setVisible(false);
+        Suppliers_Start.viewDefault.setVisible(true);
+    }
+    private void Next()
     {
         Suppliers_Start.viewDefault.setVisible(false);
         Suppliers_Start.viewDireccion.setVisible(false);
@@ -56,6 +75,14 @@ public class Suppliers_Select_Innabilit extends javax.swing.JPanel {
         this.lbErrorMessage.setVisible(true);
     }
 
+    private void AbrirVentana()
+    {
+        Suppliers_Start.viewSupplier.setVisible(false);
+        Suppliers_Start.viewSelect.setVisible(true);
+        Suppliers_Start.viewDefault.setVisible(false);
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -135,7 +162,7 @@ public class Suppliers_Select_Innabilit extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
-        //        if (btnProcess.getText().equals("Siguiente")) {
+        if (btnProcess.getText().equals("Siguiente")) {
             if (!StringUtils.isNullOrEmpty(this.txtCodigo.getText())) {
                 String Codigo = txtCodigo.getText().trim();
                 Supplier item = Suppliers_Start.SuppliersProcess.GetSupplierByCode(Codigo);
@@ -152,12 +179,51 @@ public class Suppliers_Select_Innabilit extends javax.swing.JPanel {
             } else {
                 this.Paint_ErrorMessage("Es necesario ingresar el codigo del producto");
             }
+        }
+        
+        if(btnProcess.getText().equals("Innabilitar")) {
+          if (!StringUtils.isNullOrEmpty(this.txtCodigo.getText())) {
+                String Codigo = txtCodigo.getText().trim();
+                Supplier item = Suppliers_Start.SuppliersProcess.GetSupplierByCode(Codigo);
+
+                if (item != null) {
+                   item.setBoolEstatus(false);
+                   Suppliers_Start.SuppliersProcess.EditSupplier(item);
+                   Suppliers_Start.viewDefault.ResetDataTable();
+                   Finish();
+                } else {
+                    this.Paint_ErrorMessage("No existe en tu repertorio un producto con el codigo ingresado");
+                }
+
+            } else {
+                this.Paint_ErrorMessage("Es necesario ingresar el codigo del producto");
+            }
+            
+        }
+        
+        if(btnProcess.getText().equals("Habilitar")) {
+          if (!StringUtils.isNullOrEmpty(this.txtCodigo.getText())) {
+                String Codigo = txtCodigo.getText().trim();
+                Supplier item = Suppliers_Start.SuppliersProcess.GetSupplierByCode(Codigo);
+
+                if (item != null) {
+                   item.setBoolEstatus(true);
+                   Suppliers_Start.SuppliersProcess.EditSupplier(item);
+                   Suppliers_Start.viewDefault.ResetDataTable();
+                   Finish();
+                } else {
+                    this.Paint_ErrorMessage("No existe en tu repertorio un producto con el codigo ingresado");
+                }
+
+            } else {
+                this.Paint_ErrorMessage("Es necesario ingresar el codigo del producto");
+            }
+            
+        }
     }//GEN-LAST:event_btnProcessActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        Suppliers_Start.viewSupplier.setVisible(false);
-        Suppliers_Start.viewSelect.setVisible(false);
-        Suppliers_Start.viewDefault.setVisible(true);
+          Back();
     }//GEN-LAST:event_jButton2ActionPerformed
 
 
