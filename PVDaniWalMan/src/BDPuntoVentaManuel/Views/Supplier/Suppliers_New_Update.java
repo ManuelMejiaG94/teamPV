@@ -10,6 +10,7 @@ import BDPuntoVentaManuel.MODEL.Contacto;
 import BDPuntoVentaManuel.MODEL.Persona;
 import BDPuntoVentaManuel.MODEL.Supplier;
 import BDPuntoVentaManuel.MODEL.Supplier_;
+import BDPuntoVentaManuel.Notifications.viewUpdate;
 import BDPuntoVentaManuel.Views.View_Start;
 import com.mysql.jdbc.StringUtils;
 import java.awt.event.ItemEvent;
@@ -18,7 +19,7 @@ import javax.swing.JInternalFrame;
 
 /**
  *
- * @author manuel
+ * @author MANCERA
  */
 public class Suppliers_New_Update extends javax.swing.JPanel {
 
@@ -26,20 +27,24 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
      * Creates new form Suppliers_New
      */
     public Suppliers_New_Update() {
-        initComponents();
-        this.ChargeCategori();
+        initComponents();       
     }
     
     public void Open_New_Windows()
     {
+        supplier=new Supplier();
         this.btnProcess.setText("Registrar");
+        this.Clean_Windows();
+        this.ChargeCategori();
+        
+        Suppliers_Start.viewSupplier.setVisible(true);
     }
     public void Open_Update_Windows(BDPuntoVentaManuel.MODEL.Supplier _supplier)
     {
         this.btnProcess.setText("Modificar");
         this.supplier=_supplier;
         this.Chargedata();
-        
+        this.ChargeCategori();
         Suppliers_Start.viewDefault.setVisible(false);
         Suppliers_Start.viewDireccion.setVisible(false);
         Suppliers_Start.viewSelect.setVisible(false);
@@ -50,7 +55,7 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
     {
         this.txtCodigo.setText(supplier.getStrClave());
         this.txtxRazonSocial.setText(supplier.getStrBussinessName());
-        this.cmbCategorias.setSelectedItem(supplier.getIdCategoria());
+        this.cmbCategories.setSelectedItem(supplier.getIdCategoria());
         this.txtNumEmpresa.setText(supplier.getStrNumber());
         this.taDescripcion.setText(supplier.getStrDescripcion());
         
@@ -65,7 +70,7 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
     }
     public void ChargeCategori()
     {
-        this.cmbCategorias.setModel(Suppliers_Start.SuppliersProcess.getModelCategorias());
+        this.cmbCategories.setModel(Suppliers_Start.SuppliersProcess.getModelCategorias());
     }
     public void SupplierAddAddress()
     {
@@ -83,6 +88,18 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
         
         
     }
+    
+    public BDPuntoVentaManuel.MODEL.Persona getPersonaForUpdate(BDPuntoVentaManuel.MODEL.Persona persona)
+    {
+        
+        persona.setStrNombre(txtNombreContacto.getText().trim());
+        persona.setStrAPaterno(txtAPaterno.getText().trim());
+        persona.setStrAMaterno(txtAMaterno.getText().trim());
+        
+        return persona;
+        
+        
+    }
     public BDPuntoVentaManuel.MODEL.Contacto getContact()
     {
         BDPuntoVentaManuel.MODEL.Contacto Contact=new Contacto();
@@ -92,9 +109,19 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
         
         return Contact;
     }
+    
+    public BDPuntoVentaManuel.MODEL.Contacto getContactForUpdate(BDPuntoVentaManuel.MODEL.Contacto Contact)
+    {
+        
+        Contact.setStrReference("N/A");
+        Contact.setStrEmail(txtEmailContact.getText().trim());
+        Contact.setStrCellphone(txtNumCelularCont.getText().trim());
+        
+        return Contact;
+    }
     public BDPuntoVentaManuel.MODEL.Supplier getSupplier()
     {
-        BDPuntoVentaManuel.MODEL.Supplier supplier=new Supplier();
+//        supplier=new Supplier();
         supplier.setBoolEstatus(true);
         supplier.setStrBussinessName(txtxRazonSocial.getText().trim());
         supplier.setStrClave(txtCodigo.getText().trim());
@@ -102,6 +129,19 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
         supplier.setStrNumber(txtNumEmpresa.getText().trim());
         supplier.setIdCategoria(categoria);
         
+        return supplier;
+    }
+    
+    private Supplier GetSupplierForUpdate() {
+
+        supplier.setStrClave(this.txtCodigo.getText().trim());
+        supplier.setStrBussinessName(this.txtxRazonSocial.getText().trim());
+        supplier.setStrNumber(this.txtNumCelularCont.getText().trim());
+        supplier.setStrAddress(this.txtDireccion.getText().trim());
+        supplier.setIdCategoria(this.categoria);
+        supplier.setStrDescripcion(this.taDescripcion.getText().trim());
+ 
+
         return supplier;
     }
     private void LimpiarErrores()
@@ -170,7 +210,7 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
             errors.add(error);
         }
 
-        if (cmbCategorias.getSelectedIndex() <= 0) {
+        if (cmbCategories.getSelectedIndex() <= 0) {
             String error = "Es necesario indicar una categoria";
 
             errors.add(error);
@@ -188,6 +228,37 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
         Suppliers_Start.viewSelect.setVisible(false);
         Suppliers_Start.viewSupplier.setVisible(true);
     }
+     private void Clean_Windows() {
+        this.txtCodigo.setText(null);
+        this.txtxRazonSocial.setText(null);
+        this.txtNumEmpresa.setText(null);
+        this.txtNombreContacto.setText(null);
+        this.txtAMaterno.setText(null);
+        this.txtAPaterno.setText(null);
+        this.txtNumCelularCont.setText(null);
+        this.txtEmailContact.setText(null);
+        this.txtDireccion.setText(null);
+        this.taDescripcion.setText(null);
+    
+        
+
+        this.lb1.setVisible(false);
+        this.lb2.setVisible(false);
+        this.lb3.setVisible(false);
+        this.lb4.setVisible(false);
+        this.lb5.setVisible(false);
+        this.lb6.setVisible(false);
+        this.lb7.setVisible(false);
+        this.lb8.setVisible(false);
+        this.lb9.setVisible(false);
+        this.lb10.setVisible(false);
+        this.lb11.setVisible(false);
+        
+        
+        
+        
+        this.Errors.setVisible(false);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -202,7 +273,7 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtxRazonSocial = new javax.swing.JTextField();
-        cmbCategorias = new javax.swing.JComboBox();
+        cmbCategories = new javax.swing.JComboBox();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         taDescripcion = new javax.swing.JTextArea();
@@ -246,9 +317,9 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
 
         jLabel5.setText("Categoria");
 
-        cmbCategorias.addItemListener(new java.awt.event.ItemListener() {
+        cmbCategories.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbCategoriasItemStateChanged(evt);
+                cmbCategoriesItemStateChanged(evt);
             }
         });
 
@@ -364,7 +435,7 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(txtCodigo)
-                                    .addComponent(cmbCategorias, 0, 211, Short.MAX_VALUE)
+                                    .addComponent(cmbCategories, 0, 211, Short.MAX_VALUE)
                                     .addComponent(txtxRazonSocial)
                                     .addComponent(txtNumEmpresa)))
                             .addComponent(jScrollPane1))
@@ -472,7 +543,7 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(cmbCategorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbCategories, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lb3))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -510,26 +581,55 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cmbCategoriasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbCategoriasItemStateChanged
+    private void cmbCategoriesItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbCategoriesItemStateChanged
         if(evt.getStateChange()==ItemEvent.SELECTED)
         {
-            categoria=(BDPuntoVentaManuel.MODEL.Catcategoria) this.cmbCategorias.getSelectedItem();
+            categoria=(BDPuntoVentaManuel.MODEL.Catcategoria) this.cmbCategories.getSelectedItem();
         }
-    }//GEN-LAST:event_cmbCategoriasItemStateChanged
+    }//GEN-LAST:event_cmbCategoriesItemStateChanged
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
 
-        //this.process.setMessage("Mejia_Garcia94@hotmail.com");
-
         this.LimpiarErrores();
-
+        
+        if (btnProcess.getText().equals("Registrar")) {
         if (this.Validar_Datos()) {
             if (valid) {
                 BDPuntoVentaManuel.MODEL.Persona persona=getPersona();
                 BDPuntoVentaManuel.MODEL.Contacto contact=getContact();
                 BDPuntoVentaManuel.MODEL.Supplier supplier=Suppliers_Start.viewDireccion.getSupplier();
                 
-                if(Suppliers_Start.SuppliersProcess.SaveSupplier( supplier,contact,persona))
+                if(Suppliers_Start.SuppliersProcess.SaveSupplier( supplier,contact,persona));
+                    this.Clean_Windows();
+                    this.setVisible(false);
+                {
+                    Back();
+                }
+
+            } else {
+                
+
+
+            }
+        } else {
+//            LimpiarErrores();
+            this.Errors.setListData(errors);
+            this.Errors.setVisible(true);
+        }
+        }
+        
+        if (btnProcess.getText().equals("Modificar")) {
+            if (this.Validar_Datos()) {
+            if (true) {
+                BDPuntoVentaManuel.MODEL.Persona persona=getPersonaForUpdate(supplier.getIdContacto().getIdPersona());
+                BDPuntoVentaManuel.MODEL.Contacto contact=getContactForUpdate(supplier.getIdContacto());
+//                BDPuntoVentaManuel.MODEL.Supplier supplier=Suppliers_Start.viewDireccion.getSupplier();
+                supplier=GetSupplierForUpdate();
+            if 
+               (Suppliers_Start.SuppliersProcess.EditSupplier(supplier,contact,persona));
+            this.Clean_Windows();
+                    this.setVisible(false);
+                    viewUpdate objSupplier=new viewUpdate();
                 {
                     Back();
                 }
@@ -541,16 +641,20 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
         } else {
             LimpiarErrores();
         }
+        }
     }//GEN-LAST:event_btnProcessActionPerformed
-
-    private void btnCancel2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancel2ActionPerformed
-//        this.process.btnCancel(this);
-    }//GEN-LAST:event_btnCancel2ActionPerformed
 
     private void btnDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDireccionActionPerformed
         valid=true;
         Suppliers_Start.viewDireccion.Open_New_Windows(supplier);
     }//GEN-LAST:event_btnDireccionActionPerformed
+
+    private void btnCancel2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancel2ActionPerformed
+        this.setVisible(false);
+                    
+        Suppliers_Start.viewDefault.ResetDataTable();
+        Suppliers_Start.viewDefault.setVisible(true);
+    }//GEN-LAST:event_btnCancel2ActionPerformed
 
 
   
@@ -560,7 +664,7 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
     private javax.swing.JButton btnCancel2;
     private javax.swing.JButton btnDireccion;
     private javax.swing.JButton btnProcess;
-    private javax.swing.JComboBox cmbCategorias;
+    private javax.swing.JComboBox cmbCategories;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -606,5 +710,10 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
     private BDPuntoVentaManuel.MODEL.Catcategoria categoria;
     private Vector errors;
     private boolean valid=false;
+
+    private void ErrorsPaint() {
+        this.Errors.setListData(this.errors);
+        this.Errors.setVisible(true);
+    }
     
 }

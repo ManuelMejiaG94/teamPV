@@ -204,13 +204,14 @@ public class Suppliers_Start extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
+        
         viewSupplier.Open_New_Windows();
         viewSelect.setVisible(false);
         viewDefault.setVisible(false);
     }//GEN-LAST:event_btnNewActionPerformed
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-           viewSupplier.setVisible(false);
+        viewSupplier.setVisible(false);
         viewSelect.setVisible(true);
         viewDefault.setVisible(false);
     }//GEN-LAST:event_btnUpdateActionPerformed

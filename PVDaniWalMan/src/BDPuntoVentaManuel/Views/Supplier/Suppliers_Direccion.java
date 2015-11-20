@@ -220,6 +220,7 @@ public class Suppliers_Direccion extends javax.swing.JInternalFrame {
         this.Limpiar_Errores();
         if (this.Validar_Direccion()) {
             this.CargarDireccion();
+            this.Back();
 //            try {
 //                this.crearMapa();
 //                this.AccionMap=1;

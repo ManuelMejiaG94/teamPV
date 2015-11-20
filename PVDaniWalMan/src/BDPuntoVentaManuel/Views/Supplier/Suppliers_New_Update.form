@@ -71,7 +71,7 @@
                                   <EmptySpace pref="6" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="txtCodigo" max="32767" attributes="0"/>
-                                      <Component id="cmbCategorias" pref="211" max="32767" attributes="0"/>
+                                      <Component id="cmbCategories" pref="211" max="32767" attributes="0"/>
                                       <Component id="txtxRazonSocial" max="32767" attributes="0"/>
                                       <Component id="txtNumEmpresa" max="32767" attributes="0"/>
                                   </Group>
@@ -208,7 +208,7 @@
                           <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cmbCategorias" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmbCategories" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="lb3" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
@@ -254,14 +254,14 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtxRazonSocial">
         </Component>
-        <Component class="javax.swing.JComboBox" name="cmbCategorias">
+        <Component class="javax.swing.JComboBox" name="cmbCategories">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cmbCategoriasItemStateChanged"/>
+            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cmbCategoriesItemStateChanged"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">

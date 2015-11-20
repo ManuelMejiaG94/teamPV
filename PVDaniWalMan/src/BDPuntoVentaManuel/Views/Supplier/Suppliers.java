@@ -11,7 +11,6 @@ import BDPuntoVentaManuel.ABSTRACT.ISupplier;
 import BDPuntoVentaManuel.CONCREATE.ExtendsAbstracts.ISupplierExtends;
 import BDPuntoVentaManuel.FACTORY.FactoryContact;
 import BDPuntoVentaManuel.FACTORY.FactoryPerson;
-import BDPuntoVentaManuel.FACTORY.FactoryProduct;
 import BDPuntoVentaManuel.FACTORY.FactorySupplier;
 import BDPuntoVentaManuel.MODEL.Catcategoria;
 import BDPuntoVentaManuel.MODEL.Contacto;
@@ -36,8 +35,8 @@ public class Suppliers {
         CategoriasProcess = new Process_CatCategoria();
         ctrlSupplier = new FactorySupplier().getInstanceAbstractExtends();
         ctrlSupplierDefault = new FactorySupplier().getInstanceAbstract();
-        ctrContact=new FactoryContact().getInstanceAbstract();
-        ctrPersona=new FactoryPerson().getInstanceAbstract();
+        ctrContact =new FactoryContact().getInstanceAbstract();
+        ctrPersona =new FactoryPerson().getInstanceAbstract();
     }
     
     public DefaultComboBoxModel getModelCategorias() {
@@ -75,6 +74,21 @@ public class Suppliers {
         ctrContact.create(contact);
         supplier.setIdContacto(contact);
         ctrlSupplierDefault.create(supplier);
+        return true;
+        }catch(Exception e)
+        {
+            System.out.println("Error al guardar\n" + e.getMessage());
+            return false;
+        }
+    }
+    
+    public boolean EditSupplier(Supplier supplier,Contacto contact,Persona person ) {
+        try{
+        ctrPersona.edit(person);
+        contact.setIdPersona(person);
+        ctrContact.edit(contact);
+        supplier.setIdContacto(contact);
+        ctrlSupplierDefault.edit(supplier);
         return true;
         }catch(Exception e)
         {

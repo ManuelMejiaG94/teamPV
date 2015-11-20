@@ -146,7 +146,7 @@ public class Suppliers_Select_Innabilit extends javax.swing.JPanel {
                    Suppliers_Start.viewDefault.setVisible(false);
 
                 } else {
-                    this.Paint_ErrorMessage("No existe en tu repletorio un producto con el codigo ingresado");
+                    this.Paint_ErrorMessage("No existe en tu repertorio un producto con el codigo ingresado");
                 }
 
             } else {
