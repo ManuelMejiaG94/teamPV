@@ -21,7 +21,7 @@ public class viewProcess extends javax.swing.JFrame {
     public void viewProcessNotifi() {
         initComponents();
         
-        Notification obj1=new Notification(this, WindowPosition.BOTTOMRIGHT, 0, 0, 3000);
+        Notification obj1=new Notification(this, WindowPosition.TOPLEFT, 0, 0, 10000);
         NotificationQueue val=new NotificationQueue();
         val.add(obj1);
     }
@@ -50,7 +50,7 @@ public class viewProcess extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(null);
 
         jPanel2.setBackground(new java.awt.Color(102, 153, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -60,11 +60,13 @@ public class viewProcess extends javax.swing.JFrame {
         jLabel1.setText("Mensaje de alerta");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 20));
+        jPanel1.add(jPanel2);
+        jPanel2.setBounds(0, 0, 300, 20);
 
         jLabel2.setFont(new java.awt.Font("Serif", 1, 14)); // NOI18N
         jLabel2.setText("Se ha agregado correctamente");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, -1, -1));
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(50, 30, 186, 19);
 
         jButton1.setText("Aceptar");
         jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -73,10 +75,12 @@ public class viewProcess extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 70, 30));
+        jPanel1.add(jButton1);
+        jButton1.setBounds(130, 70, 70, 30);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/BDPuntoVentaManuel/Notifications/1447944040_stock_signature-ok.png"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, 60));
+        jPanel1.add(jLabel4);
+        jLabel4.setBounds(20, 60, 64, 60);
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 300, 130));
 

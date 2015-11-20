@@ -5,6 +5,7 @@
  */
 package BDPuntoVentaManuel.Views.Supplier;
 
+import BDPuntoVentaManuel.MODEL.Supplier_;
 import com.mysql.jdbc.StringUtils;
 
 /**
@@ -221,6 +222,8 @@ public class Suppliers_Direccion extends javax.swing.JInternalFrame {
         if (this.Validar_Direccion()) {
             this.CargarDireccion();
             this.Back();
+            
+            Suppliers_Start.viewSupplier.setDireccion();
 //            try {
 //                this.crearMapa();
 //                this.AccionMap=1;
@@ -231,7 +234,7 @@ public class Suppliers_Direccion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnIdentifiActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        this.dispose();
+        Back();
     }//GEN-LAST:event_btnCancelActionPerformed
 
 

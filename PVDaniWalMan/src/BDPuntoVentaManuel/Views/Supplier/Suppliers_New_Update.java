@@ -36,6 +36,7 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
         this.btnProcess.setText("Registrar");
         this.Clean_Windows();
         this.ChargeCategori();
+        this.txtDireccion.setEditable(false);
         
         Suppliers_Start.viewSupplier.setVisible(true);
     }
@@ -259,6 +260,10 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
         
         this.Errors.setVisible(false);
     }
+     
+     public void setDireccion(){
+         this.txtDireccion.setText(supplier.getStrAddress());
+     }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -597,7 +602,8 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
             if (valid) {
                 BDPuntoVentaManuel.MODEL.Persona persona=getPersona();
                 BDPuntoVentaManuel.MODEL.Contacto contact=getContact();
-                BDPuntoVentaManuel.MODEL.Supplier supplier=Suppliers_Start.viewDireccion.getSupplier();
+//                BDPuntoVentaManuel.MODEL.Supplier supplier=Suppliers_Start.viewDireccion.getSupplier();
+                supplier=getSupplier();
                 
                 if(Suppliers_Start.SuppliersProcess.SaveSupplier( supplier,contact,persona));
                     this.Clean_Windows();
@@ -629,7 +635,7 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
                (Suppliers_Start.SuppliersProcess.EditSupplier(supplier,contact,persona));
             this.Clean_Windows();
                     this.setVisible(false);
-                    viewUpdate objSupplier=new viewUpdate();
+                    
                 {
                     Back();
                 }
