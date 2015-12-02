@@ -37,6 +37,7 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
         this.Clean_Windows();
         this.ChargeCategori();
         this.txtDireccion.setEditable(false);
+        this.txtCodigo.setEditable(false);
         
         Suppliers_Start.viewSupplier.setVisible(true);
     }
@@ -52,6 +53,9 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
         Suppliers_Start.viewSupplier.setVisible(true);
     
     }
+    
+    
+    
     public void Chargedata()
     {
         this.txtCodigo.setText(supplier.getStrClave());
@@ -69,6 +73,17 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
         
         this.txtDireccion.setText(supplier.getStrAddress());
     }
+    
+    public void LoadDate_New_Windows()
+    {
+        supplier=new Supplier();
+        this.btnProcess.setText("Registrar");
+        this.txtDireccion.setEditable(false);
+        this.txtCodigo.setEditable(false);
+        
+        Suppliers_Start.viewSupplier.setVisible(true);
+    }
+    
     public void ChargeCategori()
     {
         this.cmbCategories.setModel(Suppliers_Start.SuppliersProcess.getModelCategorias());
@@ -651,8 +666,15 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
     }//GEN-LAST:event_btnProcessActionPerformed
 
     private void btnDireccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDireccionActionPerformed
-        valid=true;
+        
+   if(supplier !=null)
+        {
+        Suppliers_Start.viewDireccion.Open_Update_Windows(supplier);
+        }else{
         Suppliers_Start.viewDireccion.Open_New_Windows(supplier);
+        }
+        valid=true;
+        
     }//GEN-LAST:event_btnDireccionActionPerformed
 
     private void btnCancel2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancel2ActionPerformed
