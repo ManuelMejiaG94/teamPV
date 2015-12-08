@@ -108,13 +108,27 @@ public class Suppliers_Direccion extends javax.swing.JInternalFrame {
         btnCancel = new javax.swing.JButton();
         lbError = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        JLabel_ME_Imagen.setBackground(java.awt.Color.white);
+        JLabel_ME_Imagen.setForeground(new java.awt.Color(51, 102, 255));
         JLabel_ME_Imagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         JLabel_ME_Imagen.setText("Mapa estático");
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel6.setBackground(java.awt.Color.white);
+        jLabel6.setForeground(new java.awt.Color(51, 102, 255));
         jLabel6.setText("Direccion de la empresa");
 
+        jLabel7.setBackground(java.awt.Color.white);
+        jLabel7.setForeground(new java.awt.Color(51, 102, 255));
         jLabel7.setText("Direccion");
 
+        txtCalle.setForeground(new java.awt.Color(51, 102, 255));
+
+        btnIdentifi.setBackground(java.awt.Color.white);
+        btnIdentifi.setForeground(new java.awt.Color(51, 102, 255));
         btnIdentifi.setText("identificar");
         btnIdentifi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,9 +137,12 @@ public class Suppliers_Direccion extends javax.swing.JInternalFrame {
         });
 
         txtReferencia.setColumns(20);
+        txtReferencia.setForeground(new java.awt.Color(51, 102, 255));
         txtReferencia.setRows(5);
         jScrollPane2.setViewportView(txtReferencia);
 
+        jLabel15.setBackground(java.awt.Color.white);
+        jLabel15.setForeground(new java.awt.Color(51, 102, 255));
         jLabel15.setText("Referencia");
 
         lb1.setForeground(new java.awt.Color(255, 0, 51));
@@ -134,6 +151,8 @@ public class Suppliers_Direccion extends javax.swing.JInternalFrame {
         lb2.setForeground(new java.awt.Color(255, 0, 51));
         lb2.setText("*");
 
+        btnCancel.setBackground(java.awt.Color.white);
+        btnCancel.setForeground(new java.awt.Color(51, 102, 255));
         btnCancel.setText("Cancelar");
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -211,7 +230,7 @@ public class Suppliers_Direccion extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(JLabel_ME_Imagen, javax.swing.GroupLayout.PREFERRED_SIZE, 635, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

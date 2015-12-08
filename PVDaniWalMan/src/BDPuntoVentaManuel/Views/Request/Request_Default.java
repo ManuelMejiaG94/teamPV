@@ -147,10 +147,10 @@ public class Request_Default extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setForeground(new java.awt.Color(255, 0, 51));
 
-        jLabel1.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel1.setForeground(new java.awt.Color(51, 102, 255));
         jLabel1.setText("Categoria");
 
-        cmbCategorias.setForeground(new java.awt.Color(51, 204, 255));
+        cmbCategorias.setForeground(new java.awt.Color(51, 102, 255));
         cmbCategorias.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cmbCategorias.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -158,13 +158,13 @@ public class Request_Default extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel2.setForeground(new java.awt.Color(51, 102, 255));
         jLabel2.setText("Numero de folio");
 
-        txtFolio.setForeground(new java.awt.Color(51, 204, 255));
+        txtFolio.setForeground(new java.awt.Color(51, 102, 255));
 
         btnSearch.setBackground(new java.awt.Color(255, 255, 255));
-        btnSearch.setForeground(new java.awt.Color(51, 204, 255));
+        btnSearch.setForeground(new java.awt.Color(51, 102, 255));
         btnSearch.setText("Buscar");
         btnSearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -186,10 +186,10 @@ public class Request_Default extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tbData);
 
-        jLabel4.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel4.setForeground(new java.awt.Color(51, 102, 255));
         jLabel4.setText("Estatus");
 
-        cmbStatus.setForeground(new java.awt.Color(51, 204, 255));
+        cmbStatus.setForeground(new java.awt.Color(51, 102, 255));
         cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Activas", "Cerradas", "canceladas", "Procesadas" }));
         cmbStatus.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cmbStatus.addItemListener(new java.awt.event.ItemListener() {
@@ -198,10 +198,10 @@ public class Request_Default extends javax.swing.JPanel {
             }
         });
 
-        jLabel5.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel5.setForeground(new java.awt.Color(51, 102, 255));
         jLabel5.setText("Provedor");
 
-        cmbSuppliers.setForeground(new java.awt.Color(51, 204, 255));
+        cmbSuppliers.setForeground(new java.awt.Color(51, 102, 255));
         cmbSuppliers.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cmbSuppliers.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -213,7 +213,7 @@ public class Request_Default extends javax.swing.JPanel {
         lbErrorMessage.setText("Error message");
 
         btnValidar.setBackground(new java.awt.Color(255, 255, 255));
-        btnValidar.setForeground(new java.awt.Color(51, 204, 255));
+        btnValidar.setForeground(new java.awt.Color(51, 102, 255));
         btnValidar.setText("Validar solicitud");
         btnValidar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnValidar.addActionListener(new java.awt.event.ActionListener() {
@@ -223,7 +223,7 @@ public class Request_Default extends javax.swing.JPanel {
         });
 
         btnDetalle.setBackground(new java.awt.Color(255, 255, 255));
-        btnDetalle.setForeground(new java.awt.Color(51, 204, 255));
+        btnDetalle.setForeground(new java.awt.Color(51, 102, 255));
         btnDetalle.setText("Detalle de la solicitud");
         btnDetalle.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDetalle.addActionListener(new java.awt.event.ActionListener() {

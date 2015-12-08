@@ -331,25 +331,40 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
         txtDireccion = new javax.swing.JTextField();
         btnDireccion = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel2.setForeground(new java.awt.Color(51, 102, 255));
         jLabel2.setText("Datos de la empresa");
 
+        jLabel3.setForeground(new java.awt.Color(51, 102, 255));
         jLabel3.setText("Razon social");
 
+        jLabel5.setForeground(new java.awt.Color(51, 102, 255));
         jLabel5.setText("Categoria");
 
+        txtxRazonSocial.setForeground(new java.awt.Color(51, 102, 255));
+
+        cmbCategories.setForeground(new java.awt.Color(51, 102, 255));
         cmbCategories.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbCategoriesItemStateChanged(evt);
             }
         });
 
+        jLabel8.setForeground(new java.awt.Color(51, 102, 255));
         jLabel8.setText("Descripcion de la empresa");
 
         taDescripcion.setColumns(20);
+        taDescripcion.setForeground(new java.awt.Color(51, 102, 255));
         taDescripcion.setRows(5);
         jScrollPane1.setViewportView(taDescripcion);
 
+        jLabel17.setForeground(new java.awt.Color(51, 102, 255));
         jLabel17.setText("Numero");
+
+        txtNumEmpresa.setForeground(new java.awt.Color(51, 102, 255));
 
         lb2.setForeground(new java.awt.Color(255, 0, 51));
         lb2.setText("*");
@@ -363,21 +378,31 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
         lb5.setForeground(new java.awt.Color(255, 0, 51));
         lb5.setText("*");
 
+        txtCodigo.setForeground(new java.awt.Color(51, 102, 255));
+
         lb1.setForeground(new java.awt.Color(255, 0, 51));
         lb1.setText("*");
 
+        jLabel10.setForeground(new java.awt.Color(51, 102, 255));
         jLabel10.setText("Codigo del provedor");
+
+        txtNombreContacto.setForeground(new java.awt.Color(51, 102, 255));
 
         jLabel12.setText("Contacto");
 
+        jLabel13.setForeground(new java.awt.Color(51, 102, 255));
         jLabel13.setText("Nombre");
 
+        jLabel4.setForeground(new java.awt.Color(51, 102, 255));
         jLabel4.setText("Apellido paterno");
 
+        jLabel9.setForeground(new java.awt.Color(51, 102, 255));
         jLabel9.setText("Apellido materno");
 
+        jLabel14.setForeground(new java.awt.Color(51, 102, 255));
         jLabel14.setText("Telefono celular");
 
+        jLabel16.setForeground(new java.awt.Color(51, 102, 255));
         jLabel16.setText("Email");
 
         lb10.setForeground(new java.awt.Color(255, 0, 51));
@@ -395,7 +420,15 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
         lb6.setForeground(new java.awt.Color(255, 0, 51));
         lb6.setText("*");
 
-        Errors.setForeground(new java.awt.Color(255, 0, 0));
+        txtAPaterno.setForeground(new java.awt.Color(51, 102, 255));
+
+        txtAMaterno.setForeground(new java.awt.Color(51, 102, 255));
+
+        txtNumCelularCont.setForeground(new java.awt.Color(51, 102, 255));
+
+        txtEmailContact.setForeground(new java.awt.Color(51, 102, 255));
+
+        Errors.setForeground(new java.awt.Color(51, 102, 255));
         jScrollPane5.setViewportView(Errors);
 
         btnCancel2.setText("Cancelar");
@@ -412,11 +445,15 @@ public class Suppliers_New_Update extends javax.swing.JPanel {
             }
         });
 
+        jLabel1.setForeground(new java.awt.Color(51, 102, 255));
         jLabel1.setText("Direccion");
 
         lb11.setForeground(new java.awt.Color(255, 0, 51));
         lb11.setText("*");
 
+        txtDireccion.setForeground(new java.awt.Color(51, 102, 255));
+
+        btnDireccion.setForeground(new java.awt.Color(51, 102, 255));
         btnDireccion.setText("Asignar direccion");
         btnDireccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

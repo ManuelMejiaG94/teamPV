@@ -112,7 +112,7 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Categoria"/>
       </Properties>
@@ -120,7 +120,7 @@
     <Component class="javax.swing.JComboBox" name="cmbCategorias">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="0"/>
@@ -136,7 +136,7 @@
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Numero de folio"/>
       </Properties>
@@ -144,7 +144,7 @@
     <Component class="javax.swing.JTextField" name="txtFolio">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
       </Properties>
     </Component>
@@ -154,7 +154,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Buscar"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -201,7 +201,7 @@
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Estatus"/>
       </Properties>
@@ -209,7 +209,7 @@
     <Component class="javax.swing.JComboBox" name="cmbStatus">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="4">
@@ -230,7 +230,7 @@
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Provedor"/>
       </Properties>
@@ -238,7 +238,7 @@
     <Component class="javax.swing.JComboBox" name="cmbSuppliers">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="0"/>
@@ -265,7 +265,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Validar solicitud"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -282,7 +282,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Detalle de la solicitud"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">

@@ -220,27 +220,27 @@ public void Open_Windows_New(boolean open) {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel2.setForeground(new java.awt.Color(51, 102, 255));
         jLabel2.setText("Codigo del producto");
 
-        jLabel3.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel3.setForeground(new java.awt.Color(51, 102, 255));
         jLabel3.setText("Nombre del producto");
 
-        txtName.setForeground(new java.awt.Color(51, 204, 255));
+        txtName.setForeground(new java.awt.Color(51, 102, 255));
         txtName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNameKeyTyped(evt);
             }
         });
 
-        txtStock.setForeground(new java.awt.Color(51, 204, 255));
+        txtStock.setForeground(new java.awt.Color(51, 102, 255));
         txtStock.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtStockKeyTyped(evt);
             }
         });
 
-        btnCancel.setForeground(new java.awt.Color(51, 204, 255));
+        btnCancel.setForeground(new java.awt.Color(51, 102, 255));
         btnCancel.setText("Cancelar");
         btnCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -249,6 +249,7 @@ public void Open_Windows_New(boolean open) {
             }
         });
 
+        cmbCategories.setForeground(new java.awt.Color(51, 102, 255));
         cmbCategories.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbCategoriesItemStateChanged(evt);
@@ -257,29 +258,29 @@ public void Open_Windows_New(boolean open) {
 
         jLabel1.setText("Message");
 
-        jLabel4.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel4.setForeground(new java.awt.Color(51, 102, 255));
         jLabel4.setText("Cantidad a registrar");
 
-        jLabel5.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel5.setForeground(new java.awt.Color(51, 102, 255));
         jLabel5.setText("Presentacion (lts,mts,kg)");
 
-        jLabel6.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel6.setForeground(new java.awt.Color(51, 102, 255));
         jLabel6.setText("Precio de compra");
 
-        jLabel7.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel7.setForeground(new java.awt.Color(51, 102, 255));
         jLabel7.setText("Precio de venta");
 
-        jLabel8.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel8.setForeground(new java.awt.Color(51, 102, 255));
         jLabel8.setText("Asignar categoria");
 
-        txtCodigo.setForeground(new java.awt.Color(51, 204, 255));
+        txtCodigo.setForeground(new java.awt.Color(51, 102, 255));
         txtCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCodigoKeyTyped(evt);
             }
         });
 
-        txtPrecent.setForeground(new java.awt.Color(51, 204, 255));
+        txtPrecent.setForeground(new java.awt.Color(51, 102, 255));
         txtPrecent.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtPrecentKeyTyped(evt);
@@ -288,21 +289,21 @@ public void Open_Windows_New(boolean open) {
 
         jScrollPane1.setViewportView(ErrorsMessage);
 
-        txtPC.setForeground(new java.awt.Color(51, 204, 255));
+        txtPC.setForeground(new java.awt.Color(51, 102, 255));
         txtPC.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtPCKeyTyped(evt);
             }
         });
 
-        txtPV.setForeground(new java.awt.Color(51, 204, 255));
+        txtPV.setForeground(new java.awt.Color(51, 102, 255));
         txtPV.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtPVKeyTyped(evt);
             }
         });
 
-        btnProcess.setForeground(new java.awt.Color(51, 204, 255));
+        btnProcess.setForeground(new java.awt.Color(51, 102, 255));
         btnProcess.setText("Processo");
         btnProcess.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnProcess.addActionListener(new java.awt.event.ActionListener() {

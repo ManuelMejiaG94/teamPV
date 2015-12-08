@@ -254,7 +254,7 @@ public class Sales_Start extends javax.swing.JInternalFrame {
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel1.setForeground(new java.awt.Color(51, 102, 255));
         jLabel1.setText("Nueva Venta");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -276,6 +276,7 @@ public class Sales_Start extends javax.swing.JInternalFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
+        tbData.setForeground(new java.awt.Color(51, 102, 255));
         tbData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -289,13 +290,13 @@ public class Sales_Start extends javax.swing.JInternalFrame {
         jLabel4.setForeground(new java.awt.Color(51, 204, 255));
         jLabel4.setText("Detalle de la venta");
 
-        txtSubTotal.setForeground(new java.awt.Color(51, 204, 255));
+        txtSubTotal.setForeground(new java.awt.Color(51, 102, 255));
 
-        jLabel5.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel5.setForeground(new java.awt.Color(51, 102, 255));
         jLabel5.setText("Sub total");
 
         btnDelete.setBackground(new java.awt.Color(255, 255, 255));
-        btnDelete.setForeground(new java.awt.Color(51, 204, 255));
+        btnDelete.setForeground(new java.awt.Color(51, 102, 255));
         btnDelete.setText("Retirar");
         btnDelete.setContentAreaFilled(false);
         btnDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -308,9 +309,9 @@ public class Sales_Start extends javax.swing.JInternalFrame {
         lbErrorMInTB.setForeground(new java.awt.Color(255, 0, 0));
         lbErrorMInTB.setText("jLabel4");
 
-        txtTotalVenta.setForeground(new java.awt.Color(51, 204, 255));
+        txtTotalVenta.setForeground(new java.awt.Color(51, 102, 255));
 
-        jLabel7.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel7.setForeground(new java.awt.Color(51, 102, 255));
         jLabel7.setText("Total");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -364,13 +365,13 @@ public class Sales_Start extends javax.swing.JInternalFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel2.setForeground(new java.awt.Color(51, 102, 255));
         jLabel2.setText("Codigo del producto");
 
-        jLabel3.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel3.setForeground(new java.awt.Color(51, 102, 255));
         jLabel3.setText("Cantidad");
 
-        txtCodigo.setForeground(new java.awt.Color(51, 204, 255));
+        txtCodigo.setForeground(new java.awt.Color(51, 102, 255));
         txtCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCodigoKeyTyped(evt);
@@ -380,7 +381,7 @@ public class Sales_Start extends javax.swing.JInternalFrame {
         lbError1.setForeground(new java.awt.Color(255, 0, 0));
         lbError1.setText("*");
 
-        txtCantidad.setForeground(new java.awt.Color(51, 204, 255));
+        txtCantidad.setForeground(new java.awt.Color(51, 102, 255));
         txtCantidad.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCantidadKeyTyped(evt);
@@ -388,7 +389,7 @@ public class Sales_Start extends javax.swing.JInternalFrame {
         });
 
         btnCharge.setBackground(new java.awt.Color(255, 255, 255));
-        btnCharge.setForeground(new java.awt.Color(51, 204, 255));
+        btnCharge.setForeground(new java.awt.Color(51, 102, 255));
         btnCharge.setText("Cargar");
         btnCharge.setContentAreaFilled(false);
         btnCharge.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -401,10 +402,10 @@ public class Sales_Start extends javax.swing.JInternalFrame {
         lbErrorsMessage.setForeground(new java.awt.Color(255, 0, 0));
         lbErrorsMessage.setText("jLabel4");
 
-        jLabel9.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel9.setForeground(new java.awt.Color(51, 102, 255));
         jLabel9.setText("Folio");
 
-        lbFolio.setForeground(new java.awt.Color(51, 204, 255));
+        lbFolio.setForeground(new java.awt.Color(51, 102, 255));
         lbFolio.setText("jLabel10");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -461,23 +462,23 @@ public class Sales_Start extends javax.swing.JInternalFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel6.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel6.setForeground(new java.awt.Color(51, 102, 255));
         jLabel6.setText("Efectivo");
 
-        txtEfectivo.setForeground(new java.awt.Color(51, 204, 255));
+        txtEfectivo.setForeground(new java.awt.Color(51, 102, 255));
         txtEfectivo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtEfectivoKeyTyped(evt);
             }
         });
 
-        jLabel8.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel8.setForeground(new java.awt.Color(51, 102, 255));
         jLabel8.setText("Cambio");
 
-        txtCambio.setForeground(new java.awt.Color(51, 204, 255));
+        txtCambio.setForeground(new java.awt.Color(51, 102, 255));
 
         btnOk.setBackground(new java.awt.Color(255, 255, 255));
-        btnOk.setForeground(new java.awt.Color(51, 204, 255));
+        btnOk.setForeground(new java.awt.Color(51, 102, 255));
         btnOk.setText("Cerrar venta");
         btnOk.setContentAreaFilled(false);
         btnOk.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -488,7 +489,7 @@ public class Sales_Start extends javax.swing.JInternalFrame {
         });
 
         btnCancel.setBackground(new java.awt.Color(255, 255, 255));
-        btnCancel.setForeground(new java.awt.Color(51, 204, 255));
+        btnCancel.setForeground(new java.awt.Color(51, 102, 255));
         btnCancel.setText("Cancelar venta");
         btnCancel.setContentAreaFilled(false);
         btnCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));

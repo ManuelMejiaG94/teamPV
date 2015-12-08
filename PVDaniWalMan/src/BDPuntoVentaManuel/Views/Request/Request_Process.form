@@ -115,6 +115,9 @@
       <SubComponents>
         <Component class="javax.swing.JTable" name="tbData">
           <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="66" red="33" type="rgb"/>
+            </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="0" rowCount="0"/>
             </Property>
@@ -131,7 +134,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Retirar"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -151,6 +154,9 @@
       <SubComponents>
         <Component class="javax.swing.JTable" name="tbData1">
           <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="66" red="33" type="rgb"/>
+            </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
               <Table columnCount="0" rowCount="0"/>
             </Property>
@@ -167,7 +173,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cargar"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -181,23 +187,29 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="0" green="0" red="ff" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="jLabel1"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
+        </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Productos en la solicitud"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
+        </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Productos resividos"/>
       </Properties>
@@ -205,15 +217,18 @@
     <Component class="javax.swing.JTextField" name="jTextField1">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="jTextField1"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
+        </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cantidad del producto resivida"/>
       </Properties>
@@ -232,7 +247,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Aseptar"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -249,7 +264,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">

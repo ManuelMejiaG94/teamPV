@@ -258,7 +258,12 @@ public class Suppliers_Direccion extends javax.swing.JInternalFrame {
         jPanel5 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+
         JButton_ME_Buscar.setBackground(new java.awt.Color(153, 153, 255));
+        JButton_ME_Buscar.setForeground(new java.awt.Color(51, 102, 255));
         JButton_ME_Buscar.setText("Crear mapa");
         JButton_ME_Buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -275,12 +280,16 @@ public class Suppliers_Direccion extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel29.setForeground(new java.awt.Color(51, 102, 255));
         jLabel29.setText("Escala");
 
+        JText_ME_Escala.setForeground(new java.awt.Color(51, 102, 255));
         JText_ME_Escala.setText("1");
 
+        jLabel30.setForeground(new java.awt.Color(51, 102, 255));
         jLabel30.setText("Formato");
 
+        JCombo_ME_Formato.setForeground(new java.awt.Color(51, 102, 255));
         JCombo_ME_Formato.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "png", "jpg", " " }));
         JCombo_ME_Formato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -288,8 +297,10 @@ public class Suppliers_Direccion extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel31.setForeground(new java.awt.Color(51, 102, 255));
         jLabel31.setText("Tipo de mapa");
 
+        JCombo_ME_TipoMapa.setForeground(new java.awt.Color(51, 102, 255));
         JCombo_ME_TipoMapa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "roadmap", "satellite", "hybrid", "terrain" }));
 
         JSlider_ME_Zoom.setMaximum(20);
@@ -301,10 +312,13 @@ public class Suppliers_Direccion extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel32.setForeground(new java.awt.Color(51, 102, 255));
         jLabel32.setText("Zoom");
 
+        JText_ME_Zoom.setForeground(new java.awt.Color(51, 102, 255));
         JText_ME_Zoom.setText("14");
 
+        JLabel_ME_Imagen.setForeground(new java.awt.Color(51, 102, 255));
         JLabel_ME_Imagen.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         JLabel_ME_Imagen.setText("Mapa estático");
         jScrollPane5.setViewportView(JLabel_ME_Imagen);
@@ -314,19 +328,26 @@ public class Suppliers_Direccion extends javax.swing.JInternalFrame {
 
         Error.setForeground(new java.awt.Color(255, 0, 0));
 
+        txtReferencias.setForeground(new java.awt.Color(51, 102, 255));
+
+        jLabel1.setForeground(new java.awt.Color(51, 102, 255));
         jLabel1.setText("Direccion");
 
+        jLabel2.setForeground(new java.awt.Color(51, 102, 255));
         jLabel2.setText("Referencias");
 
         lb2.setForeground(new java.awt.Color(255, 0, 0));
         lb2.setText("*");
 
+        jButton1.setForeground(new java.awt.Color(51, 102, 255));
         jButton1.setText("Volver");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        JText_ME_Direccion.setForeground(new java.awt.Color(51, 102, 255));
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -455,6 +476,7 @@ public class Suppliers_Direccion extends javax.swing.JInternalFrame {
             .addGap(0, 16, Short.MAX_VALUE)
         );
 
+        jLabel28.setForeground(new java.awt.Color(51, 102, 255));
         jLabel28.setText("Centro del mapa");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -108,16 +108,17 @@ public class Products_Default extends javax.swing.JPanel {
         setForeground(new java.awt.Color(51, 204, 255));
         setPreferredSize(new java.awt.Dimension(925, 297));
 
+        cmbCategoria.setForeground(new java.awt.Color(51, 102, 255));
         cmbCategoria.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbCategoriaItemStateChanged(evt);
             }
         });
 
-        txtNombre.setForeground(new java.awt.Color(51, 204, 255));
+        txtNombre.setForeground(new java.awt.Color(51, 102, 255));
 
         btnSearch.setBackground(new java.awt.Color(255, 255, 255));
-        btnSearch.setForeground(new java.awt.Color(51, 204, 255));
+        btnSearch.setForeground(new java.awt.Color(51, 102, 255));
         btnSearch.setText("Buscar");
         btnSearch.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -126,10 +127,10 @@ public class Products_Default extends javax.swing.JPanel {
             }
         });
 
-        jLabel2.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel2.setForeground(new java.awt.Color(51, 102, 255));
         jLabel2.setText("Categoria del producto");
 
-        jLabel3.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel3.setForeground(new java.awt.Color(51, 102, 255));
         jLabel3.setText("Nombre");
 
         lbErrorMEssage.setForeground(new java.awt.Color(255, 0, 0));

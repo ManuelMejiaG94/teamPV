@@ -99,6 +99,9 @@ public class Suppliers_Select_Innabilit extends javax.swing.JPanel {
         lbErrorMessage = new javax.swing.JLabel();
         lbErro1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        btnProcess.setForeground(new java.awt.Color(51, 102, 255));
         btnProcess.setText("Process");
         btnProcess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,6 +109,7 @@ public class Suppliers_Select_Innabilit extends javax.swing.JPanel {
             }
         });
 
+        jButton2.setForeground(new java.awt.Color(51, 102, 255));
         jButton2.setText("Cancelar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,6 +117,9 @@ public class Suppliers_Select_Innabilit extends javax.swing.JPanel {
             }
         });
 
+        txtCodigo.setForeground(new java.awt.Color(51, 102, 255));
+
+        jLabel1.setForeground(new java.awt.Color(51, 102, 255));
         jLabel1.setText("Ingresar codigo del provedor");
 
         lbErrorMessage.setForeground(new java.awt.Color(255, 51, 51));

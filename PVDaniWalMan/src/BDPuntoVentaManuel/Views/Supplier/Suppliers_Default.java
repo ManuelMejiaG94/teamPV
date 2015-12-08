@@ -94,6 +94,9 @@ public class Suppliers_Default extends javax.swing.JPanel {
         cmbCategoria = new javax.swing.JComboBox();
         jLabel2 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        tbData.setForeground(new java.awt.Color(51, 102, 255));
         tbData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -104,8 +107,12 @@ public class Suppliers_Default extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tbData);
 
+        lbErrorMEssage.setForeground(new java.awt.Color(51, 102, 255));
         lbErrorMEssage.setText("ErrorMessage");
 
+        txtNombre.setForeground(new java.awt.Color(51, 102, 255));
+
+        btnSearch.setForeground(new java.awt.Color(51, 102, 255));
         btnSearch.setText("Buscar");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,8 +120,10 @@ public class Suppliers_Default extends javax.swing.JPanel {
             }
         });
 
+        jLabel3.setForeground(new java.awt.Color(51, 102, 255));
         jLabel3.setText("Nombre");
 
+        cmbCategoria.setForeground(new java.awt.Color(51, 102, 255));
         cmbCategoria.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cmbCategoriaItemStateChanged(evt);
@@ -126,6 +135,7 @@ public class Suppliers_Default extends javax.swing.JPanel {
             }
         });
 
+        jLabel2.setForeground(new java.awt.Color(51, 102, 255));
         jLabel2.setText("Categoria del producto");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

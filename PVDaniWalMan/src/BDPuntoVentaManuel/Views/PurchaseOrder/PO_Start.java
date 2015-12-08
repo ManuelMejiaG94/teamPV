@@ -91,7 +91,7 @@ public class PO_Start extends javax.swing.JInternalFrame {
         );
 
         btnExit.setBackground(new java.awt.Color(255, 255, 255));
-        btnExit.setForeground(new java.awt.Color(51, 204, 255));
+        btnExit.setForeground(new java.awt.Color(51, 102, 255));
         btnExit.setText("Salir");
         btnExit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnExit.addActionListener(new java.awt.event.ActionListener() {

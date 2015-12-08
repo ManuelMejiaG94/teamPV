@@ -118,7 +118,7 @@
     <Component class="javax.swing.JLabel" name="lbEmal">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="jLabel9"/>
       </Properties>
@@ -126,7 +126,7 @@
     <Component class="javax.swing.JLabel" name="lbDateTime">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="jLabel8"/>
       </Properties>
@@ -134,7 +134,7 @@
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Email"/>
       </Properties>
@@ -142,7 +142,7 @@
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Fecha de creacion"/>
       </Properties>
@@ -150,7 +150,7 @@
     <Component class="javax.swing.JLabel" name="lbTotal">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="jLabel10"/>
       </Properties>
@@ -158,7 +158,7 @@
     <Component class="javax.swing.JLabel" name="jLabel11">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Productos de la orden de compra"/>
       </Properties>
@@ -166,7 +166,7 @@
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Total de la orden de compra"/>
       </Properties>
@@ -174,7 +174,7 @@
     <Component class="javax.swing.JLabel" name="lbSupplier">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="jLabel7"/>
       </Properties>
@@ -182,7 +182,7 @@
     <Component class="javax.swing.JLabel" name="lbFolio">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="jLabel6"/>
       </Properties>
@@ -190,7 +190,7 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Folio"/>
       </Properties>
@@ -198,7 +198,7 @@
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Provedor"/>
       </Properties>
@@ -228,7 +228,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -245,7 +245,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Recepcion de orden de compra"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">

@@ -85,37 +85,37 @@ public class PO_Descipcion_Process extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        lbEmal.setForeground(new java.awt.Color(51, 204, 255));
+        lbEmal.setForeground(new java.awt.Color(51, 102, 255));
         lbEmal.setText("jLabel9");
 
-        lbDateTime.setForeground(new java.awt.Color(51, 204, 255));
+        lbDateTime.setForeground(new java.awt.Color(51, 102, 255));
         lbDateTime.setText("jLabel8");
 
-        jLabel4.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel4.setForeground(new java.awt.Color(51, 102, 255));
         jLabel4.setText("Email");
 
-        jLabel3.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel3.setForeground(new java.awt.Color(51, 102, 255));
         jLabel3.setText("Fecha de creacion");
 
-        lbTotal.setForeground(new java.awt.Color(51, 204, 255));
+        lbTotal.setForeground(new java.awt.Color(51, 102, 255));
         lbTotal.setText("jLabel10");
 
-        jLabel11.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel11.setForeground(new java.awt.Color(51, 102, 255));
         jLabel11.setText("Productos de la orden de compra");
 
-        jLabel5.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel5.setForeground(new java.awt.Color(51, 102, 255));
         jLabel5.setText("Total de la orden de compra");
 
-        lbSupplier.setForeground(new java.awt.Color(51, 204, 255));
+        lbSupplier.setForeground(new java.awt.Color(51, 102, 255));
         lbSupplier.setText("jLabel7");
 
-        lbFolio.setForeground(new java.awt.Color(51, 204, 255));
+        lbFolio.setForeground(new java.awt.Color(51, 102, 255));
         lbFolio.setText("jLabel6");
 
-        jLabel1.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel1.setForeground(new java.awt.Color(51, 102, 255));
         jLabel1.setText("Folio");
 
-        jLabel2.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel2.setForeground(new java.awt.Color(51, 102, 255));
         jLabel2.setText("Provedor");
 
         tbData.setModel(new javax.swing.table.DefaultTableModel(
@@ -129,7 +129,7 @@ public class PO_Descipcion_Process extends javax.swing.JPanel {
         jScrollPane2.setViewportView(tbData);
 
         btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
-        btnCancelar.setForeground(new java.awt.Color(51, 204, 255));
+        btnCancelar.setForeground(new java.awt.Color(51, 102, 255));
         btnCancelar.setText("Cancelar");
         btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -139,7 +139,7 @@ public class PO_Descipcion_Process extends javax.swing.JPanel {
         });
 
         btnResepcion.setBackground(new java.awt.Color(255, 255, 255));
-        btnResepcion.setForeground(new java.awt.Color(51, 204, 255));
+        btnResepcion.setForeground(new java.awt.Color(51, 102, 255));
         btnResepcion.setText("Recepcion de orden de compra");
         btnResepcion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnResepcion.addActionListener(new java.awt.event.ActionListener() {

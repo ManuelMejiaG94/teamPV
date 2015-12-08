@@ -38,7 +38,7 @@ public class Request_Select_Cancel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
 
         btnProcess.setBackground(new java.awt.Color(255, 255, 255));
-        btnProcess.setForeground(new java.awt.Color(51, 204, 255));
+        btnProcess.setForeground(new java.awt.Color(51, 102, 255));
         btnProcess.setText("Process");
         btnProcess.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnProcess.addActionListener(new java.awt.event.ActionListener() {
@@ -48,7 +48,7 @@ public class Request_Select_Cancel extends javax.swing.JPanel {
         });
 
         btnCancel.setBackground(new java.awt.Color(255, 255, 255));
-        btnCancel.setForeground(new java.awt.Color(51, 204, 255));
+        btnCancel.setForeground(new java.awt.Color(51, 102, 255));
         btnCancel.setText("Cancelar");
         btnCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -57,14 +57,15 @@ public class Request_Select_Cancel extends javax.swing.JPanel {
             }
         });
 
+        jList1.setForeground(new java.awt.Color(51, 102, 255));
         jScrollPane1.setViewportView(jList1);
 
-        jTextField1.setForeground(new java.awt.Color(51, 204, 255));
+        jTextField1.setForeground(new java.awt.Color(51, 102, 255));
 
         jLabel2.setForeground(new java.awt.Color(255, 0, 0));
         jLabel2.setText("*");
 
-        jLabel1.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel1.setForeground(new java.awt.Color(51, 102, 255));
         jLabel1.setText("Folio de la solicitud");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

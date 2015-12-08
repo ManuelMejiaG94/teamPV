@@ -141,7 +141,7 @@
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Codigo del producto"/>
       </Properties>
@@ -149,7 +149,7 @@
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Nombre del producto"/>
       </Properties>
@@ -157,7 +157,7 @@
     <Component class="javax.swing.JTextField" name="txtName">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
       </Properties>
       <Events>
@@ -167,7 +167,7 @@
     <Component class="javax.swing.JTextField" name="txtStock">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
       </Properties>
       <Events>
@@ -177,7 +177,7 @@
     <Component class="javax.swing.JButton" name="btnCancel">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
@@ -190,6 +190,9 @@
     </Component>
     <Component class="javax.swing.JComboBox" name="cmbCategories">
       <Properties>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="66" red="33" type="rgb"/>
+        </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="0"/>
         </Property>
@@ -206,7 +209,7 @@
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Cantidad a registrar"/>
       </Properties>
@@ -214,7 +217,7 @@
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Presentacion (lts,mts,kg)"/>
       </Properties>
@@ -222,7 +225,7 @@
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Precio de compra"/>
       </Properties>
@@ -230,7 +233,7 @@
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Precio de venta"/>
       </Properties>
@@ -238,7 +241,7 @@
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Asignar categoria"/>
       </Properties>
@@ -246,7 +249,7 @@
     <Component class="javax.swing.JTextField" name="txtCodigo">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
       </Properties>
       <Events>
@@ -256,7 +259,7 @@
     <Component class="javax.swing.JTextField" name="txtPrecent">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
       </Properties>
       <Events>
@@ -282,7 +285,7 @@
     <Component class="javax.swing.JTextField" name="txtPC">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
       </Properties>
       <Events>
@@ -292,7 +295,7 @@
     <Component class="javax.swing.JTextField" name="txtPV">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
       </Properties>
       <Events>
@@ -302,7 +305,7 @@
     <Component class="javax.swing.JButton" name="btnProcess">
       <Properties>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="33" type="rgb"/>
+          <Color blue="ff" green="66" red="33" type="rgb"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Processo"/>
         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">

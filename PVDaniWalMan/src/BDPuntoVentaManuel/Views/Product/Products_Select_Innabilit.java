@@ -62,13 +62,13 @@ public class Products_Select_Innabilit extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel1.setForeground(new java.awt.Color(51, 102, 255));
         jLabel1.setText("Ingresar codigo del producto");
 
-        txtCodigo.setForeground(new java.awt.Color(51, 204, 255));
+        txtCodigo.setForeground(new java.awt.Color(51, 102, 255));
 
         btnProcess.setBackground(new java.awt.Color(255, 255, 255));
-        btnProcess.setForeground(new java.awt.Color(51, 204, 255));
+        btnProcess.setForeground(new java.awt.Color(51, 102, 255));
         btnProcess.setText("Process");
         btnProcess.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnProcess.addActionListener(new java.awt.event.ActionListener() {
@@ -78,7 +78,7 @@ public class Products_Select_Innabilit extends javax.swing.JPanel {
         });
 
         btnCancelar.setBackground(new java.awt.Color(255, 255, 255));
-        btnCancelar.setForeground(new java.awt.Color(51, 204, 255));
+        btnCancelar.setForeground(new java.awt.Color(51, 102, 255));
         btnCancelar.setText("Cancelar");
         btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {

@@ -44,6 +44,7 @@ public class Request_Process extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
+        tbData.setForeground(new java.awt.Color(51, 102, 255));
         tbData.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -55,7 +56,7 @@ public class Request_Process extends javax.swing.JPanel {
         jScrollPane1.setViewportView(tbData);
 
         btnDelete.setBackground(new java.awt.Color(255, 255, 255));
-        btnDelete.setForeground(new java.awt.Color(51, 204, 255));
+        btnDelete.setForeground(new java.awt.Color(51, 102, 255));
         btnDelete.setText("Retirar");
         btnDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -64,6 +65,7 @@ public class Request_Process extends javax.swing.JPanel {
             }
         });
 
+        tbData1.setForeground(new java.awt.Color(51, 102, 255));
         tbData1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -75,7 +77,7 @@ public class Request_Process extends javax.swing.JPanel {
         jScrollPane2.setViewportView(tbData1);
 
         btnCharge.setBackground(new java.awt.Color(255, 255, 255));
-        btnCharge.setForeground(new java.awt.Color(51, 204, 255));
+        btnCharge.setForeground(new java.awt.Color(51, 102, 255));
         btnCharge.setText("Cargar");
         btnCharge.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCharge.addActionListener(new java.awt.event.ActionListener() {
@@ -84,26 +86,29 @@ public class Request_Process extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel1.setForeground(new java.awt.Color(255, 0, 0));
         jLabel1.setText("jLabel1");
 
-        jLabel2.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel2.setBackground(java.awt.Color.white);
+        jLabel2.setForeground(new java.awt.Color(51, 102, 255));
         jLabel2.setText("Productos en la solicitud");
 
-        jLabel3.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel3.setBackground(java.awt.Color.white);
+        jLabel3.setForeground(new java.awt.Color(51, 102, 255));
         jLabel3.setText("Productos resividos");
 
-        jTextField1.setForeground(new java.awt.Color(51, 204, 255));
+        jTextField1.setForeground(new java.awt.Color(51, 102, 255));
         jTextField1.setText("jTextField1");
 
-        jLabel4.setForeground(new java.awt.Color(51, 204, 255));
+        jLabel4.setBackground(java.awt.Color.white);
+        jLabel4.setForeground(new java.awt.Color(51, 102, 255));
         jLabel4.setText("Cantidad del producto resivida");
 
         jLabel5.setForeground(new java.awt.Color(255, 0, 0));
         jLabel5.setText("*");
 
         btnAsept.setBackground(new java.awt.Color(255, 255, 255));
-        btnAsept.setForeground(new java.awt.Color(51, 204, 255));
+        btnAsept.setForeground(new java.awt.Color(51, 102, 255));
         btnAsept.setText("Aseptar");
         btnAsept.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAsept.addActionListener(new java.awt.event.ActionListener() {
@@ -113,7 +118,7 @@ public class Request_Process extends javax.swing.JPanel {
         });
 
         btnCancel.setBackground(new java.awt.Color(255, 255, 255));
-        btnCancel.setForeground(new java.awt.Color(51, 204, 255));
+        btnCancel.setForeground(new java.awt.Color(51, 102, 255));
         btnCancel.setText("Cancelar");
         btnCancel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
