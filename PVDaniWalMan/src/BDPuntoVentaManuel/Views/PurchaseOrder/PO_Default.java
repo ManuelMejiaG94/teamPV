@@ -83,6 +83,9 @@ public class PO_Default extends javax.swing.JPanel {
         if(this.cmbStatus.getSelectedIndex()>=0 && this.cmbCategoria.getSelectedIndex()>0 && this.cmbSupplier.getSelectedIndex()>=0)
         {
             this.PaintDataDefaultInTableByStatusAndSupplier(this.cmbStatus.getSelectedIndex(), (Supplier)this.cmbSupplier.getSelectedItem());
+        }else
+        {
+            this.PaintDataDefaultInTable();
         }
     }
 
@@ -246,8 +249,9 @@ public class PO_Default extends javax.swing.JPanel {
                 
         if (this.cmbStatus.getSelectedIndex() <= 0) {
             this.PaintDataDefaultInTable();
+            this.Charge_Data_Default();
         } else if ((this.cmbStatus.getSelectedIndex() > 0)) {
-            this.cmbSupplier.setModel(PO_Start.PoProcess.getModelSuppliersDefault(null));
+            //this.cmbSupplier.setModel(PO_Start.PoProcess.getModelSuppliersDefault(null));
             if (evt.getStateChange() == ItemEvent.SELECTED) {
                 BDPuntoVentaManuel.MODEL.Supplier supplier
                         = (BDPuntoVentaManuel.MODEL.Supplier) this.cmbSupplier.getSelectedItem();

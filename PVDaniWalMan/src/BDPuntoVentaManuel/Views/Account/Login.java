@@ -1,8 +1,12 @@
 
 package BDPuntoVentaManuel.Views.Account;
 
+import BDPuntoVentaManuel.MODEL.Perfil;
+import BDPuntoVentaManuel.MODEL.Usuario;
 import BDPuntoVentaManuel.Views.View_Start;
 import com.mysql.jdbc.StringUtils;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Login extends javax.swing.JFrame {
@@ -12,8 +16,7 @@ public class Login extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(this.EXIT_ON_CLOSE);
         this.Limpiar();
-        
-        
+        process=new Process();
     }
     
     private void start_View()
@@ -25,6 +28,11 @@ public class Login extends javax.swing.JFrame {
         org.tempuri.WsSeguridad service = new org.tempuri.WsSeguridad();
         org.tempuri.WsSeguridadSoap port = service.getWsSeguridadSoap();
         return port.validarLogin(usuario, password);
+    }
+    private Usuario GetUser(String Usuario,String password)
+    {
+        Usuario item=process.Login(Usuario, password);
+        return item;
     }
    
     private void PaintErrorLogin()
@@ -64,7 +72,72 @@ public class Login extends javax.swing.JFrame {
         this.lbPassword.setVisible(false);
         this.LbError.setVisible(false);
     }
+    private Usuario CargarDatosUsuarioDefault()
+    {
+        Usuario usuario=new Usuario();
+        usuario.setNombre("erik");
+        return usuario;
+    }
+    private Usuario LoginManual(String nombre, String pass)
+    {
+        List<Usuario> usuarios=GetUsers();
+        Usuario user=new Usuario();
+        user.setNombre(nombre);
+        user.setContraseña(pass);
+        
+        for (int i = 0; i < usuarios.size(); i++) {
+            Usuario item=usuarios.get(i);
+            if(item.getNombre().equalsIgnoreCase(nombre))
+            {
+                if(item.getContraseña().equalsIgnoreCase(pass))
+                {
+                    return item;
+                }
+            }
+        }
+        return null;
+        
+    }
+    private List<Usuario> GetUsers()
+    {
+        Perfil sistemas=new Perfil();
+        sistemas.setId(1);
+        sistemas.setNombre("Sistemas");
+        
+        Perfil capturista=new Perfil();
+        capturista.setId(2);
+        sistemas.setNombre("Capturista");
+        
+        List<Usuario> listData=new ArrayList();
+        
+        Usuario user1=new Usuario();
+        user1.setNombre("Manuel");
+        user1.setContraseña("Sistemas");
+        user1.setIdPerfil(sistemas);
+        user1.setPerfil(1);
+        
+        Usuario user2=new Usuario();
+        user2.setNombre("Mancera");
+        user2.setContraseña("Capturista");
+        user2.setIdPerfil(capturista);
+        user2.setPerfil(2);
+        
+        Usuario user3=new Usuario();
+        user3.setNombre("Walter");
+        user3.setContraseña("Sistemas");
+        user3.setIdPerfil(sistemas);
+        user3.setPerfil(1);
+        /*
+        Usuario user4=new Usuario();
+        Usuario user5=new Usuario();
+        Usuario user6=new Usuario();*/
     
+        listData.add(user1);
+        listData.add(user2);
+        listData.add(user3);
+        
+        return listData;
+    }
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -206,17 +279,31 @@ public class Login extends javax.swing.JFrame {
 
         if(ValidarDatos())
         {
-            
+            LimpiarErrores();
             String usuario=this.txtUser.getText().trim();
-            String password=this.txtUser.getText().trim();
-            if(validarLogin(usuario,password))
-            {
-                
-                BDPuntoVentaManuel.Views.View_Start view=new BDPuntoVentaManuel.Views.View_Start();
-                view.setVisible(true);
-                this.dispose();
-            }else{
-                PaintErrorLogin();
+            String password=this.txtPassword.getText().trim();
+            if (usuario.equals("erik")) {
+                if (validarLogin(usuario, password)) {
+
+                    BDPuntoVentaManuel.Views.View_Start view = new BDPuntoVentaManuel.Views.View_Start();
+                    view.OpenWindows(this.CargarDatosUsuarioDefault());
+                    this.dispose();
+                } else {
+                    PaintErrorLogin();
+                }
+            } else {
+                //Usuario item=GetUser(usuario, password);
+                Usuario item=LoginManual(usuario, password);
+                if(item!= null)
+                {
+                    BDPuntoVentaManuel.Views.View_Start view = new BDPuntoVentaManuel.Views.View_Start();
+                    view.OpenWindows(item);
+                    this.dispose();
+                }else
+                {
+                    PaintErrorLogin();
+                }
+
             }
             
         }
@@ -276,5 +363,5 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 
-   
+   private Process process;
 }

@@ -70,6 +70,8 @@ public class PO {
          if(listPo.size()>0)
          {
          for (BDPuntoVentaManuel.MODEL.Po itemPo : listPo) {
+           if(itemPo.getBitEstatus()==1)
+           {
              data[0]=itemPo.getId();
              data[1]=itemPo.getIdSupplier().getStrBussinessName();
              data[2]=date.format(itemPo.getDatFechaGenerada());
@@ -77,6 +79,7 @@ public class PO {
              data[4]=this.GetStatus(itemPo.getBitEstatus());
              
              model.addRow(data);
+           }
          }
          }
      }
@@ -87,6 +90,7 @@ public class PO {
          Object []data=new Object[5];
          SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy");
          for (BDPuntoVentaManuel.MODEL.Po itemPo : listPo) {
+           
              data[0]=itemPo.getId();
              data[1]=itemPo.getIdSupplier().getStrBussinessName();
              data[2]=date.format(itemPo.getDatFechaGenerada());
@@ -94,6 +98,7 @@ public class PO {
              data[4]=this.GetStatus(itemPo.getBitEstatus());
              
              model.addRow(data);
+           
          }
      }
      private String GetStatus(int bitStatus)

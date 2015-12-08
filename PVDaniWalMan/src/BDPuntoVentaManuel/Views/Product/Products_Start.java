@@ -5,6 +5,7 @@
  */
 package BDPuntoVentaManuel.Views.Product;
 
+import BDPuntoVentaManuel.Views.View_Start;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
@@ -21,7 +22,28 @@ public class Products_Start extends javax.swing.JInternalFrame {
         initComponents();
         this.btnInabilit.setVisible(false);
         this.Start_Windows();
+        Permisos();
     }
+    private void Permisos()
+     {
+         if(View_Start.usuario.getNombre().equalsIgnoreCase("erik")){
+             btnNew.setVisible(true);
+             btnUpdate.setVisible(true);
+         }else if(View_Start.usuario.getPerfil()==1)
+         {
+             
+             btnNew.setVisible(false);
+             btnUpdate.setVisible(false);
+             
+         }else
+         if(View_Start.usuario.getPerfil()==2)
+         {
+             btnNew.setVisible(true);
+             btnUpdate.setVisible(true);   
+         }
+         
+         
+     }
 
     private void Start_Windows() {
         this.Start_Connections();

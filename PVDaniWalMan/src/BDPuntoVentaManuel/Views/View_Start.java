@@ -8,6 +8,8 @@ package BDPuntoVentaManuel.Views;
 //import ManuelMejiaG.PuntoVenta2.Views.Product.Product_Start;
 //import java.awt.Container;
 //import java.awt.GridBagConstraints;
+import BDPuntoVentaManuel.MODEL.Usuario;
+import BDPuntoVentaManuel.Views.Account.Login;
 import BDPuntoVentaManuel.Views.Request.Request_Start;
 import BDPuntoVentaManuel.Views.Product.Products_Start;
 import BDPuntoVentaManuel.Views.PurchaseOrder.PO_Start;
@@ -39,7 +41,31 @@ public class View_Start extends javax.swing.JFrame {
 //        this.setVisible(true);
         //this.setBackground();
 //        this.Start_Conection_Views();
+       
     }
+    
+    public void OpenWindows(Usuario _usuario)
+    {
+        usuario=_usuario;
+        this.show();
+        Permisos();
+    }
+    
+    
+    private void Permisos()
+     {
+         if(View_Start.usuario.getPerfil()==1)
+         {
+             jMenu1.setVisible(false);
+             jMenu4.setVisible(false);
+             jMenu2.setVisible(false);
+         }else
+         if(View_Start.usuario.getPerfil()==2)
+         {
+             jMenu2.setVisible(false);
+         }
+         
+     }
     
     private void ChargeDefaultCurrency()
     {
@@ -95,6 +121,8 @@ public class View_Start extends javax.swing.JFrame {
         btnNewOrders = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -104,7 +132,7 @@ public class View_Start extends javax.swing.JFrame {
         Desktop.setLayout(DesktopLayout);
         DesktopLayout.setHorizontalGroup(
             DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 916, Short.MAX_VALUE)
+            .addGap(0, 924, Short.MAX_VALUE)
         );
         DesktopLayout.setVerticalGroup(
             DesktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,6 +240,18 @@ public class View_Start extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        jMenu5.setText("Usuario");
+
+        jMenuItem3.setText("Cerrar sesion");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem3);
+
+        jMenuBar1.add(jMenu5);
+
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -282,6 +322,12 @@ public class View_Start extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        Login view=new Login();
+        this.dispose();
+        view.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     
     private void Centrar(JInternalFrame j)
     {
@@ -350,9 +396,11 @@ public class View_Start extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
@@ -363,5 +411,6 @@ public class View_Start extends javax.swing.JFrame {
     Request_Start view_Orders;
     PO_Start view_PO;
     public static NumberFormat currencySystem;
+    public static Usuario usuario=null;
 
 }

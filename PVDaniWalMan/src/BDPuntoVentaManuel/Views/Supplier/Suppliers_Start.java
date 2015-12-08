@@ -5,6 +5,7 @@
  */
 package BDPuntoVentaManuel.Views.Supplier;
 
+import BDPuntoVentaManuel.Views.View_Start;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
@@ -27,7 +28,33 @@ public class Suppliers_Start extends javax.swing.JInternalFrame {
         this.Start_Connections();
         this.Close_Views();
         this.Open_COnfigVindowsDefault();
+        Permisos();
     }
+    
+     private void Permisos()
+     {
+         if(View_Start.usuario.getNombre().equalsIgnoreCase("erik")){
+             btnInnabilit.setVisible(true);
+             btnNew.setVisible(true);
+             btnUpdate.setVisible(true);
+             jMenuItem1.setVisible(true);
+         }else
+         if(View_Start.usuario.getPerfil()==1)
+         {
+             btnInnabilit.setVisible(false);
+             btnNew.setVisible(true);
+             btnUpdate.setVisible(true);
+             jMenuItem1.setVisible(false);
+         }else
+         if(View_Start.usuario.getPerfil()==2)
+         {
+             btnInnabilit.setVisible(true);
+             btnNew.setVisible(true);
+             btnUpdate.setVisible(true);
+             jMenuItem1.setVisible(true);
+         }
+         
+     }
 
     
     private void Start_Connections()
@@ -256,6 +283,10 @@ public class Suppliers_Start extends javax.swing.JInternalFrame {
     
     //Variables
     GridBagLayout Layout=new GridBagLayout();
+    private boolean Insert=false;
+    private boolean Update=false;
+    private boolean Select=false;
+    private boolean Inhabilit=false;
     
     //Variable de los procesos de la vista
     public static Suppliers SuppliersProcess;
